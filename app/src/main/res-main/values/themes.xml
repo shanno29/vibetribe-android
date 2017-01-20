@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="None"></style>
+
+    <style name="Theme.U2020" parent="Theme.U2020.Base"/>
+
+    <style name="Theme.U2020.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--<item name="colorControlActivated">@color/accent</item>-->
+        <!--<item name="colorControlHighlight">@color/primary</item>-->
+        <!--<item name="colorControlNormal">@color/primary_light</item>-->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <!--<item name="navigationBarColor">@color/primary_dark</item>-->
+        <!--<item name="android:colorForeground">@color/icons</item>-->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@color/cardview_light_background</item>
+    </style>
+
+    <style name="Widget.U2020.GalleryImage" parent="None">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+
+    <style name="TextLabel" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>

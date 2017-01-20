@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="user" type="matthew.shannon.jamfam.model.data.User"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/purple">
+
+            <com.romainpiel.shimmer.ShimmerTextView
+                android:layout_margin="36dp"
+                android:id="@+id/title"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center"
+                android:gravity="center"
+                android:text="@string/VibeTribe"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                app:reflectionColor="#444"/>
+
+            <ImageView
+                android:layout_below="@+id/title"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/image"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:contentDescription="@string/blank"
+                android:src="@drawable/vibe_tribe"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_below="@+id/image"
+                android:id="@+id/etEmailLayout"
+                app:hintTextAppearance="@style/TextLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etEmail"
+                    style="@style/ThemeOverlay.AppCompat.Dark"
+                    app:hintTextAppearance="@style/TextLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:text="@={user.email}"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:textIsSelectable="false"/>
+            </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/etPasswordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextAppearance="@style/TextLabel"
+            android:inputType="textPassword"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@+id/etEmailLayout">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etPassword"
+                style="@style/ThemeOverlay.AppCompat.Dark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextLabel"
+                android:hint="@string/password"
+                android:text="@={user.password}"
+                android:inputType="textPassword"
+                android:fontFamily="sans-serif"
+                android:maxLines="1"
+                android:textIsSelectable="false"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/etPasswordLayout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/cbLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:checked="false"
+                android:text="@string/remember"
+                android:layout_weight="1"
+                android:textAlignment="gravity" />
+
+            <Button
+                android:id="@+id/forgotPassword"
+                android:textSize="12sp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center"
+                android:text="Forgot Password" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_left"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Signup"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:id="@+id/button_right"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+</layout>

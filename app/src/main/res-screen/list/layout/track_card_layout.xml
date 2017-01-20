@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="track" type="matthew.shannon.jamfam.model.data.Track"/>
+    </data>
+
+<android.support.v7.widget.CardView
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp">
+<RelativeLayout
+    android:id="@+id/generalContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+
+    <ImageView
+        android:id="@+id/track_artwork"
+        app:imageUrl="@{track.artwork}"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="@string/blank" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_alignBottom="@+id/track_artwork"
+        android:layout_toEndOf="@+id/track_artwork"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/artist"
+                android:textSize="16sp"
+                android:text="@{track.artist}"
+                android:textColor="#353d35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="4dp"
+                android:maxLines="1" />
+
+            <TextView
+                android:id="@+id/title"
+                android:text="@{track.title}"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/artist"
+                android:maxLines="1" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/timestamp"
+            android:textSize="14sp"
+            android:text="@{track.updatedAt}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:maxLines="1" />
+
+        <ImageView
+            android:id="@+id/overflow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="-8dp"
+            android:layout_gravity="right"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:tint="#353d35"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_picture"
+            app:imageUrl="@{track.owner.picture}"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_above="@+id/username"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/blank"
+            app:civ_border_color="#FFF"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/username"
+            android:textSize="14sp"
+            android:text="@{track.owner.username}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:maxLines="1" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+</android.support.v7.widget.CardView>
+
+</layout>

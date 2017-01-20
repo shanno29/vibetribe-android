@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <!--<com.beltaief.flowlayout.FlowLayout-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/flow_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:connectedBackground="@color/green"-->
+        <!--app:connectedText="@string/network_connected"-->
+        <!--app:connectedTextColor="@color/white"-->
+        <!--app:disconnectedBackground="@color/red"-->
+        <!--app:disconnectedText="@string/network_disconnected"-->
+        <!--app:disconnectedTextColor="@color/white"-->
+        <!--app:isConnectivityAware="true">-->
+
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/recyclerView"
+    android:scrollbars="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
+
+    <!--</com.beltaief.flowlayout.FlowLayout>-->

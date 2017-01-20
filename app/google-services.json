@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "479069849312",
+    "project_id": "vibetribe-release"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479069849312:android:e5ec25d4151e6265",
+        "android_client_info": {
+          "package_name": "matthew.shannon.jamfam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2Lf9aGrYycBOeYELh57Wg81Q45eea9cc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-74869484-5"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:vibeTribeApp="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+    tools:context="matthew.shannon.jamfam.view.activity.ProfileView">
+
+    <item
+        android:id="@+id/addPerson"
+        android:icon="@drawable/ic_person_add_white_24dp"
+        android:onClick="addUser"
+        android:title="Add"
+
+        android:visible="true"
+        vibeTribeApp:showAsAction="always"/>
+
+    <item
+        android:id="@+id/messagePerson"
+        android:icon="@drawable/ic_message_white_24dp"
+        android:onClick="messageUser"
+        android:title="Message"
+        android:visible="true"
+        vibeTribeApp:showAsAction="always"/>
+
+</menu>

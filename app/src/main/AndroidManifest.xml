@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="matthew.shannon.jamfam">
+
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="matthew.shannon.jamfam.App"
+        android:allowBackup="true"
+        android:icon="@drawable/vibe_tribe"
+        android:label="@string/VibeTribe"
+        android:theme="@style/Vibe_Tribe_Theme"
+        tools:replace="android:label">
+
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.SplashView"
+            android:label="VibeTribe"
+            android:theme="@style/Intro">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.WelcomeView"
+            android:label="Welcome"
+            android:theme="@style/Intro"/>
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.AccessView"
+            android:label="Access"
+            android:theme="@style/Intro"/>
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.SignupView"
+            android:label="Signup"
+            android:theme="@style/Intro"/>
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.LoginView"
+            android:label="Login"
+            android:theme="@style/Intro"/>
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.HomeView"
+            android:label="VibeTribe"/>
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.SearchView"
+            android:label=""
+            android:parentActivityName="matthew.shannon.jamfam.view.activity.HomeView"/>
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.AboutView"
+            android:label="About"
+            android:parentActivityName="matthew.shannon.jamfam.view.activity.HomeView"/>
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.MessageView"
+            android:label="Messages"/>
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.ProfileView"
+            android:label="Profile"/>
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.SettingsView"
+            android:label="Settings"
+            android:parentActivityName="matthew.shannon.jamfam.view.activity.HomeView"/>
+
+        <activity
+            android:name="matthew.shannon.jamfam.view.activity.LogoutView"
+            android:label="About"/>
+
+        <activity
+            android:name="rx_activity_result.HolderActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/Theme.Transparent" />
+
+        <activity android:name="com.yalantis.ucrop.UCropActivity" />
+
+         <service
+         android:name=".view.service.MetadataView"
+         android:label="@string/VibeTribe"
+         android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+             <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+             </intent-filter>
+         </service>
+
+        <meta-data
+        android:name="com.google.android.maps.v2.API_KEY"
+        android:value="AIzaSyACt--2aitJjRv_dtbwr0d2evAW-CUx3aU" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyACt--2aitJjRv_dtbwr0d2evAW-CUx3aU" />
+
+    </application>
+
+</manifest>

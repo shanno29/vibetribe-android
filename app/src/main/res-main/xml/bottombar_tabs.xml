@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+
+    <tab
+        id="@+id/home"
+        icon="@drawable/ic_home_black_24dp"
+        barColorWhenSelected="#691A99"
+        title="Home" />
+    <tab
+        id="@+id/search"
+        icon="@drawable/ic_search_black_24dp"
+        barColorWhenSelected="#691A99"
+        title="Search" />
+    <tab
+        id="@+id/profile"
+        icon="@drawable/ic_account_circle_black_24dp"
+        barColorWhenSelected="#691A99"
+        title="Profile" />
+
+    <tab
+        id="@+id/message"
+        icon="@drawable/ic_message_black_24dp"
+        barColorWhenSelected="#691A99"
+        title="Message" />
+
+</tabs>

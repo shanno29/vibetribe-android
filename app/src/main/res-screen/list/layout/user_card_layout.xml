@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/picture"
+            android:layout_toEndOf="@+id/avatar"
             android:orientation="vertical">
 
             <TextView
@@ -64,11 +64,11 @@
 
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/picture"
+            android:id="@+id/avatar"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginEnd="8dp"
-            app:imageUrl="@{user.picture}"
+            app:imageUrl="@{user.avatar}"
             android:contentDescription="@string/blank"
             app:civ_border_color="#FFF"
             app:civ_border_width="2dp"

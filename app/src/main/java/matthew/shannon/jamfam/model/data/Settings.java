@@ -1,7 +1,7 @@
 package matthew.shannon.jamfam.model.data;
 
 
-public class Settings extends Object {
+public class Settings {
     private String description;
     private String value;
 
@@ -13,7 +13,6 @@ public class Settings extends Object {
     public String getDescription() {
         return this.description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -21,8 +20,8 @@ public class Settings extends Object {
     public String getValue() {
         return value;
     }
-
     public void setValue(String value) {
         this.value = value;
     }
+
 }

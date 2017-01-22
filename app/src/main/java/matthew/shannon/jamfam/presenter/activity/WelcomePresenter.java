@@ -2,12 +2,10 @@ package matthew.shannon.jamfam.presenter.activity;
 
 import com.google.android.gms.common.ConnectionResult;
 
-import javax.inject.Inject;
-
 import matthew.shannon.jamfam.view.activity.WelcomeView;
 import matthew.shannon.jamfam.presenter.BasePresenter;
 import matthew.shannon.jamfam.model.local.flow.FlowService;
-import matthew.shannon.jamfam.model.data.GoogleAPI;
+import matthew.shannon.jamfam.view.utils.GoogleAPI;
 
 public class WelcomePresenter extends BasePresenter {
     private final GoogleAPI api;

@@ -20,8 +20,8 @@ public class NetworkModel implements NetworkService {
     }
 
     /*
-        * Users Route
-        */
+    * Users Route
+    */
     @Override
     public Observable<User> postUser(@Body User user) {
         return retrofit.create(NetworkService.class).postUser(user);

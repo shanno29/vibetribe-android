@@ -22,7 +22,7 @@ public class ItemViewHolderUser extends ItemViewHolder {
     public void bind(Object value, BusService bus) {
         UserCardLayoutBinding binding = DataBindingUtil.bind(itemView);
         User user = ((User) value);
-        Log.d("VIBETRIBE", "bind: " + user.getPicture());
+        Log.d("VIBETRIBE", "bind: " + user.getAvatar());
         binding.setUser(user);
 
         binding.root.setOnClickListener(view -> bus.goToUser(user));

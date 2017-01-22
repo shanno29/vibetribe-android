@@ -30,6 +30,7 @@ public class App extends Application implements HasActivityComponentBuilders, Ha
     @Inject Map<Class<? extends Fragment>, Provider<FragmentComponentBuilder>> fragmentBuilders;
     @Inject Map<Class<? extends Service>, Provider<ServiceComponentBuilder>> serviceBuilders;
 
+    private AppComponent appComponent;
     public static String userID = null;
     public static String token = null;
 
@@ -41,7 +42,7 @@ public class App extends Application implements HasActivityComponentBuilders, Ha
     }
 
     private void createAppComponent(){
-        AppComponent component = DaggerAppComponent.builder()
+        appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .busModule(new BusModule())
                 .flowModule(new FlowModule())
@@ -49,7 +50,7 @@ public class App extends Application implements HasActivityComponentBuilders, Ha
                 .networkModule(new NetworkModule())
                 .locationModule(new LocationModule())
                 .build();
-        component.inject(this);
+        appComponent.inject(this);
     }
 
     public static HasActivityComponentBuilders getActivity(Context context) {

@@ -91,7 +91,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_picture"
-            app:imageUrl="@{track.owner.picture}"
+            app:imageUrl="@{track.owner.avatar}"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_above="@+id/username"

@@ -7,7 +7,7 @@ import javax.inject.Scope;
 import dagger.Module;
 import dagger.Provides;
 import dagger.Subcomponent;
-import matthew.shannon.jamfam.model.data.GoogleAPI;
+import matthew.shannon.jamfam.view.utils.GoogleAPI;
 import matthew.shannon.jamfam.model.local.flow.FlowService;
 import matthew.shannon.jamfam.presenter.activity.WelcomePresenter;
 import matthew.shannon.jamfam.view.activity.WelcomeView;

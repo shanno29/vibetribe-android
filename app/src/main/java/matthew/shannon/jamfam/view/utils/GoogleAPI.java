@@ -1,4 +1,4 @@
-package matthew.shannon.jamfam.model.data;
+package matthew.shannon.jamfam.view.utils;
 
 import android.support.v7.app.AppCompatActivity;
 import com.google.android.gms.common.GoogleApiAvailability;

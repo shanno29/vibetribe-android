@@ -25,8 +25,7 @@ public class LoginPresenter extends BasePresenter {
     }
 
     public void login(User user) {
-        user.setType("login");
-        user.setClient("android");
+        user.setType("android");
         user.setVersion(BuildConfig.VERSION_NAME);
         view.toggleSpinner(true);
         add(network.loginUser(user)

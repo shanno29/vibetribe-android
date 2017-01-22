@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.Service;
 import android.content.Context;
-import android.support.multidex.MultiDex;
 import android.support.v4.app.Fragment;
 import com.fuck_boilerplate.rx_paparazzo.RxPaparazzo;
-import com.squareup.leakcanary.LeakCanary;
 import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -26,7 +24,6 @@ import matthew.shannon.jamfam.model.local.flow.FlowModule;
 import matthew.shannon.jamfam.model.remote.location.LocationModule;
 import matthew.shannon.jamfam.model.remote.network.NetworkModule;
 import rx_activity_result.RxActivityResult;
-import timber.log.Timber;
 
 public class App extends Application implements HasActivityComponentBuilders, HasFragmentComponentBuilders, HasServiceComponentBuilders {
     @Inject Map<Class<? extends Activity>, Provider<ActivityComponentBuilder>> activityBuilders;
@@ -38,23 +35,20 @@ public class App extends Application implements HasActivityComponentBuilders, Ha
 
     @Override public void onCreate() {
         super.onCreate();
-        if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
-        if (LeakCanary.isInAnalyzerProcess(this)) { return; }
         RxActivityResult.register(this);
         RxPaparazzo.register(this);
-        LeakCanary.install(this);
         createAppComponent();
     }
 
     private void createAppComponent(){
         AppComponent component = DaggerAppComponent.builder()
-            .appModule(new AppModule(this))
-            .busModule(new BusModule())
-            .networkModule(new NetworkModule())
-            .cacheModule(new CacheModule())
-            .locationModule(new LocationModule())
-            .flowModule(new FlowModule())
-            .build();
+                .appModule(new AppModule(this))
+                .busModule(new BusModule())
+                .flowModule(new FlowModule())
+                .cacheModule(new CacheModule())
+                .networkModule(new NetworkModule())
+                .locationModule(new LocationModule())
+                .build();
         component.inject(this);
     }
 
@@ -84,11 +78,5 @@ public class App extends Application implements HasActivityComponentBuilders, Ha
     public ServiceComponentBuilder getServiceBuilders(Class<? extends Service> serviceClass) {
         return serviceBuilders.get(serviceClass).get();
     }
-
-    @Override protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        MultiDex.install(this);
-    }
-
 
 }

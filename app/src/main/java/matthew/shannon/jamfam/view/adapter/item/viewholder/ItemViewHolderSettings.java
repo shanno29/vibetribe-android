@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.auto.factory.AutoFactory;
 import com.hwangjr.rxbus.Bus;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import matthew.shannon.jamfam.model.local.bus.BusService;
 import matthew.shannon.jamfam.view.utils.constant.Action;
@@ -19,9 +19,9 @@ import matthew.shannon.jamfam.R;
 
 @AutoFactory(implementing = ItemViewHolderFactory.class)
 public class ItemViewHolderSettings extends ItemViewHolder {
-    @Bind(R.id.description) TextView description;
-    @Bind(R.id.overflow) ImageView overflow;
-    @Bind(R.id.value) TextView value;
+    @BindView(R.id.description) TextView description;
+    @BindView(R.id.overflow) ImageView overflow;
+    @BindView(R.id.value) TextView value;
 
     public ItemViewHolderSettings(ViewGroup parent) {
         super(LayoutInflater.from(parent.getContext()).inflate(R.layout.setting_card_layout, parent, false));

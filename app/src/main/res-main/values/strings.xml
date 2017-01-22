@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="VibeTribe">VibeTribe</string>
+    <string name="app_name">VibeTribe</string>
     <string name="slogan">Share Your Vibe Find Your Tribe</string>
     <string name="allow_vibe_tribe">Allow Vibe Tribe to communicate with apps like Spotify, Soundcloud, and Pandora to track song activity</string>
 
@@ -55,11 +55,28 @@
     <string name="blank_password">Password Is Blank</string>
     <string name="short_password">Password too short, enter minimum 6 characters</string>
     <string name="mismatch_password">Password Mismatch</string>
-    <string name="signing_up">Signing Up...</string>
+    <string name="signing_up">Signing Up…</string>
     <string name="send">Send</string>
     <string name="reset_email">Enter your email to reset your password</string>
     <string name="access_text">Notification Access Must Be Enabled For VibeTribe To Function Properly</string>
     <string name="title_activity_maps">Map</string>
-    <string name="dialog_action_ok">Ok</string>
+    <string name="dialog_action_ok">OK</string>
+    <string name="description">Description</string>
+    <string name="description_lower">description</string>
+    <string name="value">Value</string>
+    <string name="value_lower">value</string>
+    <string name="skip">Skip</string>
+    <string name="signup">Signup</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="search">Search</string>
+    <string name="logging_out">Logging Out</string>
+    <string name="enable_new">Enable</string>
+    <string name="email_long">Email:</string>
+    <string name="state_long">State:</string>
+    <string name="city_long">City:</string>
+    <string name="age_long">Age:</string>
+    <string name="login_button">Login</string>
+    <string name="begin_button">Begin</string>
+    <string name="signup_button">Signup</string>
 
 </resources>

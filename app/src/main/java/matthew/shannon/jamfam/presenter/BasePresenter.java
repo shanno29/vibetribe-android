@@ -14,8 +14,6 @@ public abstract class BasePresenter {
     }
 
     protected void add(@NonNull Subscription subscription) {
-        Preconditions.checkNotNull(subscription);
-
         if (!subscription.isUnsubscribed()) {
             subscriptions.add(subscription);
         }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="matthew.shannon.jamfam">
 
     <uses-feature
@@ -20,21 +19,22 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="matthew.shannon.jamfam.App"
         android:allowBackup="true"
+        android:name=".App"
         android:icon="@drawable/vibe_tribe"
-        android:label="@string/VibeTribe"
-        android:theme="@style/Vibe_Tribe_Theme"
-        tools:replace="android:label">
-
+        android:label="@string/app_name"
+        android:theme="@style/Vibe_Tribe_Theme">
 
         <activity
             android:name="matthew.shannon.jamfam.view.activity.SplashView"
-            android:label="VibeTribe"
+            android:label="@string/app_name"
             android:theme="@style/Intro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+
             </intent-filter>
         </activity>
 
@@ -98,7 +98,7 @@
 
          <service
          android:name=".view.service.MetadataView"
-         android:label="@string/VibeTribe"
+         android:label="@string/app_name"
          android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
              <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />

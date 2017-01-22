@@ -5,6 +5,10 @@ public class Event {
     private int type;
     private Object object;
 
+    public Event(){
+        this(0);
+    }
+
     public Event(int type){
         this(type, null);
     }

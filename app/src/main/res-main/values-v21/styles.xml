@@ -17,8 +17,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="about_libraries_window_background">@color/colorPrimary</item>
         <item name="android:colorBackground">@color/cardview_dark_background</item>
-        <item name="android:colorForeground">@color/wallet_bright_foreground_holo_dark</item>
-    </style>
+]    </style>
 
     <style name="Vibe_Tribe_Theme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 

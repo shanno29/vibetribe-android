@@ -6,8 +6,10 @@
       android:orientation="vertical">
 
     <EditText
-        android:layout_margin="24dp"
         android:id="@+id/dialogText"
+        android:inputType="text"
+        android:labelFor="@id/dialogText"
+        android:layout_margin="24dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

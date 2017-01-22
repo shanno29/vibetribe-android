@@ -11,7 +11,8 @@ import com.github.florent37.materialviewpager.header.MaterialViewPagerHeaderDeco
 import com.hwangjr.rxbus.annotation.Subscribe;
 import java.util.List;
 import javax.inject.Inject;
-import butterknife.Bind;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import matthew.shannon.jamfam.view.utils.constant.FragType;
 import matthew.shannon.jamfam.view.adapter.item.ItemAdapter;
@@ -27,7 +28,7 @@ import matthew.shannon.jamfam.presenter.fragment.ListPresenter;
 
 public class ListView extends BaseFragment {
 
-    @Bind(R.id.recyclerView) RecyclerView recyclerView;
+    @BindView(R.id.recyclerView) RecyclerView recyclerView;
     //@Bind(R.id.flow_layout) FlowLayout flowLayout;
     @Inject DividerItemDecoration dividerItem;
     @Inject ListPresenter presenter;

@@ -5,13 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.annimon.stream.Stream;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import java.util.List;
 import javax.inject.Inject;
@@ -87,15 +84,15 @@ public class MapView extends BaseFragment {
     }
 
     public void addMarkers(List<Track> tracks) {
-        Stream.of(tracks)
-            .forEach(track -> {
-                MarkerOptions options = new MarkerOptions();
-                options.position(new LatLng(track.getLatitude(), track.getLongitude()));
-                options.title(track.getUpdatedAt());
-                options.snippet(track.getTitle() + "\n " + track.getArtist());
-                options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-                googleMap.addMarker(options);
-            });
+//        Stream.of(tracks)
+//            .forEach(track -> {
+//                MarkerOptions options = new MarkerOptions();
+//                options.position(new LatLng(track.getLatitude(), track.getLongitude()));
+//                options.title(track.getUpdatedAt());
+//                options.snippet(track.getTitle() + "\n " + track.getArtist());
+//                options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
+//                googleMap.addMarker(options);
+//            });
 
     }
     

@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:fontFamily="sans-serif-medium"
-            android:text="@string/VibeTribe"
+            android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:text="Begin" />
+            android:text="@string/begin_button" />
 
 
     </RelativeLayout>

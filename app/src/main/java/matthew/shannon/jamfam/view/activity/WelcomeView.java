@@ -3,7 +3,6 @@ package matthew.shannon.jamfam.view.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import javax.inject.Inject;
-import hugo.weaving.DebugLog;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.inject.activity.base.BaseActivity;
 import matthew.shannon.jamfam.databinding.WelcomeViewBinding;
@@ -24,14 +23,12 @@ public class WelcomeView extends BaseActivity {
             .build().injectMembers(this);
     }
 
-    @DebugLog
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         binding = DataBindingUtil.setContentView(this, R.layout.welcome_view);
     }
 
-    @DebugLog
     @Override
     protected void onResume() {
         super.onResume();

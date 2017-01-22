@@ -44,7 +44,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="4dp"
-                        android:text="Email:    "/>
+                        android:text="@string/email_long"/>
 
                     <TextView
                         android:id="@+id/email"
@@ -57,7 +57,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="4dp"
-                        android:text="State:    "/>
+                        android:text="@string/state_long"/>
 
                     <TextView
                         android:id="@+id/state"
@@ -69,7 +69,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="4dp"
-                        android:text="City:    "/>
+                        android:text="@string/city_long"/>
 
                     <TextView
                         android:id="@+id/city"
@@ -81,7 +81,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="4dp"
-                        android:text="Age:    "/>
+                        android:text="@string/age_long"/>
 
                     <TextView
                         android:id="@+id/age"

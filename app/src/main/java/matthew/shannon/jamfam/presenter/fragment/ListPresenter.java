@@ -1,8 +1,8 @@
 package matthew.shannon.jamfam.presenter.fragment;
 
-import com.annimon.stream.Stream;
 import java.util.List;
-import javax.inject.Inject;
+import java.util.stream.Stream;
+
 import matthew.shannon.jamfam.App;
 import matthew.shannon.jamfam.view.fragment.ListView;
 import matthew.shannon.jamfam.presenter.BasePresenter;
@@ -151,9 +151,10 @@ public class ListPresenter extends BasePresenter {
     }
 
     public List<?> localQuery(List<?> items, String query) {
-        return Stream.of(items)
-            .filter(item -> StringUtils.contains(item.toString(), query))
-            .collect(com.annimon.stream.Collectors.toList());
+        return null;
+//        return Stream.of(items)
+//            .filter(item -> StringUtils.contains(item.toString(), query))
+//            .collect(com.annimon.stream.Collectors.toList());
     }
 
     public void goToUser(String id) {

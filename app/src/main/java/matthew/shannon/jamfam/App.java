@@ -26,9 +26,11 @@ import matthew.shannon.jamfam.model.remote.network.NetworkModule;
 import rx_activity_result.RxActivityResult;
 
 public class App extends Application implements HasActivityComponentBuilders, HasFragmentComponentBuilders, HasServiceComponentBuilders {
-    @Inject Map<Class<? extends Activity>, Provider<ActivityComponentBuilder>> activityBuilders;
-    @Inject Map<Class<? extends Fragment>, Provider<FragmentComponentBuilder>> fragmentBuilders;
-    @Inject Map<Class<? extends Service>, Provider<ServiceComponentBuilder>> serviceBuilders;
+    @Inject public Map<Class<? extends Activity>, Provider<ActivityComponentBuilder>> activityBuilders;
+    @Inject
+    public Map<Class<? extends Fragment>, Provider<FragmentComponentBuilder>> fragmentBuilders;
+    @Inject
+    public Map<Class<? extends Service>, Provider<ServiceComponentBuilder>> serviceBuilders;
 
     private AppComponent appComponent;
     public static String userID = null;

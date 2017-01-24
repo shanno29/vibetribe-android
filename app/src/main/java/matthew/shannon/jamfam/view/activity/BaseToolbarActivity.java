@@ -1,4 +1,4 @@
-package matthew.shannon.jamfam.inject.activity.base;
+package matthew.shannon.jamfam.view.activity;
 
 import android.view.Menu;
 import android.view.MenuItem;

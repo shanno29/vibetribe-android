@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import javax.inject.Inject;
 import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.inject.activity.base.BaseActivity;
 import matthew.shannon.jamfam.databinding.LogoutBinding;
 import matthew.shannon.jamfam.inject.activity.component.HasActivityComponentBuilders;
 import matthew.shannon.jamfam.inject.activity.component.LogoutComponent;

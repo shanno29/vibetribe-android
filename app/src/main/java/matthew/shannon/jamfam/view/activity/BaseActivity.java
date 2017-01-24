@@ -1,9 +1,8 @@
-package matthew.shannon.jamfam.inject.activity.base;
+package matthew.shannon.jamfam.view.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
-import com.hwangjr.rxbus.Bus;
 import javax.inject.Inject;
 import matthew.shannon.jamfam.App;
 import matthew.shannon.jamfam.view.BaseView;
@@ -13,7 +12,7 @@ import matthew.shannon.jamfam.inject.activity.component.HasActivityComponentBuil
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
     protected abstract void injectMembers(HasActivityComponentBuilders builders);
     @Inject public FlowService flowService;
-    @Inject public Bus bus;
+    //@Inject public Bus bus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +35,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     protected void onStart() {
         super.onStart();
-        bus.register(this);
+       // bus.register(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        bus.unregister(this);
+        //bus.unregister(this);
     }
 
 }

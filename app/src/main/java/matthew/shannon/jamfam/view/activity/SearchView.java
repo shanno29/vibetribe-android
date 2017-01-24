@@ -12,9 +12,6 @@ import javax.inject.Inject;
 
 import matthew.shannon.jamfam.view.adapter.FragmentAdapter;
 import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.inject.activity.base.BaseToolbarActivity;
-import matthew.shannon.jamfam.view.utils.constant.Action;
-import matthew.shannon.jamfam.model.data.Event;
 import matthew.shannon.jamfam.databinding.ActivitySearchBinding;
 import matthew.shannon.jamfam.inject.activity.component.HasActivityComponentBuilders;
 import matthew.shannon.jamfam.inject.activity.component.SearchComponent;
@@ -84,13 +81,13 @@ public class SearchView extends BaseToolbarActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 binding.search.hideKeyboard(binding.getRoot());
-                bus.post(new Event(Action.QUERY_CHANGED, query));
+                //bus.post(new Event(Action.QUERY_CHANGED, query));
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String query) {
-                bus.post(new Event(Action.QUERY_CHANGED, query));
+                //bus.post(new Event(Action.QUERY_CHANGED, query));
                 return true;
             }
         });

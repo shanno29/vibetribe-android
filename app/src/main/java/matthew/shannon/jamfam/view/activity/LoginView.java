@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import com.romainpiel.shimmer.Shimmer;
 import javax.inject.Inject;
-import matthew.shannon.jamfam.inject.activity.base.BaseActivity;
+
 import matthew.shannon.jamfam.view.utils.StringUtils;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.view.utils.SimpleTextWatcher;

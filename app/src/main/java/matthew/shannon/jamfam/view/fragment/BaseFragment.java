@@ -1,4 +1,4 @@
-package matthew.shannon.jamfam.inject.fragment.base;
+package matthew.shannon.jamfam.view.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +11,7 @@ import matthew.shannon.jamfam.App;
 
 public abstract class BaseFragment extends Fragment implements BaseView{
     protected abstract void injectMembers(HasFragmentComponentBuilders builders);
-    @Inject public Bus bus;
+   // @Inject public Bus bus;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -29,13 +29,13 @@ public abstract class BaseFragment extends Fragment implements BaseView{
     @Override
     public void onStop() {
         super.onStop();
-        bus.unregister(this);
+       // bus.unregister(this);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        bus.register(this);
+        //bus.register(this);
     }
 
 }

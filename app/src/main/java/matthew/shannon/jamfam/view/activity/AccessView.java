@@ -3,7 +3,7 @@ package matthew.shannon.jamfam.view.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import javax.inject.Inject;
-import matthew.shannon.jamfam.inject.activity.base.BaseActivity;
+
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.databinding.AccessViewBinding;
 import matthew.shannon.jamfam.inject.activity.component.AccessComponent;
@@ -12,7 +12,7 @@ import matthew.shannon.jamfam.presenter.activity.AccessPresenter;
 
 public class AccessView extends BaseActivity {
 
-    @Inject AccessPresenter presenter;
+    @Inject public AccessPresenter presenter;
     private AccessViewBinding binding;
 
     public AccessView() {}

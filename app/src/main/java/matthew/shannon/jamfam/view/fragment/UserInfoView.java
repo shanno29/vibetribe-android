@@ -10,7 +10,6 @@ import android.widget.EditText;
 import javax.inject.Inject;
 import matthew.shannon.jamfam.App;
 import matthew.shannon.jamfam.presenter.fragment.UserInfoPresenter;
-import matthew.shannon.jamfam.inject.fragment.base.BaseFragment;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.model.data.User;
 import matthew.shannon.jamfam.databinding.ProfileAboutBinding;

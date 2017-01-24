@@ -9,7 +9,6 @@ import com.hwangjr.rxbus.annotation.Subscribe;
 import javax.inject.Inject;
 import co.mobiwise.materialintro.view.MaterialIntroView;
 import matthew.shannon.jamfam.presenter.fragment.TrackPresenter;
-import matthew.shannon.jamfam.inject.fragment.base.BaseFragment;
 import matthew.shannon.jamfam.model.data.Track;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.databinding.FragmentTrackBinding;
@@ -19,7 +18,7 @@ import matthew.shannon.jamfam.inject.fragment.component.TrackComponent;
 public class TrackView extends BaseFragment {
     private FragmentTrackBinding binding;
     @Inject MaterialIntroView.Builder intro;
-    @Inject TrackPresenter presenter;
+    @Inject public TrackPresenter presenter;
 
     public TrackView() {}
 
@@ -45,7 +44,7 @@ public class TrackView extends BaseFragment {
         binding.prevTrack.setOnClickListener(view -> presenter.controlUpdate(88));
         binding.nextTrack.setOnClickListener(view -> presenter.controlUpdate(87));
         binding.postTrack.setOnClickListener(view -> presenter.postTrack(binding.getTrack()));
-        presenter.checkForSecondRun();
+        //presenter.checkForSecondRun();
     }
 
     @Override
@@ -67,5 +66,7 @@ public class TrackView extends BaseFragment {
         intro.setTarget(binding.openApp);
         intro.show();
     }
+
+
 
 }

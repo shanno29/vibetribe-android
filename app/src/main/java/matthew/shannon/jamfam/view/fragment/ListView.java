@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
 import matthew.shannon.jamfam.view.utils.constant.FragType;
 import matthew.shannon.jamfam.view.adapter.item.ItemAdapter;
 import matthew.shannon.jamfam.view.utils.constant.Action;
-import matthew.shannon.jamfam.inject.fragment.base.BaseFragment;
 import matthew.shannon.jamfam.model.data.Event;
 import matthew.shannon.jamfam.model.data.Track;
 import matthew.shannon.jamfam.R;

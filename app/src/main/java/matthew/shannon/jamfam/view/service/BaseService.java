@@ -1,4 +1,4 @@
-package matthew.shannon.jamfam.inject.service.base;
+package matthew.shannon.jamfam.view.service;
 
 import android.service.notification.NotificationListenerService;
 import android.widget.Toast;
@@ -10,13 +10,13 @@ import matthew.shannon.jamfam.inject.service.component.HasServiceComponentBuilde
 
 public abstract class BaseService extends NotificationListenerService implements BaseView{
     protected abstract void injectMembers(HasServiceComponentBuilders builders);
-    @Inject public Bus bus;
+    //@Inject public Bus bus;
 
     @Override
     public void onCreate() {
         super.onCreate();
         injectMembers(App.getService(getApplicationContext()));
-        bus.register(this);
+        //bus.register(this);
     }
 
     @Override
@@ -28,7 +28,7 @@ public abstract class BaseService extends NotificationListenerService implements
     @Override
     public void onDestroy() {
         super.onDestroy();
-        bus.unregister(this);
+        //bus.unregister(this);
     }
 
 }

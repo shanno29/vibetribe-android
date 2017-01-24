@@ -1,5 +1,7 @@
 package matthew.shannon.jamfam.presenter.fragment;
 
+import javax.inject.Inject;
+
 import matthew.shannon.jamfam.App;
 import matthew.shannon.jamfam.presenter.BasePresenter;
 import matthew.shannon.jamfam.view.utils.RxUtils;
@@ -15,7 +17,7 @@ public class TrackPresenter extends BasePresenter {
     private final BusService bus;
     private final TrackView view;
 
-    public TrackPresenter(NetworkService network, CacheService cache, BusService bus, TrackView view) {
+    @Inject public TrackPresenter(NetworkService network, CacheService cache, BusService bus, TrackView view) {
         this.network = network;
         this.cache = cache;
         this.bus = bus;
@@ -23,23 +25,23 @@ public class TrackPresenter extends BasePresenter {
     }
 
     public void checkForSecondRun() {
-        add(cache.getHomeSecondRun()
-            .compose(RxUtils.applySchedulers())
-            .subscribe(
-                flag -> { if(!flag) cache.setSecondRun(); view.showIntroView(); },
-                error -> view.showToast(error.getMessage())
-            )
-        );
+//        add(cache.getHomeSecondRun()
+//            .compose(RxUtils.applySchedulers())
+//            .subscribe(
+//                flag -> { if(!flag) cache.setSecondRun(); view.showIntroView(); },
+//                error -> view.showToast(error.getMessage())
+//            )
+//        );
     }
 
     public void postTrack(Track track) {
-        add(network.postTrack(App.token, App.userID, track)
-            .compose(RxUtils.applySchedulers())
-            .subscribe(
-                tracks -> view.showToast("Track Posted Successfully"),
-                error -> view.showToast("Error Posting Track " + error.getMessage())
-            )
-        );
+//        add(network.postTrack(App.token, App.userID, track)
+//            .compose(RxUtils.applySchedulers())
+//            .subscribe(
+//                tracks -> view.showToast("Track Posted Successfully"),
+//                error -> view.showToast("Error Posting Track " + error.getMessage())
+//            )
+//        );
     }
 
     public void trackSelected(Track track) {

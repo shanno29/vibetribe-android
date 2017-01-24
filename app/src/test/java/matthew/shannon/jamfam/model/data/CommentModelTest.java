@@ -1,7 +1,7 @@
-package matthew.shannon.vibetribe.model.data;
+package matthew.shannon.jamfam.model.data;
 
 import org.junit.Test;
-import matthew.shannon.jamfam.model.data.Comment;
+
 import static junit.framework.Assert.assertEquals;
 
 public class CommentModelTest {

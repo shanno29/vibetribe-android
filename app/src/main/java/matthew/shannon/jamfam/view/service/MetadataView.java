@@ -13,11 +13,10 @@ import matthew.shannon.jamfam.inject.service.component.MetadataService;
 import matthew.shannon.jamfam.presenter.service.MetadataPresenter;
 import matthew.shannon.jamfam.view.utils.constant.Action;
 import matthew.shannon.jamfam.model.data.Event;
-import matthew.shannon.jamfam.inject.service.base.BaseService;
 import matthew.shannon.jamfam.inject.service.component.HasServiceComponentBuilders;
 
 public class MetadataView extends BaseService implements MetadataService {
-    @Inject MetadataPresenter presenter;
+    @Inject public MetadataPresenter presenter;
     @Inject AudioManager audioManager;
     @Inject RemoteController remote;
 
@@ -31,9 +30,9 @@ public class MetadataView extends BaseService implements MetadataService {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
-        audioManager.registerRemoteController(remote);
-        presenter.getLastLocation();
-        presenter.getLocationUpdate();
+        //audioManager.registerRemoteController(remote);
+        //presenter.getLastLocation();
+        //presenter.getLocationUpdate();
         return startId;
     }
 
@@ -41,7 +40,7 @@ public class MetadataView extends BaseService implements MetadataService {
     public void onDestroy() {
         super.onDestroy();
         presenter.unsubscribe();
-        audioManager.unregisterRemoteController(remote);
+        //audioManager.unregisterRemoteController(remote);
     }
 
     @Override

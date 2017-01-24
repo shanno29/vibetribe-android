@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.animation.Animation;
 import javax.inject.Inject;
 import matthew.shannon.jamfam.view.adapter.FragmentAdapter;
-import matthew.shannon.jamfam.inject.activity.base.BaseToolbarActivity;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.databinding.ActivityAboutBinding;
 import matthew.shannon.jamfam.inject.activity.component.AboutComponent;

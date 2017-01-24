@@ -14,7 +14,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import matthew.shannon.jamfam.presenter.fragment.MapPresenter;
-import matthew.shannon.jamfam.inject.fragment.base.BaseFragment;
 import matthew.shannon.jamfam.model.data.Track;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.databinding.FragmentMapBinding;

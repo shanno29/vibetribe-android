@@ -14,4 +14,7 @@ jdk:
 
 
 script:
-   - ./gradlew build connectedCheck
+ - ./gradlew build connectedCheck
+
+after_success:
+ - ./gradlew clean jacocoTestReport coveralls

@@ -12,7 +12,16 @@ buildscript {
         classpath 'com.google.gms:google-services:3.0.0'
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.5.0'
     }
+
+
+
 }
+
+plugins {
+    id 'jacoco'
+    id 'com.github.kt3k.coveralls' version '2.6.3'
+}
+
 
 allprojects {
     repositories {

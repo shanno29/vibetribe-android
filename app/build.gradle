@@ -43,7 +43,12 @@ android {
         unitTests.all { jacoco { includeNoLocationClasses = true } }
     }
 
-
+    jacocoTestReport {
+        reports {
+            xml.enabled = true
+            html.enabled = true
+        }
+    }
 
     sourceSets {
         main {

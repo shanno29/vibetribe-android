@@ -7,7 +7,7 @@ import com.google.android.gms.location.LocationSettingsRequest;
 
 import dagger.Module;
 import dagger.Provides;
-import matthew.shannon.jamfam.inject.app.scope.AppScope;
+import matthew.shannon.jamfam.inject.app.AppScope;
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 
 @Module

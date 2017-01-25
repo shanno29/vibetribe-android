@@ -5,19 +5,19 @@ import android.app.Application;
 import android.content.Intent;
 import android.net.Uri;
 import matthew.shannon.jamfam.App;
-import matthew.shannon.jamfam.view.activity.AboutView;
-import matthew.shannon.jamfam.view.activity.HomeView;
-import matthew.shannon.jamfam.view.activity.AccessView;
-import matthew.shannon.jamfam.view.activity.LoginView;
-import matthew.shannon.jamfam.view.activity.SignupView;
-import matthew.shannon.jamfam.view.activity.SplashView;
-import matthew.shannon.jamfam.view.activity.WelcomeView;
-import matthew.shannon.jamfam.view.activity.LogoutView;
-import matthew.shannon.jamfam.view.activity.MessageView;
-import matthew.shannon.jamfam.view.activity.ProfileView;
-import matthew.shannon.jamfam.view.activity.SearchView;
-import matthew.shannon.jamfam.view.activity.SettingsView;
-import matthew.shannon.jamfam.view.service.MetadataView;
+import matthew.shannon.jamfam.feature.about.AboutView;
+import matthew.shannon.jamfam.feature.home.HomeView;
+import matthew.shannon.jamfam.feature.access.AccessView;
+import matthew.shannon.jamfam.feature.login.LoginView;
+import matthew.shannon.jamfam.feature.signup.SignupView;
+import matthew.shannon.jamfam.feature.splash.SplashView;
+import matthew.shannon.jamfam.feature.welcome.WelcomeView;
+import matthew.shannon.jamfam.feature.logout.LogoutView;
+import matthew.shannon.jamfam.feature.message.MessageView;
+import matthew.shannon.jamfam.feature.profile.ProfileView;
+import matthew.shannon.jamfam.feature.search.SearchView;
+import matthew.shannon.jamfam.feature.settings.SettingsView;
+import matthew.shannon.jamfam.feature.meta.MetadataView;
 
 public class FlowModel implements FlowService {
 

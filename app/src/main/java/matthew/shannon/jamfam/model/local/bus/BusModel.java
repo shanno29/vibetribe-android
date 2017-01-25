@@ -4,7 +4,7 @@ import com.hwangjr.rxbus.Bus;
 
 import matthew.shannon.jamfam.model.data.Settings;
 import matthew.shannon.jamfam.model.data.User;
-import matthew.shannon.jamfam.view.utils.constant.Action;
+import matthew.shannon.jamfam.model.data.Action;
 import matthew.shannon.jamfam.model.data.Event;
 import matthew.shannon.jamfam.model.data.Track;
 

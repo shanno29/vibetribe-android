@@ -5,7 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
-import matthew.shannon.jamfam.inject.app.scope.AppScope;
+import matthew.shannon.jamfam.inject.app.AppScope;
 
 @Module
 public final class FlowModule {

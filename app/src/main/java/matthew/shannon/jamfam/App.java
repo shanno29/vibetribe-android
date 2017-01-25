@@ -9,15 +9,15 @@ import com.fuck_boilerplate.rx_paparazzo.RxPaparazzo;
 import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Provider;
-import matthew.shannon.jamfam.inject.activity.component.ActivityComponentBuilder;
-import matthew.shannon.jamfam.inject.activity.component.HasActivityComponentBuilders;
-import matthew.shannon.jamfam.inject.app.component.AppComponent;
-import matthew.shannon.jamfam.inject.app.component.DaggerAppComponent;
-import matthew.shannon.jamfam.inject.app.module.AppModule;
-import matthew.shannon.jamfam.inject.fragment.component.FragmentComponentBuilder;
-import matthew.shannon.jamfam.inject.fragment.component.HasFragmentComponentBuilders;
-import matthew.shannon.jamfam.inject.service.component.HasServiceComponentBuilders;
-import matthew.shannon.jamfam.inject.service.component.ServiceComponentBuilder;
+import matthew.shannon.jamfam.inject.activity.ActivityComponentBuilder;
+import matthew.shannon.jamfam.inject.activity.HasActivityComponentBuilders;
+import matthew.shannon.jamfam.inject.app.AppComponent;
+import matthew.shannon.jamfam.inject.app.AppModule;
+import matthew.shannon.jamfam.inject.app.DaggerAppComponent;
+import matthew.shannon.jamfam.inject.fragment.FragmentComponentBuilder;
+import matthew.shannon.jamfam.inject.fragment.HasFragmentComponentBuilders;
+import matthew.shannon.jamfam.inject.service.HasServiceComponentBuilders;
+import matthew.shannon.jamfam.inject.service.ServiceComponentBuilder;
 import matthew.shannon.jamfam.model.local.bus.BusModule;
 import matthew.shannon.jamfam.model.local.cache.CacheModule;
 import matthew.shannon.jamfam.model.local.flow.FlowModule;
@@ -27,12 +27,9 @@ import rx_activity_result.RxActivityResult;
 
 public class App extends Application implements HasActivityComponentBuilders, HasFragmentComponentBuilders, HasServiceComponentBuilders {
     @Inject public Map<Class<? extends Activity>, Provider<ActivityComponentBuilder>> activityBuilders;
-    @Inject
-    public Map<Class<? extends Fragment>, Provider<FragmentComponentBuilder>> fragmentBuilders;
-    @Inject
-    public Map<Class<? extends Service>, Provider<ServiceComponentBuilder>> serviceBuilders;
+    @Inject public Map<Class<? extends Fragment>, Provider<FragmentComponentBuilder>> fragmentBuilders;
+    @Inject public Map<Class<? extends Service>, Provider<ServiceComponentBuilder>> serviceBuilders;
 
-    private AppComponent appComponent;
     public static String userID = null;
     public static String token = null;
 
@@ -44,7 +41,7 @@ public class App extends Application implements HasActivityComponentBuilders, Ha
     }
 
     private void createAppComponent(){
-        appComponent = DaggerAppComponent.builder()
+        AppComponent appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .busModule(new BusModule())
                 .flowModule(new FlowModule())

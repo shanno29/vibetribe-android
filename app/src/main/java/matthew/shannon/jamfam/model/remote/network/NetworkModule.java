@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder;
 import java.util.concurrent.TimeUnit;
 import dagger.Module;
 import dagger.Provides;
-import matthew.shannon.jamfam.inject.app.scope.AppScope;
+import matthew.shannon.jamfam.inject.app.AppScope;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 
 import dagger.Module;
 import dagger.Provides;
-import matthew.shannon.jamfam.inject.app.scope.AppScope;
+import matthew.shannon.jamfam.inject.app.AppScope;
 import matthew.shannon.jamfam.model.data.User;
 
 

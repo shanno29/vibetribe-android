@@ -26,7 +26,7 @@
         android:theme="@style/Vibe_Tribe_Theme">
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.SplashView"
+            android:name="matthew.shannon.jamfam.feature.splash.SplashView"
             android:label="@string/app_name"
             android:theme="@style/Intro">
             <intent-filter>
@@ -39,54 +39,54 @@
         </activity>
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.WelcomeView"
+            android:name="matthew.shannon.jamfam.feature.welcome.WelcomeView"
             android:label="Welcome"
             android:theme="@style/Intro"/>
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.AccessView"
+            android:name="matthew.shannon.jamfam.feature.access.AccessView"
             android:label="Access"
             android:theme="@style/Intro"/>
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.SignupView"
+            android:name="matthew.shannon.jamfam.feature.signup.SignupView"
             android:label="Signup"
             android:theme="@style/Intro"/>
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.LoginView"
+            android:name="matthew.shannon.jamfam.feature.login.LoginView"
             android:label="Login"
             android:theme="@style/Intro"/>
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.HomeView"
+            android:name="matthew.shannon.jamfam.feature.home.HomeView"
             android:label="VibeTribe"/>
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.SearchView"
+            android:name="matthew.shannon.jamfam.feature.search.SearchView"
             android:label=""
-            android:parentActivityName="matthew.shannon.jamfam.view.activity.HomeView"/>
+            android:parentActivityName="matthew.shannon.jamfam.feature.home.HomeView"/>
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.AboutView"
+            android:name="matthew.shannon.jamfam.feature.about.AboutView"
             android:label="About"
-            android:parentActivityName="matthew.shannon.jamfam.view.activity.HomeView"/>
+            android:parentActivityName="matthew.shannon.jamfam.feature.home.HomeView"/>
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.MessageView"
+            android:name="matthew.shannon.jamfam.feature.message.MessageView"
             android:label="Messages"/>
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.ProfileView"
+            android:name="matthew.shannon.jamfam.feature.profile.ProfileView"
             android:label="Profile"/>
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.SettingsView"
+            android:name="matthew.shannon.jamfam.feature.settings.SettingsView"
             android:label="Settings"
-            android:parentActivityName="matthew.shannon.jamfam.view.activity.HomeView"/>
+            android:parentActivityName="matthew.shannon.jamfam.feature.home.HomeView"/>
 
         <activity
-            android:name="matthew.shannon.jamfam.view.activity.LogoutView"
+            android:name="matthew.shannon.jamfam.feature.logout.LogoutView"
             android:label="About"/>
 
         <activity
@@ -97,11 +97,11 @@
         <activity android:name="com.yalantis.ucrop.UCropActivity" />
 
         <activity
-            android:name=".view.activity.TestFragmentActivity"
+            android:name=".model.base.TestFragmentActivity"
             android:exported="false" />
 
          <service
-         android:name=".view.service.MetadataView"
+         android:name=".feature.meta.MetadataView"
          android:label="@string/app_name"
          android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
              <intent-filter>

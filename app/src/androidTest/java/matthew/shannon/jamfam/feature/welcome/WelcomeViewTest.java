@@ -56,6 +56,7 @@ public class WelcomeViewTest {
     @Test
     public void init() {
         activityRule.launchActivity(new Intent());
+
     }
 
 }

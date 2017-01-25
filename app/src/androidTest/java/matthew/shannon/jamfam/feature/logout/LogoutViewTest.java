@@ -61,6 +61,7 @@ public class LogoutViewTest {
     @Test
     public void init() {
         activityRule.launchActivity(new Intent());
+
     }
 
 }

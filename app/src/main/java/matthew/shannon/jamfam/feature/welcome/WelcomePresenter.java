@@ -17,6 +17,10 @@ public class WelcomePresenter extends BasePresenter {
         this.view = view;
     }
 
+    public void init(){
+
+    }
+
     public void checkGoogleApi(){
         int code = api.getResultCode();
         if (code != ConnectionResult.SUCCESS) {

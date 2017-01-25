@@ -12,10 +12,14 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import matthew.shannon.jamfam.MockApp;
+import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.model.local.cache.CacheService;
 import matthew.shannon.jamfam.model.local.flow.FlowService;
 import matthew.shannon.jamfam.model.remote.network.NetworkService;
 
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
@@ -59,6 +63,9 @@ public class HomeViewTest {
     @Test
     public void init() {
         activityRule.launchActivity(new Intent());
+
     }
+
+
 
 }

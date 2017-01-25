@@ -11,7 +11,7 @@ import matthew.shannon.jamfam.model.base.BaseActivity;
 
 public class AccessView extends BaseActivity {
 
-    @Inject public AccessPresenter presenter;
+    @Inject public AccessPresenterInterface presenter;
     private AccessViewBinding binding;
 
     public AccessView() {}

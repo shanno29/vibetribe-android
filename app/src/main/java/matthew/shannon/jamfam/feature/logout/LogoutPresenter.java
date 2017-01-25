@@ -20,13 +20,13 @@ public class LogoutPresenter extends BasePresenter {
     }
 
     public void logoutUser() {
-        add(network.logoutUser(cache.getOwner())
-            .compose(RxUtils.applySchedulers())
-            .subscribe(
-                res -> flow.exitApp(),
-                e -> view.showToast("Error While Logging Out" + e)
-            )
-        );
+//        add(network.logoutUser(cache.getOwner())
+//            .compose(RxUtils.applySchedulers())
+//            .subscribe(
+//                res -> flow.exitApp(),
+//                e -> view.showToast("Error While Logging Out" + e)
+//            )
+//        );
     }
 
 }

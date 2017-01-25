@@ -6,7 +6,7 @@ import matthew.shannon.jamfam.model.local.flow.FlowService;
 import matthew.shannon.jamfam.model.data.User;
 import matthew.shannon.jamfam.model.remote.network.NetworkService;
 
-public class SignupPresenter extends BasePresenter {
+public class SignupPresenter extends BasePresenter implements SignupPresenterInterface{
 
     private final SignupView view;
     private final NetworkService network;
@@ -18,6 +18,7 @@ public class SignupPresenter extends BasePresenter {
         this.flow = flow;
     }
 
+    @Override
     public void signup(User user) {
         view.toggleSpinner(true);
         add(network.postUser(user)
@@ -35,7 +36,9 @@ public class SignupPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void goToAccess() {
        flow.goToAccessActivity();
     }
+
 }

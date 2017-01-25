@@ -61,6 +61,7 @@ public class SettingsViewTest {
     @Test
     public void init() {
         activityRule.launchActivity(new Intent());
+
     }
 
 }

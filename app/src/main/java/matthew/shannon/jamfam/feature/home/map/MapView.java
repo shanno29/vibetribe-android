@@ -52,7 +52,6 @@ public class MapView extends BaseFragment implements OnMapReadyCallback{
     public void onResume() {
         super.onResume();
         binding.mapView.onResume();
-        // presenter.getUserTracks();
     }
 
     @Override
@@ -70,12 +69,12 @@ public class MapView extends BaseFragment implements OnMapReadyCallback{
     }
 
 
-    @Subscribe
-    public void trackUpdate(Track track) {
-        if (googleMap != null) googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(track.getLatitude(), track.getLongitude()), 14));
-    }
-
-    public void addMarkers(List<Track> tracks) {
+//    @Subscribe
+//    public void trackUpdate(Track track) {
+//        if (googleMap != null) googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(track.getLatitude(), track.getLongitude()), 14));
+//    }
+//
+//    public void addMarkers(List<Track> tracks) {
 //        Stream.of(tracks)
 //            .forEach(track -> {
 //                MarkerOptions options = new MarkerOptions();
@@ -85,12 +84,13 @@ public class MapView extends BaseFragment implements OnMapReadyCallback{
 //                options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
 //                googleMap.addMarker(options);
 //            });
-
-    }
+//
+//    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        this.googleMap = googleMap;
-        this.googleMap.setMapType(2);
+//        this.googleMap = googleMap;
+//        this.googleMap.setMapType(2);
+//        presenter.getUserTracks();
     }
 }

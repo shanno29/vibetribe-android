@@ -30,7 +30,7 @@ public interface SplashComponent extends ActivityComponent<SplashView> {
 
         @Provides
         @SplashScope
-        SplashPresenter splashPresenter(CacheService cache, FlowService flow) {
+        SplashPresenterInterface splashPresenterInterface(CacheService cache, FlowService flow) {
             return new SplashPresenter(cache, flow);
 
         }

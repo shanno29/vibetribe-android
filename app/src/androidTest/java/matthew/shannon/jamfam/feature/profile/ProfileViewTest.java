@@ -86,6 +86,7 @@ public class ProfileViewTest {
     @Test
     public void init() {
         activityRule.launchActivity(new Intent());
+
     }
 
 }

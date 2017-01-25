@@ -23,7 +23,7 @@ public class ProfileView extends BaseToolbarActivity {
     private ActivityProfileBinding binding;
     @Inject @Named("profilePicture") MaterialIntroView.Builder pictureIntro;
     @Inject @Named("profileBanner") MaterialIntroView.Builder bannerIntro;
-    @Inject ProfilePresenter presenter;
+    @Inject public ProfilePresenter presenter;
     @Inject FragmentAdapter adapter;
     @Inject Animation animation;
     @Inject User user;

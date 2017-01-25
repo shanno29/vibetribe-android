@@ -13,8 +13,7 @@ import matthew.shannon.jamfam.inject.activity.HasActivityComponentBuilders;
 
 public class SplashView extends AwesomeSplash {
 
-    @Inject
-    SplashPresenter presenter;
+    @Inject public SplashPresenterInterface presenter;
 
     @Override
     protected void onCreate(Bundle bundle) {

@@ -82,6 +82,10 @@ android {
         exclude 'META-INF/LGPL2.1'
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
@@ -150,6 +154,9 @@ dependencies {
     androidTestCompile "org.mockito:mockito-core:1.10.19"
     androidTestCompile "com.google.dexmaker:dexmaker:1.2"
     androidTestCompile "com.google.dexmaker:dexmaker-mockito:1.2"
+
+    testCompile "org.robolectric:robolectric:3.2.2"
+
 }
 
 apply plugin: 'com.google.gms.google-services'

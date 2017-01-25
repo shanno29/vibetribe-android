@@ -1,20 +1,22 @@
 package matthew.shannon.jamfam.feature.splash;
 
 import android.util.Log;
+import javax.inject.Inject;
 import matthew.shannon.jamfam.model.base.BasePresenter;
 import matthew.shannon.jamfam.utils.RxUtils;
 import matthew.shannon.jamfam.model.local.flow.FlowService;
 import matthew.shannon.jamfam.model.local.cache.CacheService;
 
-public class SplashPresenter extends BasePresenter {
-    private final CacheService cache;
-    private final FlowService flow;
+public class SplashPresenter extends BasePresenter implements SplashPresenterInterface  {
+    public CacheService cache;
+    public FlowService flow;
 
-    public SplashPresenter(CacheService cache, FlowService flow) {
+    @Inject public SplashPresenter(CacheService cache, FlowService flow) {
         this.cache = cache;
         this.flow = flow;
     }
 
+    @Override
     public void getIntroSecondRun() {
         add(cache.getSkipIntro()
             .compose(RxUtils.applySchedulers())
@@ -32,5 +34,7 @@ public class SplashPresenter extends BasePresenter {
                 error -> Log.e("VIBETRIBE", "getIntroSecondRun: ", error))
         );
     }
+
+
 
 }

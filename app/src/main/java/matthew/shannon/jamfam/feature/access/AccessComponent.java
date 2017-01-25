@@ -37,7 +37,7 @@ public interface AccessComponent extends ActivityComponent<AccessView> {
 
         @Provides
         @AccessScope
-        AccessPresenter accessPresenter(FlowService flow, RxActivityResult.Builder<AccessView> settings) {
+        AccessPresenterInterface accessPresenter(FlowService flow, RxActivityResult.Builder<AccessView> settings) {
             return new AccessPresenter(activity, flow, settings);
         }
     }

@@ -14,7 +14,7 @@ import matthew.shannon.jamfam.inject.activity.HasActivityComponentBuilders;
 public class LoginView extends BaseActivity {
 
     private LoginViewBinding binding;
-    @Inject LoginPresenter presenter;
+    @Inject public LoginPresenter presenter;
     @Inject ProgressDialog dialog;
     //@Inject Shimmer shimmer;
     @Inject User user;

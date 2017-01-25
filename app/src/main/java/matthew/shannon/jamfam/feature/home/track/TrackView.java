@@ -43,7 +43,7 @@ public class TrackView extends BaseFragment {
         binding.prevTrack.setOnClickListener(view -> presenter.controlUpdate(88));
         binding.nextTrack.setOnClickListener(view -> presenter.controlUpdate(87));
         binding.postTrack.setOnClickListener(view -> presenter.postTrack(binding.getTrack()));
-        //presenter.checkForSecondRun();
+        presenter.checkForSecondRun();
     }
 
     @Override
@@ -53,18 +53,21 @@ public class TrackView extends BaseFragment {
         binding.unbind();
     }
 
-    @Subscribe
-    public void trackUpdate(Track track) {
-        if(track.getTitle() != null) {
-            binding.setTrack(track);
-            binding.executePendingBindings();
-        }
-    }
+// TODO Bus
+// TODO Intro View
 
-    public void showIntroView() {
-        intro.setTarget(binding.openApp);
-        intro.show();
-    }
+//    @Subscribe
+//    public void trackUpdate(Track track) {
+//        if(track.getTitle() != null) {
+//            binding.setTrack(track);
+//            binding.executePendingBindings();
+//        }
+//    }
+//
+//    public void showIntroView() {
+//        intro.setTarget(binding.openApp);
+//        intro.show();
+//    }
 
 
 

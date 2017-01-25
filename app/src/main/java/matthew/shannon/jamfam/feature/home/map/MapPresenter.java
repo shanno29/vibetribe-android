@@ -15,13 +15,13 @@ public class MapPresenter extends BasePresenter {
     }
 
     public void getUserTracks() {
-        add(network.getUserTracks(App.token, App.userID)
-            .compose(RxUtils.applySchedulers())
-            .subscribe(
-                view::addMarkers,
-                error -> view.showToast("Error Getting Tracks " + error.getMessage())
-            )
-        );
+//        add(network.getUserTracks(App.token, App.userID)
+//            .compose(RxUtils.applySchedulers())
+//            .subscribe(
+//                view::addMarkers,
+//                error -> view.showToast("Error Getting Tracks " + error.getMessage())
+//            )
+//        );
     }
 
 }

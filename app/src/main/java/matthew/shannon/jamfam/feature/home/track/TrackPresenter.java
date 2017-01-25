@@ -43,15 +43,15 @@ public class TrackPresenter extends BasePresenter {
     }
 
     public void trackSelected(Track track) {
-        bus.goToTrack(track);
+        //bus.goToTrack(track);
     }
 
     public void appSelected() {
-        bus.goToApp();
+        //bus.goToApp();
     }
 
     public void controlUpdate(int command) {
-        bus.controlTrack(command);
+        //bus.controlTrack(command);
     }
 
 }

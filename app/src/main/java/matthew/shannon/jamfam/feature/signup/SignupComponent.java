@@ -32,7 +32,7 @@ public interface SignupComponent extends ActivityComponent<SignupView> {
 
         @Provides
         @SignupScope
-        SignupPresenter presenter(NetworkService network, FlowService flow) {
+        SignupPresenterInterface signupPresenterInterface(NetworkService network, FlowService flow) {
             return new SignupPresenter(activity, network, flow);
 
         }

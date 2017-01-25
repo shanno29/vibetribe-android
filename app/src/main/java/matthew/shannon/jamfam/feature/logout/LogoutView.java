@@ -10,8 +10,7 @@ import matthew.shannon.jamfam.model.base.BaseActivity;
 
 public class LogoutView extends BaseActivity {
     private LogoutBinding binding;
-    @Inject
-    public LogoutPresenter presenter;
+    @Inject public LogoutPresenter presenter;
 
     @Override
     protected void injectMembers(HasActivityComponentBuilders builders) {
@@ -29,14 +28,14 @@ public class LogoutView extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //presenter.logoutUser();
+        presenter.logoutUser();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.unsubscribe();
         binding.unbind();
+        presenter.unsubscribe();
     }
 
 }

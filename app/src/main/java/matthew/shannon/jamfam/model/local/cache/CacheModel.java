@@ -1,5 +1,7 @@
 package matthew.shannon.jamfam.model.local.cache;
 
+import android.content.SharedPreferences;
+
 import com.f2prateek.rx.preferences.RxSharedPreferences;
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,8 +11,8 @@ import matthew.shannon.jamfam.model.data.User;
 import rx.Observable;
 
 public class CacheModel implements CacheService {
-    private final RxSharedPreferences rxPrefs;
-    private final CacheHelper<User> cacheHelper;
+    public RxSharedPreferences rxPrefs;
+    public CacheHelper<User> cacheHelper;
 
     public CacheModel(RxSharedPreferences rxPrefs, CacheHelper<User> cacheHelper) {
         this.rxPrefs = rxPrefs;

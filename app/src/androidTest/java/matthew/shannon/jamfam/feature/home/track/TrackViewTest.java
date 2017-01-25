@@ -22,6 +22,9 @@ import matthew.shannon.jamfam.model.remote.network.NetworkService;
 import matthew.shannon.jamfam.model.base.TestFragmentActivity;
 
 import static android.support.test.InstrumentationRegistry.getTargetContext;
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
@@ -56,10 +59,6 @@ public class TrackViewTest {
     @Before
     public void setUp() {
         activityRule.launchActivity(TestFragmentActivity.getStartIntent(getTargetContext(), false));
-
-
-
-
     }
 
     @Test
@@ -77,12 +76,11 @@ public class TrackViewTest {
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
         instrumentation.waitForIdleSync();
 
-
-
-    }
-
-    @Test
-    public void checkTextView() {
+        onView(withId(R.id.open_app)).perform(click());
+        onView(withId(R.id.album_art)).perform(click());
+        onView(withId(R.id.prev_track)).perform(click());
+        onView(withId(R.id.next_track)).perform(click());
+        onView(withId(R.id.post_track)).perform(click());
 
     }
 

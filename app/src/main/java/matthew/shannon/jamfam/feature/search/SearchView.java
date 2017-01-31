@@ -5,26 +5,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
-import javax.inject.Inject;
-import matthew.shannon.jamfam.model.base.BaseToolbarActivity;
-import matthew.shannon.jamfam.adapter.fragment.FragmentAdapter;
-import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.databinding.ActivitySearchBinding;
-import matthew.shannon.jamfam.inject.activity.HasActivityComponentBuilders;
 
-public class SearchView extends BaseToolbarActivity {
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
+
+import javax.inject.Inject;
+
+import matthew.shannon.jamfam.app.App;
+import matthew.shannon.jamfam.R;
+import matthew.shannon.jamfam.adapter.fragment.FragmentAdapter;
+import matthew.shannon.jamfam.databinding.ActivitySearchBinding;
+import matthew.shannon.jamfam.model.base.BaseToolbarActivity;
+
+public class SearchView extends BaseToolbarActivity implements SearchContract.View{
     private ActivitySearchBinding binding;
-    @Inject public SearchPresenter presenter;
+    @Inject SearchContract.Presenter presenter;
     @Inject FragmentAdapter adapter;
     @Inject Animation animation;
-
-    @Override
-    protected void injectMembers(HasActivityComponentBuilders builders) {
-        ((SearchComponent.Builder) builders.getActivityBuilders(SearchView.class))
-            .activityModule(new SearchComponent.SearchModule(this))
-            .build().injectMembers(this);
-    }
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -57,6 +53,12 @@ public class SearchView extends BaseToolbarActivity {
 //                            "https://graphicflip.com/wp-content/uploads/2016/02/40-backgrounds-material.jpg");
 //            }
 //            return null;});
+
+    }
+
+    @Override
+    protected void setupActivityComponent() {
+        ((App)getApplicationContext()).getAppComponent().plus(new SearchModule(this)).inject(this);
 
     }
 
@@ -97,4 +99,8 @@ public class SearchView extends BaseToolbarActivity {
     }
 
 
+    @Override
+    public void showToast(String text) {
+
+    }
 }

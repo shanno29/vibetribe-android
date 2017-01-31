@@ -1,6 +1,7 @@
 package matthew.shannon.jamfam.utils;
 
 import android.support.v7.app.AppCompatActivity;
+
 import com.google.android.gms.common.GoogleApiAvailability;
 
 public class GoogleAPI {

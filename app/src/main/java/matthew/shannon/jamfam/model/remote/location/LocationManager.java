@@ -7,11 +7,13 @@ import android.location.Location;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.tbruyelle.rxpermissions.RxPermissions;
+
 import matthew.shannon.jamfam.R;
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 import rx.Observable;
@@ -100,7 +102,7 @@ public class LocationManager implements LocationService {
 
     @Override
     public void checkIfMetaServiceRunning(AppCompatActivity activity) {
-        //activity.startService(new Intent(activity, MetadataView.class));
+        //activity.startService(new Intent(activity, MetaView.class));
     }
 
 }

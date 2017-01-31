@@ -7,9 +7,10 @@ import android.support.v7.preference.PreferenceManager;
 import com.f2prateek.rx.preferences.RxSharedPreferences;
 import com.google.gson.Gson;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
-import matthew.shannon.jamfam.inject.app.AppScope;
 import matthew.shannon.jamfam.model.data.User;
 
 
@@ -17,19 +18,19 @@ import matthew.shannon.jamfam.model.data.User;
 public final class CacheModule {
 
     @Provides
-    @AppScope
+    @Singleton
     SharedPreferences sharedPreferences(Application application) {
         return PreferenceManager.getDefaultSharedPreferences(application);
     }
 
     @Provides
-    @AppScope
+    @Singleton
     RxSharedPreferences rxSharedPreferences(SharedPreferences sharedPreferences){
         return RxSharedPreferences.create(sharedPreferences);
     }
 
     @Provides
-    @AppScope
+    @Singleton
     CacheHelper<User> cacheHelper(Gson gson){
         return new CacheHelper<>(gson, User.class);
     }

@@ -4,12 +4,14 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import com.google.auto.factory.AutoFactory;
-import matthew.shannon.jamfam.App;
+
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.databinding.TrackCardLayoutBinding;
-import matthew.shannon.jamfam.model.local.bus.BusService;
 import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.model.local.bus.BusService;
 
 @AutoFactory(implementing = ItemViewHolderFactory.class)
 public class ItemViewHolderTrack extends ItemViewHolder {

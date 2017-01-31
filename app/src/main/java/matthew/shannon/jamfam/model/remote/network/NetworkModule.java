@@ -1,12 +1,16 @@
 package matthew.shannon.jamfam.model.remote.network;
 
 import android.app.Application;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import java.util.concurrent.TimeUnit;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
-import matthew.shannon.jamfam.inject.app.AppScope;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -20,13 +24,13 @@ public final class NetworkModule {
 
 
     @Provides
-    @AppScope
+    @Singleton
     RxJavaCallAdapterFactory rxJavaCallAdapterFactory() {
         return RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io());
     }
 
     @Provides
-    @AppScope
+    @Singleton
     Gson gson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
@@ -36,20 +40,20 @@ public final class NetworkModule {
     }
 
     @Provides
-    @AppScope
+    @Singleton
     GsonConverterFactory gsonConverterFactory(Gson gson) {
         return GsonConverterFactory.create(gson);
     }
 
     @Provides
-    @AppScope
+    @Singleton
     Cache cache(Application application) {
         int cacheSize = 10 * 1024 * 1024;
         return new Cache(application.getCacheDir(), cacheSize);
     }
 
     @Provides
-    @AppScope
+    @Singleton
     HttpLoggingInterceptor httpLoggingInterceptor() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -57,7 +61,7 @@ public final class NetworkModule {
     }
 
     @Provides
-    @AppScope
+    @Singleton
     OkHttpClient okHttpClient(Cache cache, HttpLoggingInterceptor logging) {
         OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder();
         okHttpClient.addInterceptor(logging);
@@ -69,7 +73,7 @@ public final class NetworkModule {
     }
 
     @Provides
-    @AppScope
+    @Singleton
     Retrofit retrofit(GsonConverterFactory gson, RxJavaCallAdapterFactory rx, OkHttpClient client) {
         Retrofit.Builder retrofit = new Retrofit.Builder();
         retrofit.addCallAdapterFactory(rx);

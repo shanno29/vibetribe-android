@@ -7,30 +7,29 @@ import android.text.Editable;
 
 import javax.inject.Inject;
 
-import matthew.shannon.jamfam.model.base.BaseActivity;
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.databinding.SignupViewBinding;
-import matthew.shannon.jamfam.inject.activity.HasActivityComponentBuilders;
+import matthew.shannon.jamfam.model.base.BaseActivity;
 import matthew.shannon.jamfam.utils.SimpleTextWatcher;
 import matthew.shannon.jamfam.utils.StringUtils;
 
-public class SignupView extends BaseActivity {
+public class SignupView extends BaseActivity implements SignupContract.View{
 
     private SignupViewBinding binding;
-    @Inject public SignupPresenterInterface presenter;
+    @Inject SignupContract.Presenter presenter;
     @Inject public ProgressDialog dialog;
-
-    @Override
-    protected void injectMembers(HasActivityComponentBuilders builders) {
-        ((SignupComponent.Builder) builders.getActivityBuilders(SignupView.class))
-            .activityModule(new SignupComponent.SignupModule(this))
-            .build().injectMembers(this);
-    }
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         binding = DataBindingUtil.setContentView(this, R.layout.signup_view);
+    }
+
+    @Override
+    protected void setupActivityComponent() {
+        ((App)getApplicationContext()).getAppComponent().plus(new SignupModule(this)).inject(this);
+
     }
 
     @Override
@@ -85,6 +84,7 @@ public class SignupView extends BaseActivity {
 
     }
 
+    @Override
     public void toggleSpinner(boolean flag) {
         if(flag) dialog.show();
         else dialog.dismiss();
@@ -98,4 +98,8 @@ public class SignupView extends BaseActivity {
         presenter.unsubscribe();
     }
 
+    @Override
+    public void showToast(String text) {
+
+    }
 }

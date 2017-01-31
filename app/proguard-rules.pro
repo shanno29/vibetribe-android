@@ -158,3 +158,5 @@
 }
 
 -dontwarn java.lang.invoke.*
+
+-dontwarn org.mockito.**

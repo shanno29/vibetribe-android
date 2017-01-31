@@ -1,7 +1,7 @@
 package matthew.shannon.jamfam.model.base;
 
 import android.support.annotation.NonNull;
-import com.google.common.base.Preconditions;
+
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 

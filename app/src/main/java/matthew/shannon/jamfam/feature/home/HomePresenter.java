@@ -5,7 +5,7 @@ import matthew.shannon.jamfam.model.local.cache.CacheService;
 import matthew.shannon.jamfam.model.local.flow.FlowService;
 import matthew.shannon.jamfam.model.remote.network.NetworkService;
 
-public class HomePresenter extends BasePresenter {
+public class HomePresenter extends BasePresenter implements HomeContract.Presenter{
     private final HomeView view;
     private final NetworkService network;
     private final CacheService cache;

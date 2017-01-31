@@ -7,19 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import javax.inject.Inject;
-import matthew.shannon.jamfam.App;
-import matthew.shannon.jamfam.model.base.BaseFragment;
-import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.model.data.User;
-import matthew.shannon.jamfam.databinding.ProfileAboutBinding;
-import matthew.shannon.jamfam.inject.fragment.HasFragmentComponentBuilders;
 
-public class InfoView extends BaseFragment {
+import javax.inject.Inject;
+
+import matthew.shannon.jamfam.app.App;
+import matthew.shannon.jamfam.R;
+import matthew.shannon.jamfam.databinding.ProfileAboutBinding;
+import matthew.shannon.jamfam.model.base.BaseFragment;
+import matthew.shannon.jamfam.model.data.User;
+
+public class InfoView extends BaseFragment implements InfoContract.View {
     private String ID;
     private ProfileAboutBinding binding;
-    @Inject
-    public InfoPresenter presenter;
+    @Inject InfoContract.Presenter presenter;
 
     public InfoView() {}
 
@@ -32,15 +32,10 @@ public class InfoView extends BaseFragment {
     }
 
     @Override
-    protected void injectMembers(HasFragmentComponentBuilders builders) {
-        ((InfoComponent.Builder) builders.getFragmentBuilders(InfoView.class))
-            .fragmentModule(new InfoComponent.UserInfoModule(this))
-            .build().injectMembers(this);
-    }
-
-    @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        ((App)getActivity().getApplicationContext()).getAppComponent().plus(new InfoModule(this)).inject(this);
+
         //ID = getArguments().getString("_id");
     }
 
@@ -64,7 +59,8 @@ public class InfoView extends BaseFragment {
         binding.unbind();
     }
 
-    private void EditAboutMe(View view) {
+    @Override
+    public void EditAboutMe(View view) {
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View dialogView = inflater.inflate(R.layout.custom_dialog, null, false);
 
@@ -83,6 +79,7 @@ public class InfoView extends BaseFragment {
         alert.show();
     }
 
+    @Override
     public void updateUI(User user) {
         binding.setUser(user);
         binding.executePendingBindings();

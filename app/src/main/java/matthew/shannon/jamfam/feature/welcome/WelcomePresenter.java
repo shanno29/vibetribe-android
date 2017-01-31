@@ -6,21 +6,18 @@ import matthew.shannon.jamfam.model.base.BasePresenter;
 import matthew.shannon.jamfam.model.local.flow.FlowService;
 import matthew.shannon.jamfam.utils.GoogleAPI;
 
-public class WelcomePresenter extends BasePresenter {
+public class WelcomePresenter extends BasePresenter implements WelcomeContract.Presenter {
     private final GoogleAPI api;
     private final FlowService flow;
-    private final WelcomeView view;
+    private final WelcomeContract.View view;
 
-    public WelcomePresenter(GoogleAPI api, FlowService flow, WelcomeView view) {
+    public WelcomePresenter(GoogleAPI api, FlowService flow, WelcomeContract.View view) {
         this.api = api;
         this.flow = flow;
         this.view = view;
     }
 
-    public void init(){
-
-    }
-
+    @Override
     public void checkGoogleApi(){
         int code = api.getResultCode();
         if (code != ConnectionResult.SUCCESS) {
@@ -29,6 +26,7 @@ public class WelcomePresenter extends BasePresenter {
         }
     }
 
+    @Override
     public void gotoSignup() {
         flow.goToSignupActivity();
     }

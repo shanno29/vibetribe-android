@@ -6,24 +6,28 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import com.github.florent37.materialviewpager.header.MaterialViewPagerHeaderDecorator;
 import com.hwangjr.rxbus.annotation.Subscribe;
+
 import java.util.List;
+
 import javax.inject.Inject;
+
+import matthew.shannon.jamfam.app.App;
+import matthew.shannon.jamfam.R;
+import matthew.shannon.jamfam.adapter.item.ItemAdapter;
 import matthew.shannon.jamfam.databinding.FlowLayoutBinding;
 import matthew.shannon.jamfam.model.base.BaseFragment;
-import matthew.shannon.jamfam.model.data.FragType;
-import matthew.shannon.jamfam.adapter.item.ItemAdapter;
 import matthew.shannon.jamfam.model.data.Action;
 import matthew.shannon.jamfam.model.data.Event;
+import matthew.shannon.jamfam.model.data.FragType;
 import matthew.shannon.jamfam.model.data.Track;
-import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.model.data.User;
-import matthew.shannon.jamfam.inject.fragment.HasFragmentComponentBuilders;
 
-public class ListView extends BaseFragment {
+public class ListView extends BaseFragment implements ListContract.View {
     @Inject DividerItemDecoration dividerItem;
-    @Inject public ListPresenter presenter;
+    @Inject ListContract.Presenter presenter;
     @Inject ItemAdapter adapter;
     @Inject List<?> items;
 
@@ -41,17 +45,11 @@ public class ListView extends BaseFragment {
     }
 
     @Override
-    protected void injectMembers(HasFragmentComponentBuilders builders) {
-        ((ListComponent.Builder) builders.getFragmentBuilders(ListView.class))
-            .fragmentModule(new ListComponent.ListModule(this))
-            .build().injectMembers(this);
-    }
-
-    @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-//        ID = getArguments().getString("ID");
-//        TYPE = getArguments().getInt("TYPE");
+        ((App)getActivity().getApplicationContext()).getAppComponent().plus(new ListModule(this)).inject(this);
+        ID = getArguments().getString("ID");
+        TYPE = getArguments().getInt("TYPE");
     }
 
     @Override
@@ -68,14 +66,6 @@ public class ListView extends BaseFragment {
     public void onViewCreated(android.view.View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
         view.setOnCreateContextMenuListener(this);
-       // flowLayout.setMode(FlowLayout.MODE.CONTENT);
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        //if(TYPE == FragType.SEARCH_TRACKS) onEmpty(); else onRefresh();
     }
 
     @Override
@@ -115,6 +105,7 @@ public class ListView extends BaseFragment {
         } else if (event.getType() == Action.REFRESH && TYPE != FragType.SEARCH_TRACKS) onRefresh();
     }
 
+    @Override
     public void onQuery(String query) {
         if (TYPE == FragType.SEARCH_TRACKS) { presenter.searchTracks(query, "", "10"); }
         else {
@@ -123,30 +114,35 @@ public class ListView extends BaseFragment {
         }
     }
 
+    @Override
     public void onSuccess(List<?> items){
         if (items.size() > 0) { onContent(items); } else { onEmpty();}
     }
 
+    @Override
     public void onContent(List<?> items) {
         this.items = items;
         adapter.updateList(this.items);
         // TODO something to show content
     }
 
+    @Override
     public void onEmpty() {
         // TODO something to show empty
     }
+
+    @Override
     public void onRefresh() {
         // TODO Something to show loading
-//        switch (TYPE) {
-//            case FragType.FRIENDS_TRACKS:presenter.loadFriendsTracks(ID);break;
-//            case FragType.USER_FRIENDS:presenter.loadUserFriends(ID);break;
-//            case FragType.USER_MATCHES:presenter.loadUserMatches(ID);break;
-//            case FragType.USER_TRACKS:presenter.loadUserTracks(ID);break;
-//            case FragType.ALL_TRACKS:presenter.loadAllTracks();break;
-//            case FragType.ALL_USERS:presenter.loadAllUsers();break;
-//            case FragType.SETTINGS:presenter.loadSettings(ID);break;
-//        }
+        switch (TYPE) {
+            case FragType.FRIENDS_TRACKS:presenter.loadFriendsTracks(ID);break;
+            case FragType.USER_FRIENDS:presenter.loadUserFriends(ID);break;
+            case FragType.USER_MATCHES:presenter.loadUserMatches(ID);break;
+            case FragType.USER_TRACKS:presenter.loadUserTracks(ID);break;
+            case FragType.ALL_TRACKS:presenter.loadAllTracks();break;
+            case FragType.ALL_USERS:presenter.loadAllUsers();break;
+            case FragType.SETTINGS:presenter.loadSettings(ID);break;
+        }
     }
 
 }

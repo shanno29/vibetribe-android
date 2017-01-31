@@ -6,25 +6,20 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
+
 import javax.inject.Inject;
-import matthew.shannon.jamfam.App;
+
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.inject.activity.HasActivityComponentBuilders;
 
-public class SplashView extends AwesomeSplash {
+public class SplashView extends AwesomeSplash implements SplashContract.View {
 
-    @Inject public SplashPresenterInterface presenter;
+    @Inject SplashContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        injectMembers(App.getActivity(this));
-    }
-
-    private void injectMembers(HasActivityComponentBuilders builders) {
-        ((SplashComponent.Builder) builders.getActivityBuilders(SplashView.class))
-            .activityModule(new SplashComponent.SplashModule(this))
-            .build().injectMembers(this);
+        ((App)getApplicationContext()).getAppComponent().plus(new SplashModule(this)).inject(this);
     }
 
     @Override
@@ -60,4 +55,11 @@ public class SplashView extends AwesomeSplash {
         presenter.unsubscribe();
     }
 
+    @Override
+    public void showToast(String text) {
+
+    }
+
+
 }
+

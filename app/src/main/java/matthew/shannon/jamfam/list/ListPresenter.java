@@ -2,27 +2,28 @@ package matthew.shannon.jamfam.list;
 
 import java.util.List;
 
-import matthew.shannon.jamfam.App;
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.model.base.BasePresenter;
-import matthew.shannon.jamfam.utils.RxUtils;
-import matthew.shannon.jamfam.model.local.flow.FlowService;
-import matthew.shannon.jamfam.model.local.cache.CacheService;
 import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.model.local.cache.CacheService;
+import matthew.shannon.jamfam.model.local.flow.FlowService;
 import matthew.shannon.jamfam.model.remote.network.NetworkService;
+import matthew.shannon.jamfam.utils.RxUtils;
 
-public class ListPresenter extends BasePresenter {
+public class ListPresenter extends BasePresenter implements ListContract.Presenter{
     private final NetworkService network;
     private final CacheService cache;
     private final FlowService flow;
-    private final ListView view;
+    private final ListContract.View view;
 
-    public ListPresenter(NetworkService network, CacheService cache, FlowService flow, ListView view) {
+    public ListPresenter(NetworkService network, CacheService cache, FlowService flow, ListContract.View view) {
         this.network = network;
         this.cache = cache;
         this.flow = flow;
         this.view = view;
     }
 
+    @Override
     public void loadSettings(String Id) {
         add(cache.getUserSettings(Id)
             .compose(RxUtils.applySchedulers())
@@ -33,6 +34,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void loadAllTracks() {
         add(network.getAllTracks(App.token)
             .compose(RxUtils.applySchedulers())
@@ -43,6 +45,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void loadFriendsTracks(String Id) {
         add(network.getFriendsTracks(App.token, Id)
             .compose(RxUtils.applySchedulers())
@@ -53,6 +56,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void loadUserTracks(String Id) {
         add(network.getUserTracks(App.token, Id)
             .compose(RxUtils.applySchedulers())
@@ -63,6 +67,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void loadAllUsers() {
         add(network.getAllUsers(App.token)
             .compose(RxUtils.applySchedulers())
@@ -73,6 +78,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void loadUserFriends(String Id) {
         add(network.getUserFriends(App.token, Id)
             .compose(RxUtils.applySchedulers())
@@ -83,6 +89,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void loadUserMatches(String Id) {
         add(network.getUserMatches(App.token, Id)
             .compose(RxUtils.applySchedulers())
@@ -93,6 +100,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void searchTracks(String title, String artist, String limit) {
         add(network.searchOnline(App.token, title, artist, limit)
             .compose(RxUtils.applySchedulers())
@@ -103,6 +111,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void loadAddTrack(String Id, Track track) {
         add(network.postTrack(App.token, Id, track)
             .compose(RxUtils.applySchedulers())
@@ -114,6 +123,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void loadDelTrack(String trackId) {
         add(network.deleteTrack(App.token, trackId)
             .compose(RxUtils.applySchedulers())
@@ -125,6 +135,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void loadAddFriend(String userId, String userTwoId) {
         add(network.postFriend(App.token, userId, userTwoId)
             .compose(RxUtils.applySchedulers())
@@ -136,6 +147,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void loadDelFriend(String userId, String userTwoId) {
         add(network.deleteFriend(App.token, userId, userTwoId)
             .compose(RxUtils.applySchedulers())
@@ -147,6 +159,7 @@ public class ListPresenter extends BasePresenter {
         );
     }
 
+    @Override
     public List<?> localQuery(List<?> items, String query) {
         return null;
 //        return Stream.of(items)
@@ -154,6 +167,7 @@ public class ListPresenter extends BasePresenter {
 //            .collect(com.annimon.stream.Collectors.toList());
     }
 
+    @Override
     public void goToUser(String id) {
         flow.goToUserProfile(id);
     }

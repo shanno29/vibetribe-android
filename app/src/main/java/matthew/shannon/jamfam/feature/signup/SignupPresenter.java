@@ -1,18 +1,18 @@
 package matthew.shannon.jamfam.feature.signup;
 
 import matthew.shannon.jamfam.model.base.BasePresenter;
-import matthew.shannon.jamfam.utils.RxUtils;
-import matthew.shannon.jamfam.model.local.flow.FlowService;
 import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.local.flow.FlowService;
 import matthew.shannon.jamfam.model.remote.network.NetworkService;
+import matthew.shannon.jamfam.utils.RxUtils;
 
-public class SignupPresenter extends BasePresenter implements SignupPresenterInterface{
+public class SignupPresenter extends BasePresenter implements SignupContract.Presenter{
 
-    private final SignupView view;
+    private final SignupContract.View view;
     private final NetworkService network;
     private final FlowService flow;
 
-    public SignupPresenter(SignupView view, NetworkService network, FlowService flow) {
+    public SignupPresenter(SignupContract.View view, NetworkService network, FlowService flow) {
         this.view = view;
         this.network = network;
         this.flow = flow;

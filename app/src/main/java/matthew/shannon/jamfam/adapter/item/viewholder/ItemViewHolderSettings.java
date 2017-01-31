@@ -6,12 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+
 import com.google.auto.factory.AutoFactory;
 
-import matthew.shannon.jamfam.databinding.SettingCardLayoutBinding;
-import matthew.shannon.jamfam.model.local.bus.BusService;
-import matthew.shannon.jamfam.model.data.Settings;
 import matthew.shannon.jamfam.R;
+import matthew.shannon.jamfam.databinding.SettingCardLayoutBinding;
+import matthew.shannon.jamfam.model.data.Settings;
+import matthew.shannon.jamfam.model.local.bus.BusService;
 
 @AutoFactory(implementing = ItemViewHolderFactory.class)
 public class ItemViewHolderSettings extends ItemViewHolder {

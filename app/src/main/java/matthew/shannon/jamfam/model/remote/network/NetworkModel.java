@@ -1,6 +1,7 @@
 package matthew.shannon.jamfam.model.remote.network;
 
 import java.util.List;
+
 import matthew.shannon.jamfam.model.data.Chat;
 import matthew.shannon.jamfam.model.data.Post;
 import matthew.shannon.jamfam.model.data.Track;

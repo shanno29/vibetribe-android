@@ -1,6 +1,7 @@
 package matthew.shannon.jamfam.model.local.cache;
 
 import java.util.List;
+
 import matthew.shannon.jamfam.model.data.Settings;
 import matthew.shannon.jamfam.model.data.User;
 import rx.Observable;

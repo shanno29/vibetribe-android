@@ -5,38 +5,35 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.hwangjr.rxbus.annotation.Subscribe;
+
 import java.util.List;
+
 import javax.inject.Inject;
 
-import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.databinding.FragmentMapBinding;
-import matthew.shannon.jamfam.inject.fragment.HasFragmentComponentBuilders;
 import matthew.shannon.jamfam.model.base.BaseFragment;
+import matthew.shannon.jamfam.model.data.Track;
 
-public class MapView extends BaseFragment implements OnMapReadyCallback{
+public class MapView extends BaseFragment implements OnMapReadyCallback, MapContract.View{
     private FragmentMapBinding binding;
-    @Inject public MapPresenter presenter;
+    @Inject MapContract.Presenter presenter;
     private GoogleMap googleMap;
 
     public MapView() {}
 
     @Override
-    protected void injectMembers(HasFragmentComponentBuilders builders) {
-        ((MapComponent.Builder) builders.getFragmentBuilders(MapView.class))
-            .fragmentModule(new MapComponent.MapModule(this))
-            .build().injectMembers(this);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         super.onCreateView(inflater, container, bundle);
+        ((App)getActivity().getApplicationContext()).getAppComponent().plus(new MapModule(this)).inject(this);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_map,  container, false);
         return binding.getRoot();
     }
@@ -69,12 +66,13 @@ public class MapView extends BaseFragment implements OnMapReadyCallback{
     }
 
 
-//    @Subscribe
-//    public void trackUpdate(Track track) {
-//        if (googleMap != null) googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(track.getLatitude(), track.getLongitude()), 14));
-//    }
-//
-//    public void addMarkers(List<Track> tracks) {
+    @Subscribe
+    public void trackUpdate(Track track) {
+        if (googleMap != null) googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(track.getLatitude(), track.getLongitude()), 14));
+    }
+
+    @Override
+    public void addMarkers(List<Track> tracks) {
 //        Stream.of(tracks)
 //            .forEach(track -> {
 //                MarkerOptions options = new MarkerOptions();
@@ -84,13 +82,13 @@ public class MapView extends BaseFragment implements OnMapReadyCallback{
 //                options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
 //                googleMap.addMarker(options);
 //            });
-//
-//    }
+
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-//        this.googleMap = googleMap;
-//        this.googleMap.setMapType(2);
-//        presenter.getUserTracks();
+        this.googleMap = googleMap;
+        this.googleMap.setMapType(2);
+        presenter.getUserTracks();
     }
 }

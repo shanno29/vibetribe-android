@@ -2,43 +2,15 @@ package matthew.shannon.jamfam.utils;
 
 
 import android.databinding.BindingAdapter;
-import android.graphics.Bitmap;
 import android.support.design.widget.TextInputLayout;
-import android.util.Base64;
 import android.widget.ImageView;
+
 import com.bumptech.glide.Glide;
-import java.io.ByteArrayOutputStream;
+
 import java.util.regex.Pattern;
 
 
 public class StringUtils {
-
-    public static String capitalize(String string){
-        return string.substring(0,1).toUpperCase() + string.substring(1).toLowerCase();
-    }
-
-    public static String encodeToBase64(Bitmap image) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG, 100, baos);
-        byte[] b = baos.toByteArray();
-        return Base64.encodeToString(b, Base64.DEFAULT);
-    }
-
-
-    public static boolean contains(String src, String what) {
-        final int length = what.length();
-        if (length == 0) return true;
-
-        final char firstLo = Character.toLowerCase(what.charAt(0));
-        final char firstUp = Character.toUpperCase(what.charAt(0));
-
-        for (int i = src.length() - length; i >= 0; i--) {
-            final char ch = src.charAt(i);
-            if (ch != firstLo && ch != firstUp) continue;
-            if (src.regionMatches(true, i, what, 0, length)) return true;
-        }
-        return false;
-    }
 
     public static boolean email(TextInputLayout inputLayout, String value) {
         String x = inputLayout.getEditText().getText().toString().trim();

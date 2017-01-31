@@ -4,32 +4,34 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.net.Uri;
 import android.util.Log;
+
 import com.fuck_boilerplate.rx_paparazzo.entities.Response;
+
 import java.io.File;
 
 import javax.inject.Named;
 
-import matthew.shannon.jamfam.App;
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.model.base.BasePresenter;
-import matthew.shannon.jamfam.utils.RxUtils;
-import matthew.shannon.jamfam.model.local.bus.BusService;
-import matthew.shannon.jamfam.model.local.cache.CacheService;
 import matthew.shannon.jamfam.model.data.Track;
 import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.local.bus.BusService;
+import matthew.shannon.jamfam.model.local.cache.CacheService;
 import matthew.shannon.jamfam.model.remote.network.NetworkService;
+import matthew.shannon.jamfam.utils.RxUtils;
 import rx.Observable;
 
-public class ProfilePresenter extends BasePresenter {
+public class ProfilePresenter extends BasePresenter implements ProfileContract.Presenter{
     private final @Named("pictureObservable") Observable<Response<ProfileView, String>> picture;
     private final @Named("bannerObservable")Observable<Response<ProfileView, String>> banner;
     private final ContentResolver resolver;
     private final NetworkService network;
-    private final ProfileView view;
+    private final ProfileContract.View view;
     private final CacheService cache;
     private final BusService bus;
     private User user;
 
-    public ProfilePresenter(@Named("pictureObservable")Observable<Response<ProfileView, String>> picture, @Named("bannerObservable")Observable<Response<ProfileView, String>> banner, ContentResolver resolver, NetworkService network, ProfileView view, CacheService cache, BusService bus, User user) {
+    public ProfilePresenter(@Named("pictureObservable")Observable<Response<ProfileView, String>> picture, @Named("bannerObservable")Observable<Response<ProfileView, String>> banner, ContentResolver resolver, NetworkService network, ProfileContract.View view, CacheService cache, BusService bus, User user) {
         this.picture = picture;
         this.banner = banner;
         this.resolver = resolver;
@@ -40,6 +42,7 @@ public class ProfilePresenter extends BasePresenter {
         this.user = user;
     }
 
+    @Override
     public void loadUser(String ID) {
         add(network.getUser(App.token, ID)
             .compose(RxUtils.applySchedulers())
@@ -55,10 +58,12 @@ public class ProfilePresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void goToTrack(Track track) {
         bus.goToTrack(track);
     }
 
+    @Override
     public void checkForSecondRun() {
         add(cache.getSkipIntro()
             .compose(RxUtils.applySchedulers())
@@ -72,7 +77,8 @@ public class ProfilePresenter extends BasePresenter {
         );
     }
 
-    private void loadUpdateUser() {
+    @Override
+    public void loadUpdateUser() {
         add(network.putUser(App.token, user.get_id(), user)
             .compose(RxUtils.applySchedulers())
             .subscribe(
@@ -88,6 +94,7 @@ public class ProfilePresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void selectProfilePicture() {
         add(picture
             .compose(RxUtils.applySchedulers())
@@ -106,6 +113,7 @@ public class ProfilePresenter extends BasePresenter {
         );
     }
 
+    @Override
     public void selectBannerPicture() {
         add(banner
             .compose(RxUtils.applySchedulers())

@@ -2,27 +2,24 @@ package matthew.shannon.jamfam.feature.home;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+
 import javax.inject.Inject;
+
+import matthew.shannon.jamfam.app.App;
+import matthew.shannon.jamfam.R;
+import matthew.shannon.jamfam.databinding.ActivityHomeBinding;
 import matthew.shannon.jamfam.feature.home.map.MapView;
 import matthew.shannon.jamfam.feature.home.track.TrackView;
 import matthew.shannon.jamfam.model.base.BaseToolbarActivity;
-import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.databinding.ActivityHomeBinding;
-import matthew.shannon.jamfam.inject.activity.HasActivityComponentBuilders;
 
-public class HomeView extends BaseToolbarActivity {
+public class HomeView extends BaseToolbarActivity implements HomeContract.View {
     private ActivityHomeBinding binding;
-    @Inject public HomePresenter presenter;
-    //@Inject FragmentManager fragmentManager;
+    @Inject HomeContract.Presenter presenter;
+    @Inject FragmentManager fragmentManager;
     @Inject TrackView trackView;
     @Inject MapView mapView;
 
-    @Override
-    protected void injectMembers(HasActivityComponentBuilders builders) {
-        ((HomeComponent.Builder) builders.getActivityBuilders(HomeView.class))
-            .activityModule(new HomeComponent.HomeModule(this))
-            .build().injectMembers(this);
-    }
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -39,9 +36,20 @@ public class HomeView extends BaseToolbarActivity {
     }
 
     @Override
+    protected void setupActivityComponent() {
+        ((App)getApplicationContext()).getAppComponent().plus(new HomeModule(this)).inject(this);
+
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         binding.unbind();
         presenter.unsubscribe();
+    }
+
+    @Override
+    public void showToast(String text) {
+
     }
 }

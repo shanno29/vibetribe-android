@@ -2,11 +2,11 @@ package matthew.shannon.jamfam.model.local.bus;
 
 import com.hwangjr.rxbus.Bus;
 
-import matthew.shannon.jamfam.model.data.Settings;
-import matthew.shannon.jamfam.model.data.User;
 import matthew.shannon.jamfam.model.data.Action;
 import matthew.shannon.jamfam.model.data.Event;
+import matthew.shannon.jamfam.model.data.Settings;
 import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.model.data.User;
 
 public class BusModel implements BusService {
     private final Bus bus;

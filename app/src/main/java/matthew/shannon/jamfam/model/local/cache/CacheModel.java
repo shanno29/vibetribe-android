@@ -1,11 +1,11 @@
 package matthew.shannon.jamfam.model.local.cache;
 
-import android.content.SharedPreferences;
-
 import com.f2prateek.rx.preferences.RxSharedPreferences;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import matthew.shannon.jamfam.model.data.Settings;
 import matthew.shannon.jamfam.model.data.User;
 import rx.Observable;

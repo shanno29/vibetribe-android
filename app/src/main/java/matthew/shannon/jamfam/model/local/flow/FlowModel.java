@@ -4,20 +4,21 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Intent;
 import android.net.Uri;
-import matthew.shannon.jamfam.App;
+
+import matthew.shannon.jamfam.feature.meta.MetaView;
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.feature.about.AboutView;
-import matthew.shannon.jamfam.feature.home.HomeView;
 import matthew.shannon.jamfam.feature.access.AccessView;
+import matthew.shannon.jamfam.feature.home.HomeView;
 import matthew.shannon.jamfam.feature.login.LoginView;
-import matthew.shannon.jamfam.feature.signup.SignupView;
-import matthew.shannon.jamfam.feature.splash.SplashView;
-import matthew.shannon.jamfam.feature.welcome.WelcomeView;
 import matthew.shannon.jamfam.feature.logout.LogoutView;
 import matthew.shannon.jamfam.feature.message.MessageView;
 import matthew.shannon.jamfam.feature.profile.ProfileView;
 import matthew.shannon.jamfam.feature.search.SearchView;
 import matthew.shannon.jamfam.feature.settings.SettingsView;
-import matthew.shannon.jamfam.feature.meta.MetadataView;
+import matthew.shannon.jamfam.feature.signup.SignupView;
+import matthew.shannon.jamfam.feature.splash.SplashView;
+import matthew.shannon.jamfam.feature.welcome.WelcomeView;
 
 public class FlowModel implements FlowService {
 
@@ -32,7 +33,7 @@ public class FlowModel implements FlowService {
    @Override
    public boolean checkServiceStatus(){
        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-           if (MetadataView.class.getName().equals(service.service.getClassName())) {return true;}
+           if (MetaView.class.getName().equals(service.service.getClassName())) {return true;}
        }
        return false;
    }

@@ -6,40 +6,38 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
+
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
+
 import javax.inject.Inject;
 import javax.inject.Named;
-import co.mobiwise.materialintro.view.MaterialIntroView;
-import matthew.shannon.jamfam.model.base.BaseToolbarActivity;
-import matthew.shannon.jamfam.adapter.fragment.FragmentAdapter;
-import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.model.data.User;
-import matthew.shannon.jamfam.databinding.ActivityProfileBinding;
-import matthew.shannon.jamfam.inject.activity.HasActivityComponentBuilders;
 
-public class ProfileView extends BaseToolbarActivity {
+import co.mobiwise.materialintro.view.MaterialIntroView;
+import matthew.shannon.jamfam.app.App;
+import matthew.shannon.jamfam.R;
+import matthew.shannon.jamfam.adapter.fragment.FragmentAdapter;
+import matthew.shannon.jamfam.databinding.ActivityProfileBinding;
+import matthew.shannon.jamfam.model.base.BaseToolbarActivity;
+import matthew.shannon.jamfam.model.data.User;
+
+public class ProfileView extends BaseToolbarActivity implements ProfileContract.View {
 
     private String ID;
     private ActivityProfileBinding binding;
     @Inject @Named("profilePicture") MaterialIntroView.Builder pictureIntro;
     @Inject @Named("profileBanner") MaterialIntroView.Builder bannerIntro;
-    @Inject public ProfilePresenter presenter;
+    @Inject ProfileContract.Presenter presenter;
     @Inject FragmentAdapter adapter;
     @Inject Animation animation;
     @Inject User user;
 
-    @Override
-    protected void injectMembers(HasActivityComponentBuilders builders) {
-        ((ProfileComponent.Builder) builders.getActivityBuilders(ProfileView.class))
-            .activityModule(new ProfileComponent.ProfileModule(this, (getIntent().getStringExtra("ID"))))
-            .build().injectMembers(this);
-    }
+
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
-        //ID = getIntent().getStringExtra("ID");
+        ID = getIntent().getStringExtra("ID");
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
         binding.setUser(user);
         setSupportActionBar(binding.viewpager.getToolbar());
@@ -48,6 +46,12 @@ public class ProfileView extends BaseToolbarActivity {
         //binding.viewpager.getViewPager().startAnimation(animation);
         //binding.viewpager.getViewPager().setOffscreenPageLimit(adapter.getCount());
         //binding.viewpager.getPagerTitleStrip().setViewPager(binding.viewpager.getViewPager());
+
+    }
+
+    @Override
+    protected void setupActivityComponent() {
+        ((App)getApplicationContext()).getAppComponent().plus(new ProfileModule(this, ID)).inject(this);
 
     }
 
@@ -113,6 +117,7 @@ public class ProfileView extends BaseToolbarActivity {
         binding.unbind();
     }
 
+    @Override
     public void showIntroView() {
         // pictureIntro.setTarget(headerBinding.picture);
         // bannerIntro.setTarget(binding.viewpager.getHeaderBackgroundContainer());
@@ -120,6 +125,7 @@ public class ProfileView extends BaseToolbarActivity {
         pictureIntro.show();
     }
 
+    @Override
     public void refreshProfile(User user) {
         binding.setUser(user);
         binding.executePendingBindings();
@@ -127,4 +133,8 @@ public class ProfileView extends BaseToolbarActivity {
         if (getSupportActionBar() != null) { getSupportActionBar().setTitle(binding.getUser().getUsername()); }
     }
 
+    @Override
+    public void showToast(String text) {
+
+    }
 }

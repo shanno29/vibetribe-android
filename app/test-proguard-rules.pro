@@ -191,3 +191,5 @@
 -keepclassmembers class **.R$* {
        public static <fields>;
 }
+
+-dontwarn org.mockito.**

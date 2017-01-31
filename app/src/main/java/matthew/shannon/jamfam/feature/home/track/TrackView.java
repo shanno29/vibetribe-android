@@ -5,32 +5,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.hwangjr.rxbus.annotation.Subscribe;
+
 import javax.inject.Inject;
+
 import co.mobiwise.materialintro.view.MaterialIntroView;
-import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.databinding.FragmentTrackBinding;
-import matthew.shannon.jamfam.inject.fragment.HasFragmentComponentBuilders;
 import matthew.shannon.jamfam.model.base.BaseFragment;
+import matthew.shannon.jamfam.model.data.Track;
 
-public class TrackView extends BaseFragment {
+public class TrackView extends BaseFragment implements TrackContract.View {
     private FragmentTrackBinding binding;
     @Inject MaterialIntroView.Builder intro;
-    @Inject public TrackPresenter presenter;
+    @Inject TrackContract.Presenter presenter;
 
     public TrackView() {}
 
     @Override
-    protected void injectMembers(HasFragmentComponentBuilders builders) {
-        ((TrackComponent.Builder) builders.getFragmentBuilders(TrackView.class))
-            .fragmentModule(new TrackComponent.TrackModule(this))
-            .build().injectMembers(this);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         super.onCreateView(inflater, container, bundle);
+        ((App)getActivity().getApplicationContext()).getAppComponent().plus(new TrackModule(this)).inject(this);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_track, container, false);
         return binding.getRoot();
     }
@@ -53,21 +50,20 @@ public class TrackView extends BaseFragment {
         binding.unbind();
     }
 
-// TODO Bus
-// TODO Intro View
 
-//    @Subscribe
-//    public void trackUpdate(Track track) {
-//        if(track.getTitle() != null) {
-//            binding.setTrack(track);
-//            binding.executePendingBindings();
-//        }
-//    }
-//
-//    public void showIntroView() {
+    @Subscribe
+    public void trackUpdate(Track track) {
+        if(track.getTitle() != null) {
+            binding.setTrack(track);
+            binding.executePendingBindings();
+        }
+    }
+
+    @Override
+    public void showIntroView() {
 //        intro.setTarget(binding.openApp);
 //        intro.show();
-//    }
+    }
 
 
 

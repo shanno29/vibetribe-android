@@ -1,27 +1,28 @@
 package matthew.shannon.jamfam.feature.home.map;
 
-import matthew.shannon.jamfam.App;
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.model.base.BasePresenter;
-import matthew.shannon.jamfam.utils.RxUtils;
 import matthew.shannon.jamfam.model.remote.network.NetworkService;
+import matthew.shannon.jamfam.utils.RxUtils;
 
-public class MapPresenter extends BasePresenter {
+public class MapPresenter extends BasePresenter implements MapContract.Presenter{
     private final NetworkService network;
-    private final MapView view;
+    private final MapContract.View view;
 
-    public MapPresenter(NetworkService network, MapView view) {
+    public MapPresenter(NetworkService network, MapContract.View view) {
         this.network = network;
         this.view = view;
     }
 
+    @Override
     public void getUserTracks() {
-//        add(network.getUserTracks(App.token, App.userID)
-//            .compose(RxUtils.applySchedulers())
-//            .subscribe(
-//                view::addMarkers,
-//                error -> view.showToast("Error Getting Tracks " + error.getMessage())
-//            )
-//        );
+        add(network.getUserTracks(App.token, App.userID)
+            .compose(RxUtils.applySchedulers())
+            .subscribe(
+                view::addMarkers,
+                error -> view.showToast("Error Getting Tracks " + error.getMessage())
+            )
+        );
     }
 
 }

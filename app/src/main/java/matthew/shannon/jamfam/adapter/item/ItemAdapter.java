@@ -3,15 +3,17 @@ package matthew.shannon.jamfam.adapter.item;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+
 import java.util.List;
 import java.util.Map;
-import matthew.shannon.jamfam.model.local.bus.BusService;
-import matthew.shannon.jamfam.adapter.item.viewholder.ItemViewHolderFactory;
+
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.adapter.item.viewholder.ItemViewHolder;
+import matthew.shannon.jamfam.adapter.item.viewholder.ItemViewHolderFactory;
 import matthew.shannon.jamfam.model.data.Settings;
 import matthew.shannon.jamfam.model.data.Track;
 import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.local.bus.BusService;
 
 public class ItemAdapter extends RecyclerView.Adapter {
     private final Map<Integer, ItemViewHolderFactory> viewHolderFactories;

@@ -1,7 +1,7 @@
 package matthew.shannon.jamfam.feature.Intro.signup;
 
 import matthew.shannon.jamfam.base.BasePresenter;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.User;
 import matthew.shannon.jamfam.service.flow.FlowService;
 
 public class SignupPresenter extends BasePresenter implements SignupContract.Presenter {

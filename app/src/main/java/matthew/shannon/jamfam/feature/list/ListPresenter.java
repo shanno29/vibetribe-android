@@ -3,7 +3,7 @@ package matthew.shannon.jamfam.feature.list;
 import java.util.List;
 
 import matthew.shannon.jamfam.base.BasePresenter;
-import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.model.Track;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
 import matthew.shannon.jamfam.util.RxUtils;

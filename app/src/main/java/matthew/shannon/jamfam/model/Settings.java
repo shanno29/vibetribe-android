@@ -1,4 +1,4 @@
-package matthew.shannon.jamfam.model.data;
+package matthew.shannon.jamfam.model;
 
 
 public class Settings {

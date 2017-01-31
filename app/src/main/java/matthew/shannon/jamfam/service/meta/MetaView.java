@@ -12,8 +12,8 @@ import com.google.common.eventbus.Subscribe;
 import javax.inject.Inject;
 
 import matthew.shannon.jamfam.base.BaseService;
-import matthew.shannon.jamfam.model.data.Action;
-import matthew.shannon.jamfam.model.data.Event;
+import matthew.shannon.jamfam.model.Action;
+import matthew.shannon.jamfam.model.Event;
 
 public class MetaView extends BaseService implements MetaService {
     @Inject

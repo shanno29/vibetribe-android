@@ -15,7 +15,7 @@ import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.feature.adapter.fragment.FragmentAdapter;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.feature.list.ListView;
-import matthew.shannon.jamfam.model.data.FragType;
+import matthew.shannon.jamfam.model.FragType;
 import matthew.shannon.jamfam.service.flow.FlowService;
 
 @Module

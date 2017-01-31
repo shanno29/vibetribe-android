@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.model.data.Settings;
-import matthew.shannon.jamfam.model.data.Track;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.Settings;
+import matthew.shannon.jamfam.model.Track;
+import matthew.shannon.jamfam.model.User;
 import matthew.shannon.jamfam.service.flow.FlowService;
 
 public class ItemAdapter extends RecyclerView.Adapter {

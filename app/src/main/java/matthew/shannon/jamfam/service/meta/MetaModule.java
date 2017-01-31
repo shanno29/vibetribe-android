@@ -7,7 +7,7 @@ import android.media.RemoteController;
 
 import dagger.Module;
 import dagger.Provides;
-import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.model.Track;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
 import matthew.shannon.jamfam.service.location.LocationService;

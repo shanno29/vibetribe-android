@@ -2,7 +2,7 @@ package matthew.shannon.jamfam.feature.Intro.login;
 
 import matthew.shannon.jamfam.BuildConfig;
 import matthew.shannon.jamfam.base.BasePresenter;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.User;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
 

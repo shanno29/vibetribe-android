@@ -7,7 +7,7 @@ import com.romainpiel.shimmer.Shimmer;
 
 import dagger.Module;
 import dagger.Provides;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.User;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
 

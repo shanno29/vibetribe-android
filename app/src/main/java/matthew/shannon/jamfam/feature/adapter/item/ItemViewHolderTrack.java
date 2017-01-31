@@ -10,7 +10,7 @@ import com.google.auto.factory.AutoFactory;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.TrackCardLayoutBinding;
-import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.model.Track;
 import matthew.shannon.jamfam.service.flow.FlowService;
 
 @AutoFactory(implementing = ItemViewHolderFactory.class)

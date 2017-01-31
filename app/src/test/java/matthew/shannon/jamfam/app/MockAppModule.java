@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.User;
 import matthew.shannon.jamfam.service.cache.CacheHelper;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowModel;

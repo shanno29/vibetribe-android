@@ -13,7 +13,7 @@ import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.LoginViewBinding;
 import matthew.shannon.jamfam.base.BaseActivity;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.User;
 import matthew.shannon.jamfam.util.SimpleTextWatcher;
 import matthew.shannon.jamfam.util.StringUtils;
 

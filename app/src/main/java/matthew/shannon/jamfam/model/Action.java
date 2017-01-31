@@ -1,4 +1,4 @@
-package matthew.shannon.jamfam.model.data;
+package matthew.shannon.jamfam.model;
 
 import android.support.annotation.IntDef;
 

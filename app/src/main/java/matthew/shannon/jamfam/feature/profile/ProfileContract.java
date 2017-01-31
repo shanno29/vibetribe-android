@@ -1,8 +1,8 @@
 package matthew.shannon.jamfam.feature.profile;
 
 import matthew.shannon.jamfam.base.BaseView;
-import matthew.shannon.jamfam.model.data.Track;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.Track;
+import matthew.shannon.jamfam.model.User;
 
 public interface ProfileContract {
     public interface View extends BaseView {

@@ -10,7 +10,7 @@ import com.google.auto.factory.AutoFactory;
 
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.databinding.UserCardLayoutBinding;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.User;
 import matthew.shannon.jamfam.service.flow.FlowService;
 
 @AutoFactory(implementing = ItemViewHolderFactory.class)

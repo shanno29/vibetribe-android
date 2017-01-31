@@ -21,7 +21,7 @@ import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.FragmentMapBinding;
 import matthew.shannon.jamfam.base.BaseFragment;
-import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.model.Track;
 
 public class MapView extends BaseFragment implements OnMapReadyCallback, MapContract.View {
     @Inject

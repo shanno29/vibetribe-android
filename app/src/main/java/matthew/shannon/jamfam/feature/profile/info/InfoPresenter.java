@@ -1,7 +1,7 @@
 package matthew.shannon.jamfam.feature.profile.info;
 
 import matthew.shannon.jamfam.base.BasePresenter;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.User;
 import matthew.shannon.jamfam.service.cache.CacheService;
 
 public class InfoPresenter extends BasePresenter implements InfoContract.Presenter {

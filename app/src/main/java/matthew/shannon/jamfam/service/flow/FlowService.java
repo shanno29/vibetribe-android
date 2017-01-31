@@ -1,8 +1,8 @@
 package matthew.shannon.jamfam.service.flow;
 
-import matthew.shannon.jamfam.model.data.Settings;
-import matthew.shannon.jamfam.model.data.Track;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.Settings;
+import matthew.shannon.jamfam.model.Track;
+import matthew.shannon.jamfam.model.User;
 
 public interface FlowService {
 

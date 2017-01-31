@@ -14,7 +14,7 @@ import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.ProfileAboutBinding;
 import matthew.shannon.jamfam.base.BaseFragment;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.User;
 
 public class InfoView extends BaseFragment implements InfoContract.View {
     @Inject InfoContract.Presenter presenter;

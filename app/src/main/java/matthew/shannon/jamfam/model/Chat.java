@@ -1,11 +1,11 @@
-package matthew.shannon.jamfam.model.data;
+package matthew.shannon.jamfam.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Post {
+public class Chat {
 
     @SerializedName("_id")
     @Expose
@@ -22,11 +22,11 @@ public class Post {
     @SerializedName("owners")
     @Expose
     private List<User> owners;
-    @SerializedName("comments")
+    @SerializedName("messages")
     @Expose
-    private List<Comment> comments;
+    private List<Message> messages;
 
-    public Post() {
+    public Chat() {
     }
 
     public String get_id() {
@@ -69,12 +69,11 @@ public class Post {
         this.owners = owners;
     }
 
-    public List<Comment> getComments() {
-        return comments;
+    public List<Message> getMessages() {
+        return messages;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
-
 }

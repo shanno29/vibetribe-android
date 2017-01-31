@@ -21,11 +21,11 @@ import matthew.shannon.jamfam.feature.settings.SettingsView;
 import matthew.shannon.jamfam.feature.Intro.signup.SignupView;
 import matthew.shannon.jamfam.feature.Intro.splash.SplashView;
 import matthew.shannon.jamfam.feature.Intro.welcome.WelcomeView;
-import matthew.shannon.jamfam.model.data.Action;
-import matthew.shannon.jamfam.model.data.Event;
-import matthew.shannon.jamfam.model.data.Settings;
-import matthew.shannon.jamfam.model.data.Track;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.Action;
+import matthew.shannon.jamfam.model.Event;
+import matthew.shannon.jamfam.model.Settings;
+import matthew.shannon.jamfam.model.Track;
+import matthew.shannon.jamfam.model.User;
 
 public class FlowModel implements FlowService {
     private final Application application;

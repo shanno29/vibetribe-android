@@ -19,11 +19,11 @@ import matthew.shannon.jamfam.feature.adapter.item.ItemAdapter;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.FlowLayoutBinding;
 import matthew.shannon.jamfam.base.BaseFragment;
-import matthew.shannon.jamfam.model.data.Action;
-import matthew.shannon.jamfam.model.data.Event;
-import matthew.shannon.jamfam.model.data.FragType;
-import matthew.shannon.jamfam.model.data.Track;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.Action;
+import matthew.shannon.jamfam.model.Event;
+import matthew.shannon.jamfam.model.FragType;
+import matthew.shannon.jamfam.model.Track;
+import matthew.shannon.jamfam.model.User;
 
 public class ListView extends BaseFragment implements ListContract.View {
     @Inject DividerItemDecoration dividerItem;

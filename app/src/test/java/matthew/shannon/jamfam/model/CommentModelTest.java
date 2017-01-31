@@ -2,8 +2,6 @@ package matthew.shannon.jamfam.model;
 
 import org.junit.Test;
 
-import matthew.shannon.jamfam.model.data.Comment;
-
 import static junit.framework.Assert.assertEquals;
 
 public class CommentModelTest {

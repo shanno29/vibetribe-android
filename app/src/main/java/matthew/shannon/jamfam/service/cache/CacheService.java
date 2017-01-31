@@ -2,8 +2,8 @@ package matthew.shannon.jamfam.service.cache;
 
 import java.util.List;
 
-import matthew.shannon.jamfam.model.data.Settings;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.Settings;
+import matthew.shannon.jamfam.model.User;
 import rx.Observable;
 
 public interface CacheService {

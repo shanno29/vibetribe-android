@@ -3,7 +3,7 @@ package matthew.shannon.jamfam.feature.list;
 import java.util.List;
 
 import matthew.shannon.jamfam.base.BaseView;
-import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.model.Track;
 
 public interface ListContract {
     public interface View extends BaseView {

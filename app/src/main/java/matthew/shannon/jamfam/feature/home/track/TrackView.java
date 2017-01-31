@@ -15,7 +15,7 @@ import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.FragmentTrackBinding;
 import matthew.shannon.jamfam.base.BaseFragment;
-import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.model.Track;
 
 public class TrackView extends BaseFragment implements TrackContract.View {
     @Inject MaterialIntroView.Builder intro;

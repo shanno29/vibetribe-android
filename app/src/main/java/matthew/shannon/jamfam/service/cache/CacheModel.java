@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import matthew.shannon.jamfam.model.data.Settings;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.Settings;
+import matthew.shannon.jamfam.model.User;
 import rx.Observable;
 
 public class CacheModel implements CacheService {

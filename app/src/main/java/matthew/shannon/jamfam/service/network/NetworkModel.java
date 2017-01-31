@@ -2,10 +2,10 @@ package matthew.shannon.jamfam.service.network;
 
 import java.util.List;
 
-import matthew.shannon.jamfam.model.data.Chat;
-import matthew.shannon.jamfam.model.data.Post;
-import matthew.shannon.jamfam.model.data.Track;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.Chat;
+import matthew.shannon.jamfam.model.Post;
+import matthew.shannon.jamfam.model.Track;
+import matthew.shannon.jamfam.model.User;
 import retrofit2.Retrofit;
 import retrofit2.http.Body;
 import retrofit2.http.Header;

@@ -1,4 +1,4 @@
-package matthew.shannon.jamfam.model.data;
+package matthew.shannon.jamfam.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

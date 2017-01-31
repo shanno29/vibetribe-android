@@ -18,7 +18,7 @@ import matthew.shannon.jamfam.feature.adapter.fragment.FragmentAdapter;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.ActivityProfileBinding;
 import matthew.shannon.jamfam.base.BaseToolbarActivity;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.User;
 
 public class ProfileView extends BaseToolbarActivity implements ProfileContract.View {
 

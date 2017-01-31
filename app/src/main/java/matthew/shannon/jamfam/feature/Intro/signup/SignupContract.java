@@ -1,7 +1,7 @@
 package matthew.shannon.jamfam.feature.Intro.signup;
 
 import matthew.shannon.jamfam.base.BaseView;
-import matthew.shannon.jamfam.model.data.User;
+import matthew.shannon.jamfam.model.User;
 
 public interface SignupContract {
 

@@ -2,7 +2,7 @@ package matthew.shannon.jamfam.service.meta;
 
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.base.BasePresenter;
-import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.model.Track;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
 import matthew.shannon.jamfam.service.location.LocationService;

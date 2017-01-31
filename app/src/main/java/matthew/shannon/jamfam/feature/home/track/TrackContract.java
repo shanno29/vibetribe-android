@@ -2,7 +2,7 @@ package matthew.shannon.jamfam.feature.home.track;
 
 
 import matthew.shannon.jamfam.base.BaseView;
-import matthew.shannon.jamfam.model.data.Track;
+import matthew.shannon.jamfam.model.Track;
 
 public interface TrackContract {
 

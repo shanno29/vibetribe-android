@@ -9,7 +9,7 @@ import android.widget.EditText;
 import com.google.auto.factory.AutoFactory;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.databinding.SettingCardLayoutBinding;
-import matthew.shannon.jamfam.model.data.Settings;
+import matthew.shannon.jamfam.model.Settings;
 import matthew.shannon.jamfam.service.flow.FlowService;
 
 @AutoFactory(implementing = ItemViewHolderFactory.class)

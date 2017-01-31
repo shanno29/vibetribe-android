@@ -1,6 +1,8 @@
-package matthew.shannon.jamfam.model.data;
+package matthew.shannon.jamfam.model;
 
 import org.junit.Test;
+
+import matthew.shannon.jamfam.model.data.Action;
 
 import static junit.framework.Assert.assertEquals;
 

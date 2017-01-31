@@ -11,8 +11,8 @@ import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.SignupViewBinding;
 import matthew.shannon.jamfam.base.BaseActivity;
-import matthew.shannon.jamfam.utils.SimpleTextWatcher;
-import matthew.shannon.jamfam.utils.StringUtils;
+import matthew.shannon.jamfam.util.SimpleTextWatcher;
+import matthew.shannon.jamfam.util.StringUtils;
 
 public class SignupView extends BaseActivity implements SignupContract.View {
 

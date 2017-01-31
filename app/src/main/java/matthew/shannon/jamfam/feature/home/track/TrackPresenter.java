@@ -4,7 +4,7 @@ import matthew.shannon.jamfam.base.BasePresenter;
 import matthew.shannon.jamfam.model.data.Track;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
-import matthew.shannon.jamfam.utils.RxUtils;
+import matthew.shannon.jamfam.util.RxUtils;
 
 public class TrackPresenter extends BasePresenter implements TrackContract.Presenter {
     private final CacheService cache;

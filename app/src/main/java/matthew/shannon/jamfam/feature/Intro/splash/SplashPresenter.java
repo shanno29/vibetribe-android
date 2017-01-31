@@ -3,7 +3,7 @@ package matthew.shannon.jamfam.feature.Intro.splash;
 import matthew.shannon.jamfam.base.BasePresenter;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
-import matthew.shannon.jamfam.utils.RxUtils;
+import matthew.shannon.jamfam.util.RxUtils;
 
 public class SplashPresenter extends BasePresenter implements SplashContract.Presenter {
     public FlowService flow;

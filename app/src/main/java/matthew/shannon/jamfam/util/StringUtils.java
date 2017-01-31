@@ -1,4 +1,4 @@
-package matthew.shannon.jamfam.utils;
+package matthew.shannon.jamfam.util;
 
 
 import android.databinding.BindingAdapter;

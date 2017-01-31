@@ -5,7 +5,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import dagger.Module;
 import dagger.Provides;
 import matthew.shannon.jamfam.service.flow.FlowService;
-import matthew.shannon.jamfam.utils.GoogleAPI;
+import matthew.shannon.jamfam.util.GoogleAPI;
 
 @Module
 public class WelcomeModule {

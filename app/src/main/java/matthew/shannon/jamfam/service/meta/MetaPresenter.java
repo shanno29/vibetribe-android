@@ -7,7 +7,7 @@ import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
 import matthew.shannon.jamfam.service.location.LocationService;
 import matthew.shannon.jamfam.service.network.NetworkService;
-import matthew.shannon.jamfam.utils.RxUtils;
+import matthew.shannon.jamfam.util.RxUtils;
 
 public class MetaPresenter extends BasePresenter implements MetaContract.Presenter {
     private final LocationService location;

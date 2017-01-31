@@ -1,8 +1,12 @@
-package matthew.shannon.jamfam.model.data;
+package matthew.shannon.jamfam.model;
 
 import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
+
+import matthew.shannon.jamfam.model.data.Comment;
+import matthew.shannon.jamfam.model.data.Post;
+import matthew.shannon.jamfam.model.data.User;
 
 import static junit.framework.Assert.assertEquals;
 

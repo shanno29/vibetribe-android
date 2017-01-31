@@ -2,7 +2,7 @@ package matthew.shannon.jamfam.feature.Intro.welcome;
 
 import matthew.shannon.jamfam.base.BasePresenter;
 import matthew.shannon.jamfam.service.flow.FlowService;
-import matthew.shannon.jamfam.utils.GoogleAPI;
+import matthew.shannon.jamfam.util.GoogleAPI;
 
 public class WelcomePresenter extends BasePresenter implements WelcomeContract.Presenter {
     private final GoogleAPI api;

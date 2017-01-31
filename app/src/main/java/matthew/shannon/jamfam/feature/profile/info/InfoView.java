@@ -10,16 +10,16 @@ import android.widget.EditText;
 
 import javax.inject.Inject;
 
-import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.R;
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.ProfileAboutBinding;
-import matthew.shannon.jamfam.model.base.BaseFragment;
+import matthew.shannon.jamfam.base.BaseFragment;
 import matthew.shannon.jamfam.model.data.User;
 
 public class InfoView extends BaseFragment implements InfoContract.View {
+    @Inject InfoContract.Presenter presenter;
     private String ID;
     private ProfileAboutBinding binding;
-    @Inject InfoContract.Presenter presenter;
 
     public InfoView() {}
 
@@ -32,10 +32,14 @@ public class InfoView extends BaseFragment implements InfoContract.View {
     }
 
     @Override
+    protected void setupFragmentComponent() {
+        ((App) getActivity().getApplicationContext()).getAppComponent().plus(new InfoModule(this)).inject(this);
+
+    }
+
+    @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        ((App)getActivity().getApplicationContext()).getAppComponent().plus(new InfoModule(this)).inject(this);
-
         //ID = getArguments().getString("_id");
     }
 
@@ -83,7 +87,7 @@ public class InfoView extends BaseFragment implements InfoContract.View {
     public void updateUI(User user) {
         binding.setUser(user);
         binding.executePendingBindings();
-        binding.aboutText.setOnClickListener((ID.equals(App.userID)? this::EditAboutMe : null));
+        binding.aboutText.setOnClickListener((ID.equals(App.userID) ? this::EditAboutMe : null));
     }
 
 }

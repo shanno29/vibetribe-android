@@ -11,5 +11,4 @@ public interface InfoComponent {
     InfoView inject(InfoView activity);
 
 
-
 }

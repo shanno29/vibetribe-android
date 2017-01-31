@@ -5,9 +5,8 @@ import co.mobiwise.materialintro.shape.FocusGravity;
 import co.mobiwise.materialintro.view.MaterialIntroView;
 import dagger.Module;
 import dagger.Provides;
-import matthew.shannon.jamfam.model.local.bus.BusService;
-import matthew.shannon.jamfam.model.local.cache.CacheService;
-import matthew.shannon.jamfam.model.remote.network.NetworkService;
+import matthew.shannon.jamfam.service.cache.CacheService;
+import matthew.shannon.jamfam.service.flow.FlowService;
 
 @Module
 public class TrackModule {
@@ -15,19 +14,19 @@ public class TrackModule {
     private TrackView fragment;
 
     public TrackModule(TrackView fragment) {
-       this.fragment = fragment;
+        this.fragment = fragment;
     }
 
     @Provides
     @TrackScope
-    TrackContract.View trackView(){
+    TrackContract.View trackView() {
         return this.fragment;
     }
 
     @Provides
     @TrackScope
-    TrackContract.Presenter provideTrackFragmentPresenter(NetworkService network, CacheService cache, BusService bus, TrackContract.View view) {
-        return new TrackPresenter(network, cache, bus, view);
+    TrackContract.Presenter provideTrackFragmentPresenter(CacheService cache, FlowService flow, TrackContract.View view) {
+        return new TrackPresenter(cache, flow, view);
     }
 
     @Provides

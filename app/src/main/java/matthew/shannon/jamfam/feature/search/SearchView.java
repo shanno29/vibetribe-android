@@ -6,21 +6,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 
+import com.github.florent37.materialviewpager.header.HeaderDesign;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import javax.inject.Inject;
 
-import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.adapter.fragment.FragmentAdapter;
+import matthew.shannon.jamfam.feature.adapter.fragment.FragmentAdapter;
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.ActivitySearchBinding;
-import matthew.shannon.jamfam.model.base.BaseToolbarActivity;
+import matthew.shannon.jamfam.base.BaseToolbarActivity;
 
-public class SearchView extends BaseToolbarActivity implements SearchContract.View{
-    private ActivitySearchBinding binding;
+public class SearchView extends BaseToolbarActivity implements SearchContract.View {
     @Inject SearchContract.Presenter presenter;
     @Inject FragmentAdapter adapter;
     @Inject Animation animation;
+    private ActivitySearchBinding binding;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -29,37 +30,25 @@ public class SearchView extends BaseToolbarActivity implements SearchContract.Vi
         setSupportActionBar(binding.viewpager.getToolbar());
 
         binding.viewpager.getViewPager().setAdapter(adapter);
-//        binding.viewpager.getViewPager().startAnimation(animation);
-//        binding.viewpager.getViewPager().setOffscreenPageLimit(adapter.getCount());
-//        binding.viewpager.getPagerTitleStrip().setViewPager(binding.viewpager.getViewPager());
-//        binding.viewpager.setMaterialViewPagerListener(page -> {
-//            if (binding.search.isSearchOpen()) binding.search.closeSearch();
-//            switch (page) {
-//                case 0:
-//                    return HeaderDesign.fromColorResAndUrl(
-//                            R.color.green,
-//                            "https://www.whatswithtech.com/wp-content/uploads/2015/09/new-material-design-wallpaper-chrome.jpg");
-//                case 1:
-//                    return HeaderDesign.fromColorResAndUrl(
-//                            R.color.cyan,
-//                            "http://www.vactualpapers.com/web/wallpapers/material-design-hd-wallpaper-no-0611/thumbnail/lg.png");
-//                case 2:
-//                    return HeaderDesign.fromColorResAndUrl(
-//                            R.color.blue,
-//                            "http://www.vactualpapers.com/web/wallpapers/qhd-2560x2560-material-design-wallpaper-60/thumbnail/md.jpg");
-//                case 3:
-//                    return HeaderDesign.fromColorResAndUrl(
-//                            R.color.purple,
-//                            "https://graphicflip.com/wp-content/uploads/2016/02/40-backgrounds-material.jpg");
-//            }
-//            return null;});
+        binding.viewpager.getViewPager().startAnimation(animation);
+        binding.viewpager.getViewPager().setOffscreenPageLimit(adapter.getCount());
+        binding.viewpager.getPagerTitleStrip().setViewPager(binding.viewpager.getViewPager());
+        binding.viewpager.setMaterialViewPagerListener(page -> {
+            if (binding.search.isSearchOpen()) binding.search.closeSearch();
+
+            HeaderDesign design = null;
+            if(page == 0) design = HeaderDesign.fromColorResAndUrl(R.color.green, "https://www.whatswithtech.com/wp-content/uploads/2015/09/new-material-design-wallpaper-chrome.jpg");
+            if(page == 1) design = HeaderDesign.fromColorResAndUrl(R.color.cyan, "http://www.vactualpapers.com/web/wallpapers/material-design-hd-wallpaper-no-0611/thumbnail/lg.png");
+            if(page == 2) design = HeaderDesign.fromColorResAndUrl(R.color.blue, "http://www.vactualpapers.com/web/wallpapers/qhd-2560x2560-material-design-wallpaper-60/thumbnail/md.jpg");
+            if(page == 3) design = HeaderDesign.fromColorResAndUrl(R.color.purple, "https://graphicflip.com/wp-content/uploads/2016/02/40-backgrounds-material.jpg");
+            return design;
+        });
 
     }
 
     @Override
     protected void setupActivityComponent() {
-        ((App)getApplicationContext()).getAppComponent().plus(new SearchModule(this)).inject(this);
-
+        ((App) getApplicationContext()).getAppComponent().plus(new SearchModule(this)).inject(this);
     }
 
     @Override
@@ -98,9 +87,4 @@ public class SearchView extends BaseToolbarActivity implements SearchContract.Vi
         presenter.unsubscribe();
     }
 
-
-    @Override
-    public void showToast(String text) {
-
-    }
 }

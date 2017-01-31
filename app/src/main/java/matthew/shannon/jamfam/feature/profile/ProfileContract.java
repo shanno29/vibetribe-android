@@ -1,6 +1,6 @@
 package matthew.shannon.jamfam.feature.profile;
 
-import matthew.shannon.jamfam.model.base.BaseView;
+import matthew.shannon.jamfam.base.BaseView;
 import matthew.shannon.jamfam.model.data.Track;
 import matthew.shannon.jamfam.model.data.User;
 
@@ -11,6 +11,7 @@ public interface ProfileContract {
 
         void refreshProfile(User user);
     }
+
     public interface Presenter {
 
 

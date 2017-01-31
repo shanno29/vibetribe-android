@@ -10,5 +10,4 @@ public interface SearchComponent {
     SearchView inject(SearchView activity);
 
 
-
 }

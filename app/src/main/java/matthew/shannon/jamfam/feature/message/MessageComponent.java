@@ -9,5 +9,4 @@ public interface MessageComponent {
     MessageView inject(MessageView activity);
 
 
-
 }

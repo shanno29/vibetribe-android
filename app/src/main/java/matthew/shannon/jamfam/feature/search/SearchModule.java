@@ -12,13 +12,12 @@ import dagger.Provides;
 import dagger.multibindings.IntKey;
 import dagger.multibindings.IntoMap;
 import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.adapter.fragment.FragmentAdapter;
+import matthew.shannon.jamfam.feature.adapter.fragment.FragmentAdapter;
 import matthew.shannon.jamfam.app.App;
-import matthew.shannon.jamfam.list.ListView;
+import matthew.shannon.jamfam.feature.list.ListView;
 import matthew.shannon.jamfam.model.data.FragType;
-import matthew.shannon.jamfam.model.local.cache.CacheService;
-import matthew.shannon.jamfam.model.local.flow.FlowService;
-import matthew.shannon.jamfam.model.remote.network.NetworkService;
+import matthew.shannon.jamfam.service.cache.CacheService;
+import matthew.shannon.jamfam.service.flow.FlowService;
 
 @Module
 public class SearchModule {
@@ -31,14 +30,14 @@ public class SearchModule {
 
     @Provides
     @SearchScope
-    SearchContract.View searchView(){
+    SearchContract.View searchView() {
         return this.activity;
     }
 
     @Provides
     @SearchScope
-    SearchContract.Presenter searchPresenter(SearchContract.View view, NetworkService network, CacheService cache, FlowService flow) {
-        return new SearchPresenter(view, network, cache, flow);
+    SearchContract.Presenter searchPresenter(SearchContract.View view, CacheService cache, FlowService flow) {
+        return new SearchPresenter(view, cache, flow);
 
     }
 
@@ -76,19 +75,19 @@ public class SearchModule {
 
     @Provides
     @SearchScope
-    Animation viewPagerAnimation(){
+    Animation viewPagerAnimation() {
         return AnimationUtils.loadAnimation(activity, R.anim.slide_up);
     }
 
     @Provides
     @SearchScope
-    FragmentManager fragmentManager(){
+    FragmentManager fragmentManager() {
         return activity.getSupportFragmentManager();
     }
 
     @Provides
     @SearchScope
-    FragmentAdapter fragmentAdapter(FragmentManager manager, Map<Integer, Fragment> map){
+    FragmentAdapter fragmentAdapter(FragmentManager manager, Map<Integer, Fragment> map) {
         FragmentAdapter adapter = new FragmentAdapter(manager);
         adapter.addFragment(map.get(FragType.SEARCH_TRACKS), "Tracks");
         adapter.addFragment(map.get(FragType.ALL_TRACKS), "Feed");

@@ -11,23 +11,22 @@ import com.hwangjr.rxbus.annotation.Subscribe;
 import javax.inject.Inject;
 
 import co.mobiwise.materialintro.view.MaterialIntroView;
-import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.R;
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.FragmentTrackBinding;
-import matthew.shannon.jamfam.model.base.BaseFragment;
+import matthew.shannon.jamfam.base.BaseFragment;
 import matthew.shannon.jamfam.model.data.Track;
 
 public class TrackView extends BaseFragment implements TrackContract.View {
-    private FragmentTrackBinding binding;
     @Inject MaterialIntroView.Builder intro;
     @Inject TrackContract.Presenter presenter;
+    private FragmentTrackBinding binding;
 
     public TrackView() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         super.onCreateView(inflater, container, bundle);
-        ((App)getActivity().getApplicationContext()).getAppComponent().plus(new TrackModule(this)).inject(this);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_track, container, false);
         return binding.getRoot();
     }
@@ -44,6 +43,12 @@ public class TrackView extends BaseFragment implements TrackContract.View {
     }
 
     @Override
+    protected void setupFragmentComponent() {
+        ((App) getActivity().getApplicationContext()).getAppComponent().plus(new TrackModule(this)).inject(this);
+
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         presenter.unsubscribe();
@@ -53,7 +58,7 @@ public class TrackView extends BaseFragment implements TrackContract.View {
 
     @Subscribe
     public void trackUpdate(Track track) {
-        if(track.getTitle() != null) {
+        if (track.getTitle() != null) {
             binding.setTrack(track);
             binding.executePendingBindings();
         }
@@ -64,7 +69,6 @@ public class TrackView extends BaseFragment implements TrackContract.View {
 //        intro.setTarget(binding.openApp);
 //        intro.show();
     }
-
 
 
 }

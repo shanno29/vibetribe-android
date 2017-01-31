@@ -22,17 +22,17 @@ public class RxUtils {
 
     public static Observable<Bitmap> uriToBitmap(final ContentResolver resolver, final Uri uri) {
         return Observable
-            .create((Observable.OnSubscribe<Bitmap>) subscriber -> {
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(resolver, uri);
-                    subscriber.onNext(bitmap);
-                    subscriber.onCompleted();
-                } catch (IOException e) {
-                    Log.e("VIBETRIBE", "Error converting uri", e);
-                    subscriber.onError(e);
-                }
-            })
-            .compose(RxUtils.applySchedulers());
+                .create((Observable.OnSubscribe<Bitmap>) subscriber -> {
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(resolver, uri);
+                        subscriber.onNext(bitmap);
+                        subscriber.onCompleted();
+                    } catch (IOException e) {
+                        Log.e("VIBETRIBE", "Error converting uri", e);
+                        subscriber.onError(e);
+                    }
+                })
+                .compose(RxUtils.applySchedulers());
 
     }
 

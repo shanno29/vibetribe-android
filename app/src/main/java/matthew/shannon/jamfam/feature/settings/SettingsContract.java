@@ -1,13 +1,13 @@
 package matthew.shannon.jamfam.feature.settings;
 
-import matthew.shannon.jamfam.model.base.BaseView;
+import matthew.shannon.jamfam.base.BaseView;
 
 public interface SettingsContract {
-    public interface View extends BaseView{
+    interface View extends BaseView {
 
     }
-    public interface Presenter {
 
+    interface Presenter {
 
         void unsubscribe();
     }

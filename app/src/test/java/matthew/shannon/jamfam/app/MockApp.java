@@ -1,12 +1,10 @@
 package matthew.shannon.jamfam.app;
 
 import com.fuck_boilerplate.rx_paparazzo.RxPaparazzo;
-
-import matthew.shannon.jamfam.model.local.bus.BusModule;
-import matthew.shannon.jamfam.model.local.cache.CacheModule;
-import matthew.shannon.jamfam.model.local.flow.FlowModule;
-import matthew.shannon.jamfam.model.remote.location.LocationModule;
-import matthew.shannon.jamfam.model.remote.network.NetworkModule;
+import matthew.shannon.jamfam.service.cache.CacheModule;
+import matthew.shannon.jamfam.service.flow.FlowModule;
+import matthew.shannon.jamfam.service.location.LocationModule;
+import matthew.shannon.jamfam.service.network.NetworkModule;
 import rx_activity_result.RxActivityResult;
 
 public class MockApp extends App {
@@ -20,13 +18,11 @@ public class MockApp extends App {
         RxActivityResult.register(this);
         RxPaparazzo.register(this);
         initAppComponent();
-
     }
 
     public void initAppComponent() {
         appComponent = DaggerMockAppComponent.builder()
                 .mockAppModule(new MockAppModule(this))
-                .busModule(new BusModule())
                 .flowModule(new FlowModule())
                 .cacheModule(new CacheModule())
                 .networkModule(new NetworkModule())

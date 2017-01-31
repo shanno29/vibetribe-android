@@ -13,6 +13,7 @@ public class Settings {
     public String getDescription() {
         return this.description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -20,6 +21,7 @@ public class Settings {
     public String getValue() {
         return value;
     }
+
     public void setValue(String value) {
         this.value = value;
     }

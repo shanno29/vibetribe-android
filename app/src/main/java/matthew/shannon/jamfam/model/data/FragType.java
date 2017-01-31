@@ -18,12 +18,13 @@ public class FragType {
 
     public final int itemType;
 
-    @Retention(RetentionPolicy.SOURCE)
-    @IntDef({ FRIENDS_TRACKS, SEARCH_TRACKS, USER_FRIENDS, USER_MATCHES, USER_TRACKS, ALL_TRACKS, ALL_USERS, SETTINGS, USER_INFO })
-    @interface ItemTypeDef { }
-
-    public FragType(@ItemTypeDef int itemType){
+    public FragType(@ItemTypeDef int itemType) {
         this.itemType = itemType;
+    }
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({FRIENDS_TRACKS, SEARCH_TRACKS, USER_FRIENDS, USER_MATCHES, USER_TRACKS, ALL_TRACKS, ALL_USERS, SETTINGS, USER_INFO})
+    @interface ItemTypeDef {
     }
 
 }

@@ -5,11 +5,9 @@ import dagger.Subcomponent;
 
 @SettingsScope
 @Subcomponent(modules = SettingsModule.class)
-public interface SettingsComponent{
+public interface SettingsComponent {
 
     SettingsView inject(SettingsView activity);
-
-
 
 
 }

@@ -18,7 +18,7 @@ public class StringUtils {
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         boolean ret;
 
-        if (x.isEmpty() || !pattern.matcher(x).matches() ) {
+        if (x.isEmpty() || !pattern.matcher(x).matches()) {
             inputLayout.setError(value);
             inputLayout.requestFocus();
             ret = false;
@@ -30,7 +30,7 @@ public class StringUtils {
         return ret;
     }
 
-    public static boolean empty(TextInputLayout inputLayout, String value)  {
+    public static boolean empty(TextInputLayout inputLayout, String value) {
         String x = inputLayout.getEditText().getText().toString().trim();
         boolean ret;
 

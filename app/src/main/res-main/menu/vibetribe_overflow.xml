@@ -9,10 +9,6 @@
         android:visible="false"
         android:title="Search" />
 
-    <!--<item-->
-        <!--android:id="@+id/home"-->
-        <!--android:orderInCategory="2"-->
-        <!--android:title="Home" />-->
 
     <item
         android:id="@+id/search"

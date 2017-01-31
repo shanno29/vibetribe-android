@@ -13,17 +13,15 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import matthew.shannon.jamfam.model.data.User;
-import matthew.shannon.jamfam.model.local.bus.BusModel;
-import matthew.shannon.jamfam.model.local.bus.BusService;
-import matthew.shannon.jamfam.model.local.cache.CacheHelper;
-import matthew.shannon.jamfam.model.local.cache.CacheModel;
-import matthew.shannon.jamfam.model.local.cache.CacheService;
-import matthew.shannon.jamfam.model.local.flow.FlowModel;
-import matthew.shannon.jamfam.model.local.flow.FlowService;
-import matthew.shannon.jamfam.model.remote.location.LocationManager;
-import matthew.shannon.jamfam.model.remote.location.LocationService;
-import matthew.shannon.jamfam.model.remote.network.NetworkModel;
-import matthew.shannon.jamfam.model.remote.network.NetworkService;
+import matthew.shannon.jamfam.service.cache.CacheHelper;
+import matthew.shannon.jamfam.service.cache.CacheModel;
+import matthew.shannon.jamfam.service.cache.CacheService;
+import matthew.shannon.jamfam.service.flow.FlowModel;
+import matthew.shannon.jamfam.service.flow.FlowService;
+import matthew.shannon.jamfam.service.location.LocationManager;
+import matthew.shannon.jamfam.service.location.LocationService;
+import matthew.shannon.jamfam.service.network.NetworkModel;
+import matthew.shannon.jamfam.service.network.NetworkService;
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 import retrofit2.Retrofit;
 
@@ -44,14 +42,8 @@ public class AppModule {
 
     @Provides
     @Singleton
-    FlowService flowService(ActivityManager manager){
-        return new FlowModel(app, manager);
-    }
-
-    @Provides
-    @Singleton
-    BusService busService(Bus bus){
-        return new BusModel(bus);
+    FlowService flowService(ActivityManager manager, Bus bus) {
+        return new FlowModel(app, manager, bus);
     }
 
     @Provides

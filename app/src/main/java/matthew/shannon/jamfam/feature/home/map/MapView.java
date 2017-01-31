@@ -17,24 +17,25 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.R;
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.FragmentMapBinding;
-import matthew.shannon.jamfam.model.base.BaseFragment;
+import matthew.shannon.jamfam.base.BaseFragment;
 import matthew.shannon.jamfam.model.data.Track;
 
-public class MapView extends BaseFragment implements OnMapReadyCallback, MapContract.View{
+public class MapView extends BaseFragment implements OnMapReadyCallback, MapContract.View {
+    @Inject
+    MapContract.Presenter presenter;
     private FragmentMapBinding binding;
-    @Inject MapContract.Presenter presenter;
     private GoogleMap googleMap;
 
-    public MapView() {}
+    public MapView() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         super.onCreateView(inflater, container, bundle);
-        ((App)getActivity().getApplicationContext()).getAppComponent().plus(new MapModule(this)).inject(this);
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_map,  container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_map, container, false);
         return binding.getRoot();
     }
 
@@ -58,6 +59,12 @@ public class MapView extends BaseFragment implements OnMapReadyCallback, MapCont
     }
 
     @Override
+    protected void setupFragmentComponent() {
+        ((App) getActivity().getApplicationContext()).getAppComponent().plus(new MapModule(this)).inject(this);
+
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         binding.mapView.onDestroy();
@@ -68,7 +75,8 @@ public class MapView extends BaseFragment implements OnMapReadyCallback, MapCont
 
     @Subscribe
     public void trackUpdate(Track track) {
-        if (googleMap != null) googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(track.getLatitude(), track.getLongitude()), 14));
+        if (googleMap != null)
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(track.getLatitude(), track.getLongitude()), 14));
     }
 
     @Override

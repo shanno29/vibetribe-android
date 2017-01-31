@@ -10,5 +10,4 @@ public interface ProfileComponent {
     ProfileView inject(ProfileView activity);
 
 
-
 }

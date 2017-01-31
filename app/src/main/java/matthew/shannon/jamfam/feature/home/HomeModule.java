@@ -13,9 +13,8 @@ import dagger.Provides;
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.feature.home.map.MapView;
 import matthew.shannon.jamfam.feature.home.track.TrackView;
-import matthew.shannon.jamfam.model.local.cache.CacheService;
-import matthew.shannon.jamfam.model.local.flow.FlowService;
-import matthew.shannon.jamfam.model.remote.network.NetworkService;
+import matthew.shannon.jamfam.service.cache.CacheService;
+import matthew.shannon.jamfam.service.flow.FlowService;
 
 @Module
 public class HomeModule {
@@ -28,18 +27,16 @@ public class HomeModule {
 
     @Provides
     @HomeScope
-    HomeContract.View homeView(){
+    HomeContract.View homeView() {
         return this.activity;
     }
 
     @Provides
     @HomeScope
-    HomeContract.Presenter homePresenter(NetworkService network, CacheService cache, FlowService flow) {
-        return new HomePresenter(activity, network, cache, flow);
+    HomeContract.Presenter homePresenter(CacheService cache, FlowService flow) {
+        return new HomePresenter(activity, cache, flow);
 
     }
-
-
 
     @Provides
     @HomeScope
@@ -58,25 +55,25 @@ public class HomeModule {
 
     @Provides
     @HomeScope
-    Animation viewPagerAnimation(){
+    Animation viewPagerAnimation() {
         return AnimationUtils.loadAnimation(activity, R.anim.slide_up);
     }
 
     @Provides
     @HomeScope
-    FragmentManager fragmentManager(){
+    FragmentManager fragmentManager() {
         return activity.getSupportFragmentManager();
     }
 
     @Provides
     @HomeScope
-    TrackView trackView(){
+    TrackView trackView() {
         return new TrackView();
     }
 
     @Provides
     @HomeScope
-    MapView mapView(){
+    MapView mapView() {
         return new MapView();
     }
 }

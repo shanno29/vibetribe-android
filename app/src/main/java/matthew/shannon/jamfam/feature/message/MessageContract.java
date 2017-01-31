@@ -4,6 +4,7 @@ public interface MessageContract {
     public interface View {
 
     }
+
     public interface Presenter {
 
 

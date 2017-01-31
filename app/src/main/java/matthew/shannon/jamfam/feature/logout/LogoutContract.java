@@ -4,6 +4,7 @@ public interface LogoutContract {
     public interface View {
 
     }
+
     public interface Presenter {
 
         void logoutUser();

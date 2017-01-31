@@ -10,5 +10,4 @@ public interface MapComponent {
     MapView inject(MapView activity);
 
 
-
 }

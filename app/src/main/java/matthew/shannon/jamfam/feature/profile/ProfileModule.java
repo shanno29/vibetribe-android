@@ -23,14 +23,13 @@ import dagger.Provides;
 import dagger.multibindings.IntKey;
 import dagger.multibindings.IntoMap;
 import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.adapter.fragment.FragmentAdapter;
+import matthew.shannon.jamfam.feature.adapter.fragment.FragmentAdapter;
 import matthew.shannon.jamfam.feature.profile.info.InfoView;
-import matthew.shannon.jamfam.list.ListView;
+import matthew.shannon.jamfam.feature.list.ListView;
 import matthew.shannon.jamfam.model.data.FragType;
 import matthew.shannon.jamfam.model.data.User;
-import matthew.shannon.jamfam.model.local.bus.BusService;
-import matthew.shannon.jamfam.model.local.cache.CacheService;
-import matthew.shannon.jamfam.model.remote.network.NetworkService;
+import matthew.shannon.jamfam.service.cache.CacheService;
+import matthew.shannon.jamfam.service.flow.FlowService;
 import rx.Observable;
 
 @Module
@@ -70,19 +69,19 @@ public class ProfileModule {
 
     @Provides
     @ProfileScope
-    Animation viewPagerAnimation(){
+    Animation viewPagerAnimation() {
         return AnimationUtils.loadAnimation(activity, R.anim.slide_up);
     }
 
     @Provides
     @ProfileScope
-    FragmentManager fragmentManager(){
+    FragmentManager fragmentManager() {
         return activity.getSupportFragmentManager();
     }
 
     @Provides
     @ProfileScope
-    FragmentAdapter fragmentAdapter(FragmentManager manager, Map<Integer, Fragment> map){
+    FragmentAdapter fragmentAdapter(FragmentManager manager, Map<Integer, Fragment> map) {
         FragmentAdapter adapter = new FragmentAdapter(manager);
         adapter.addFragment(map.get(FragType.USER_INFO), "About");
         adapter.addFragment(map.get(FragType.USER_TRACKS), "Tracks");
@@ -150,39 +149,39 @@ public class ProfileModule {
 
     @Provides
     @ProfileScope
-    ContentResolver contentResolver(){
+    ContentResolver contentResolver() {
         return activity.getContentResolver();
     }
 
     @Provides
     @ProfileScope
     @Named("pictureObservable")
-    Observable<Response<ProfileView, String>> changeProfilePictureObservable(@Named("picture") Options options){
+    Observable<Response<ProfileView, String>> changeProfilePictureObservable(@Named("picture") Options options) {
         return RxPaparazzo.takeImage(activity).crop(options).usingGallery();
     }
 
     @Provides
     @ProfileScope
     @Named("bannerObservable")
-    Observable<Response<ProfileView, String>> changeProfileBannerObservable(@Named("banner") Options options){
+    Observable<Response<ProfileView, String>> changeProfileBannerObservable(@Named("banner") Options options) {
         return RxPaparazzo.takeImage(activity).crop(options).usingGallery();
     }
 
     @Provides
     @ProfileScope
-    User user(){
+    User user() {
         return new User();
     }
 
     @Provides
     @ProfileScope
-    ProfileContract.View profileView(){
+    ProfileContract.View profileView() {
         return this.activity;
     }
 
     @Provides
     @ProfileScope
-    ProfileContract.Presenter profilePresenter(@Named("pictureObservable") Observable<Response<ProfileView, String>> picture, @Named("bannerObservable") Observable<Response<ProfileView, String>> banner, ContentResolver resolver, NetworkService network, CacheService cache, BusService bus, User user, ProfileContract.View view) {
-        return new ProfilePresenter(picture, banner, resolver, network, view, cache, bus, user);
+    ProfileContract.Presenter profilePresenter(@Named("pictureObservable") Observable<Response<ProfileView, String>> picture, @Named("bannerObservable") Observable<Response<ProfileView, String>> banner, ContentResolver resolver, CacheService cache, FlowService flow, User user, ProfileContract.View view) {
+        return new ProfilePresenter(picture, banner, resolver, view, cache, flow, user);
     }
 }

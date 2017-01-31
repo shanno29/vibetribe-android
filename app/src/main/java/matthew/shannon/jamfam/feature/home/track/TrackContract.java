@@ -1,7 +1,7 @@
 package matthew.shannon.jamfam.feature.home.track;
 
 
-import matthew.shannon.jamfam.model.base.BaseView;
+import matthew.shannon.jamfam.base.BaseView;
 import matthew.shannon.jamfam.model.data.Track;
 
 public interface TrackContract {
@@ -9,6 +9,7 @@ public interface TrackContract {
     public interface View extends BaseView {
         void showIntroView();
     }
+
     public interface Presenter {
         void unsubscribe();
 

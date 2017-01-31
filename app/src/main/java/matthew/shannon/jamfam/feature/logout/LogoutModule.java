@@ -2,9 +2,8 @@ package matthew.shannon.jamfam.feature.logout;
 
 import dagger.Module;
 import dagger.Provides;
-import matthew.shannon.jamfam.model.local.cache.CacheService;
-import matthew.shannon.jamfam.model.local.flow.FlowService;
-import matthew.shannon.jamfam.model.remote.network.NetworkService;
+import matthew.shannon.jamfam.service.cache.CacheService;
+import matthew.shannon.jamfam.service.flow.FlowService;
 
 @Module
 public class LogoutModule {
@@ -23,8 +22,8 @@ public class LogoutModule {
 
     @Provides
     @LogoutScope
-    LogoutContract.Presenter logoutPresenter(LogoutContract.View view, NetworkService network, CacheService cache, FlowService flow) {
-        return new LogoutPresenter(view, network, cache, flow);
+    LogoutContract.Presenter logoutPresenter(LogoutContract.View view, CacheService cache, FlowService flow) {
+        return new LogoutPresenter(view, cache, flow);
 
     }
 

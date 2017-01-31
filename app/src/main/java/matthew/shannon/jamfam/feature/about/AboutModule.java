@@ -11,7 +11,7 @@ import com.mikepenz.aboutlibraries.ui.LibsSupportFragment;
 import dagger.Module;
 import dagger.Provides;
 import matthew.shannon.jamfam.R;
-import matthew.shannon.jamfam.adapter.fragment.FragmentAdapter;
+import matthew.shannon.jamfam.feature.adapter.fragment.FragmentAdapter;
 
 @Module
 public class AboutModule {
@@ -37,19 +37,19 @@ public class AboutModule {
 
     @Provides
     @AboutScope
-    Animation viewPagerAnimation(){
+    Animation viewPagerAnimation() {
         return AnimationUtils.loadAnimation(activity, R.anim.slide_up);
     }
 
     @Provides
     @AboutScope
-    FragmentManager fragmentManager(){
+    FragmentManager fragmentManager() {
         return activity.getSupportFragmentManager();
     }
 
     @Provides
     @AboutScope
-    FragmentAdapter fragmentAdapter(FragmentManager manager, LibsSupportFragment supportFragment){
+    FragmentAdapter fragmentAdapter(FragmentManager manager, LibsSupportFragment supportFragment) {
         FragmentAdapter adapter = new FragmentAdapter(manager);
         adapter.addFragment(supportFragment, "");
         return adapter;

@@ -1,12 +1,9 @@
 package matthew.shannon.jamfam.feature.profile.info;
 
-import javax.inject.Inject;
-
 import dagger.Module;
 import dagger.Provides;
 import matthew.shannon.jamfam.model.data.User;
-import matthew.shannon.jamfam.model.local.cache.CacheService;
-import matthew.shannon.jamfam.model.remote.network.NetworkService;
+import matthew.shannon.jamfam.service.cache.CacheService;
 
 @Module
 public class InfoModule {
@@ -19,20 +16,20 @@ public class InfoModule {
 
     @Provides
     @InfoScope
-    User user(){
+    User user() {
         return new User();
     }
 
     @Provides
     @InfoScope
-    InfoContract.View view(){
+    InfoContract.View view() {
         return this.fragment;
     }
 
     @Provides
     @InfoScope
-    InfoContract.Presenter presenter(NetworkService network, CacheService cache, User user) {
-        return new InfoPresenter(network, cache, fragment, user);
+    InfoContract.Presenter presenter(CacheService cache, User user) {
+        return new InfoPresenter(cache, fragment, user);
     }
 
 }

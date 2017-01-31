@@ -10,5 +10,4 @@ public interface LogoutComponent {
     LogoutView inject(LogoutView activity);
 
 
-
 }

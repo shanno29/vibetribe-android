@@ -4,6 +4,13 @@ public interface SplashContract {
 
     interface View {
 
+        void goToLogin();
+
+        void goToAccess();
+
+        void checkServiceStatus();
+
+        void goToWelcomeActivity();
     }
 
     interface Presenter {

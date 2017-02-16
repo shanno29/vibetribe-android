@@ -14,7 +14,7 @@ import matthew.shannon.jamfam.feature.home.track.TrackView;
 import matthew.shannon.jamfam.base.BaseToolbarActivity;
 
 public class HomeView extends BaseToolbarActivity implements HomeContract.View {
-    @Inject HomeContract.Presenter presenter;
+    @Inject public HomeContract.Presenter presenter;
     @Inject FragmentManager fragmentManager;
     @Inject TrackView trackView;
     @Inject MapView mapView;

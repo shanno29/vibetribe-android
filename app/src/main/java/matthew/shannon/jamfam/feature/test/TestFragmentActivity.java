@@ -1,13 +1,14 @@
-package matthew.shannon.jamfam.base;
+package matthew.shannon.jamfam.feature.test;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import matthew.shannon.jamfam.R;
+import matthew.shannon.jamfam.app.App;
+import matthew.shannon.jamfam.base.BaseActivity;
 
-public class TestFragmentActivity extends AppCompatActivity {
+public class TestFragmentActivity extends BaseActivity {
 
     public static final String FLAG_COMMIT_FRAGMENT = "commitFragment";
 
@@ -15,6 +16,11 @@ public class TestFragmentActivity extends AppCompatActivity {
         Intent intent = new Intent(context, TestFragmentActivity.class);
         intent.putExtra(FLAG_COMMIT_FRAGMENT, commitFragment);
         return intent;
+    }
+
+    @Override
+    protected void setupActivityComponent() {
+        ((App)getApplicationContext()).getAppComponent().plus(new TestFragmentActivityModule(this)).inject(this);
     }
 
     @Override

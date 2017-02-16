@@ -1,19 +1,16 @@
 package matthew.shannon.jamfam.feature.list;
 
+import android.app.ProgressDialog;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import com.github.florent37.materialviewpager.header.MaterialViewPagerHeaderDecorator;
 import com.hwangjr.rxbus.annotation.Subscribe;
-
 import java.util.List;
-
 import javax.inject.Inject;
-
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.feature.adapter.item.ItemAdapter;
 import matthew.shannon.jamfam.app.App;
@@ -26,8 +23,11 @@ import matthew.shannon.jamfam.model.Track;
 import matthew.shannon.jamfam.model.User;
 
 public class ListView extends BaseFragment implements ListContract.View {
+    @Inject MaterialViewPagerHeaderDecorator decorator;
     @Inject DividerItemDecoration dividerItem;
     @Inject ListContract.Presenter presenter;
+    @Inject LinearLayoutManager manager;
+    @Inject ProgressDialog dialog;
     @Inject ItemAdapter adapter;
     @Inject List<?> items;
 
@@ -47,7 +47,6 @@ public class ListView extends BaseFragment implements ListContract.View {
     @Override
     protected void setupFragmentComponent() {
         ((App) getActivity().getApplicationContext()).getAppComponent().plus(new ListModule(this)).inject(this);
-
     }
 
     @Override
@@ -61,8 +60,8 @@ public class ListView extends BaseFragment implements ListContract.View {
     public android.view.View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         super.onCreateView(inflater, container, bundle);
         binding = DataBindingUtil.inflate(inflater, R.layout.flow_layout, container, false);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.recyclerView.addItemDecoration(new MaterialViewPagerHeaderDecorator());
+        binding.recyclerView.setLayoutManager(manager);
+        binding.recyclerView.addItemDecoration(decorator);
         binding.recyclerView.setAdapter(adapter);
         return binding.getRoot();
     }
@@ -73,111 +72,71 @@ public class ListView extends BaseFragment implements ListContract.View {
         view.setOnCreateContextMenuListener(this);
     }
 
+
+
+    @Subscribe
+    public void onEvent(Event event) {
+        if (event.getObject() instanceof Track && getUserVisibleHint()) {
+            Track track = ((Track) event.getObject());
+            if(event.getType() == Action.ADD_TRACK) presenter.loadAddTrack(ID, track);
+            if(event.getType() == Action.DEL_TRACK) presenter.loadDelTrack(track.get_id());
+            if(event.getType() == Action.GO_TO_USER) presenter.goToUser(track.getOwner().get_id());
+            //if(event.getType() == Action.GO_TO_TRACK);
+        }
+        if (event.getObject() instanceof String && getUserVisibleHint() && event.getType() == Action.QUERY_CHANGED) {
+            onQuery(this.items, ((String) event.getObject()));
+        }
+        if (event.getObject() instanceof User && getUserVisibleHint()) {
+            User user = ((User) event.getObject());
+            if(event.getType() == Action.GO_TO_USER) presenter.goToUser(user.get_id());
+            if(event.getType() == Action.ADD_FRIEND) presenter.loadAddFriend(ID, user.get_id());
+            if(event.getType() == Action.DEL_FRIEND) presenter.loadDelFriend(ID, user.get_id());
+        }
+        if (event.getType() == Action.REFRESH && TYPE != FragType.SEARCH_TRACKS) onRefresh();
+    }
+
+    @Override
+    public void onQuery(List<?> items, String string){
+        if (TYPE == FragType.SEARCH_TRACKS) {
+            presenter.searchTracks(string, "", "10");
+        } else {
+            binding.recyclerView.scrollToPosition(0);
+            adapter.updateList(presenter.localQuery(items, string));
+        }
+    }
+
+    @Override
+    public void onContent(List<?> items) {
+        toggleSpinner(false);
+        if (items.size() > 0) {
+            this.items = items;
+            adapter.updateList(this.items);
+        }
+    }
+
+    @Override
+    public void onRefresh() {
+        toggleSpinner(true);
+        if(TYPE == FragType.FRIENDS_TRACKS) presenter.loadFriendsTracks(ID);
+        if(TYPE == FragType.USER_FRIENDS) presenter.loadUserFriends(ID);
+        if(TYPE == FragType.USER_MATCHES) presenter.loadUserMatches(ID);
+        if(TYPE == FragType.USER_TRACKS) presenter.loadUserTracks(ID);
+        if(TYPE == FragType.SETTINGS) presenter.loadSettings(ID);
+        if(TYPE == FragType.ALL_TRACKS) presenter.loadAllTracks();
+        if(TYPE == FragType.ALL_USERS) presenter.loadAllUsers();
+    }
+
+    @Override
+    public void toggleSpinner(boolean flag) {
+        if (flag) dialog.show();
+        else dialog.dismiss();
+    }
+
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         presenter.unsubscribe();
         binding.unbind();
     }
-
-    @Subscribe
-    public void onEvent(Event event) {
-        if (event.getObject() instanceof Track && getUserVisibleHint()) {
-            Track track = ((Track) event.getObject());
-            switch (event.getType()) {
-                case Action.ADD_TRACK:
-                    presenter.loadAddTrack(ID, track);
-                    break;
-                case Action.DEL_TRACK:
-                    presenter.loadDelTrack(track.get_id());
-                    break;
-                case Action.GO_TO_TRACK:
-                    break;
-                case Action.GO_TO_USER:
-                    presenter.goToUser(track.getOwner().get_id());
-                    break;
-            }
-        } else if (event.getObject() instanceof String && getUserVisibleHint()) {
-            String string = ((String) event.getObject());
-            switch (event.getType()) {
-                case Action.QUERY_CHANGED:
-                    onQuery(string);
-                    break;
-            }
-        } else if (event.getObject() instanceof User && getUserVisibleHint()) {
-            User user = ((User) event.getObject());
-            switch (event.getType()) {
-                case Action.GO_TO_USER:
-                    presenter.goToUser(user.get_id());
-                    break;
-                case Action.ADD_FRIEND:
-                    presenter.loadAddFriend(ID, user.get_id());
-                    break;
-                case Action.DEL_FRIEND:
-                    presenter.loadDelFriend(ID, user.get_id());
-                    break;
-
-            }
-        } else if (event.getType() == Action.REFRESH && TYPE != FragType.SEARCH_TRACKS) onRefresh();
-    }
-
-    @Override
-    public void onQuery(String query) {
-        if (TYPE == FragType.SEARCH_TRACKS) {
-            presenter.searchTracks(query, "", "10");
-        } else {
-            binding.recyclerView.scrollToPosition(0);
-            adapter.updateList(presenter.localQuery(items, query));
-        }
-    }
-
-    @Override
-    public void onSuccess(List<?> items) {
-        if (items.size() > 0) {
-            onContent(items);
-        } else {
-            onEmpty();
-        }
-    }
-
-    @Override
-    public void onContent(List<?> items) {
-        this.items = items;
-        adapter.updateList(this.items);
-        // TODO something to show content
-    }
-
-    @Override
-    public void onEmpty() {
-        // TODO something to show empty
-    }
-
-    @Override
-    public void onRefresh() {
-        // TODO Something to show loading
-        switch (TYPE) {
-            case FragType.FRIENDS_TRACKS:
-                presenter.loadFriendsTracks(ID);
-                break;
-            case FragType.USER_FRIENDS:
-                presenter.loadUserFriends(ID);
-                break;
-            case FragType.USER_MATCHES:
-                presenter.loadUserMatches(ID);
-                break;
-            case FragType.USER_TRACKS:
-                presenter.loadUserTracks(ID);
-                break;
-            case FragType.ALL_TRACKS:
-                presenter.loadAllTracks();
-                break;
-            case FragType.ALL_USERS:
-                presenter.loadAllUsers();
-                break;
-            case FragType.SETTINGS:
-                presenter.loadSettings(ID);
-                break;
-        }
-    }
-
 }

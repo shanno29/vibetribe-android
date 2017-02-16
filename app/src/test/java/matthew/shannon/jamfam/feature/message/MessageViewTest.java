@@ -10,7 +10,7 @@ import org.robolectric.annotation.Config;
 import matthew.shannon.jamfam.BuildConfig;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants=BuildConfig.class, sdk=21)
+@Config(constants=BuildConfig.class, sdk=23)
 public class MessageViewTest {
 
     private MessageView messageView;

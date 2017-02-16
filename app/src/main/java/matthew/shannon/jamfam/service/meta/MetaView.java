@@ -1,35 +1,33 @@
 package matthew.shannon.jamfam.service.meta;
 
-import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaMetadataRetriever;
 import android.media.RemoteController;
 import android.service.notification.StatusBarNotification;
 import android.view.KeyEvent;
-
 import com.google.common.eventbus.Subscribe;
-
 import javax.inject.Inject;
-
+import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.base.BaseService;
 import matthew.shannon.jamfam.model.Action;
 import matthew.shannon.jamfam.model.Event;
 
 public class MetaView extends BaseService implements MetaService {
-    @Inject
-    MetaContract.Presenter presenter;
-    @Inject
-    AudioManager audioManager;
-    @Inject
-    RemoteController remote;
+    @Inject public MetaContract.Presenter presenter;
+    @Inject AudioManager audioManager;
+    @Inject RemoteController remote;
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        super.onStartCommand(intent, flags, startId);
+    public void onCreate() {
+        super.onCreate();
         audioManager.registerRemoteController(remote);
         presenter.getLastLocation();
         presenter.getLocationUpdate();
-        return startId;
+    }
+
+    @Override
+    protected void setupServiceComponent() {
+        ((App)getApplicationContext()).getAppComponent().plus(new MetaModule(this)).inject(this);
     }
 
     @Override

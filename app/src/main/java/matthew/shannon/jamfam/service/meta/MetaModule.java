@@ -30,12 +30,6 @@ public class MetaModule {
 
     @Provides
     @MetaScope
-    AudioManager provideAudioManager(Application application) {
-        return (AudioManager) application.getSystemService(Context.AUDIO_SERVICE);
-    }
-
-    @Provides
-    @MetaScope
     RemoteController remoteController() {
         return new RemoteController(service.getApplicationContext(), service);
     }

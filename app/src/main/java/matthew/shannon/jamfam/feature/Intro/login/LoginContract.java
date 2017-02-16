@@ -9,14 +9,18 @@ public interface LoginContract {
         void updateUI(User user, boolean checked);
 
         void toggleSpinner(boolean flag);
+
+        void goToHomeActivity();
+
+        void goToStore();
+
+        void goToSignup();
     }
 
     interface Presenter {
         void login(User user);
 
         void getInitialCheckbox();
-
-        void goToSignup();
 
         void setCheckBox(boolean b);
 

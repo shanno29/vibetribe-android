@@ -18,7 +18,7 @@ public class InfoPresenter extends BasePresenter implements InfoContract.Present
     @Override
     public void loadGetUser(String ID) {
 //        add(network.getUser(App.token, ID)
-//                .compose(RxUtils.applySchedulers())
+//                .compose(Utils.applySchedulers())
 //                .subscribe(
 //                        res -> {
 //                            if (Objects.equals(ID, App.userID)) {
@@ -35,7 +35,7 @@ public class InfoPresenter extends BasePresenter implements InfoContract.Present
     @Override
     public void updateUser(User updatedUser) {
 //        add(network.putUser(App.token, updatedUser.get_id(), updatedUser)
-//                .compose(RxUtils.applySchedulers())
+//                .compose(Utils.applySchedulers())
 //                .subscribe(
 //                        user -> {
 //                            cache.setOwner(user);

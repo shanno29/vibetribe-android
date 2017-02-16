@@ -6,7 +6,9 @@ import matthew.shannon.jamfam.model.User;
 
 public interface FlowService {
 
-    boolean checkServiceStatus();
+    boolean serviceStatus();
+
+    void startService();
 
     void goToSplashActivity();
 

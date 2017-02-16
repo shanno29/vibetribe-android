@@ -3,10 +3,9 @@ package matthew.shannon.jamfam.feature.home;
 
 public interface HomeContract {
 
-    public interface View  {
-    }
+    interface View  {}
 
-    public interface Presenter {
+    interface Presenter {
         void unsubscribe();
     }
 

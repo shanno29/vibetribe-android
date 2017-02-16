@@ -8,14 +8,14 @@ public interface SignupContract {
     interface View extends BaseView {
 
         void toggleSpinner(boolean flag);
+
+        void goToAccess();
     }
 
     interface Presenter {
 
         void signup(User user);
-
-        void goToAccess();
-
+        
         void unsubscribe();
     }
 

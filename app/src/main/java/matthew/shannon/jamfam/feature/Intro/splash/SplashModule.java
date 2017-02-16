@@ -17,14 +17,14 @@ public class SplashModule {
 
     @Provides
     @SplashScope
-    SplashContract.View splashview() {
+    SplashContract.View view() {
         return this.activity;
     }
 
     @Provides
     @SplashScope
-    SplashContract.Presenter splashPresenterInterface(CacheService cache, FlowService flow) {
-        return new SplashPresenter(cache, flow);
+    SplashContract.Presenter presenter(SplashContract.View view, CacheService cache) {
+        return new SplashPresenter(view, cache);
 
     }
 

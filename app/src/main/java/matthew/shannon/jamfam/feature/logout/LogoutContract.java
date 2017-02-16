@@ -1,11 +1,16 @@
 package matthew.shannon.jamfam.feature.logout;
 
-public interface LogoutContract {
-    public interface View {
+import matthew.shannon.jamfam.base.BaseView;
 
+public interface LogoutContract extends BaseView {
+    interface View extends BaseView {
+
+        void exitApp();
+
+        void showToast(String s);
     }
 
-    public interface Presenter {
+     interface Presenter {
 
         void logoutUser();
 

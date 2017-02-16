@@ -4,11 +4,11 @@ import matthew.shannon.jamfam.base.BaseView;
 
 public interface AccessContract {
 
-    public interface View extends BaseView {
+    interface View extends BaseView {
+        void checkAccess();
     }
 
-    public interface Presenter {
-        void checkAccess();
+    interface Presenter {
 
         void unsubscribe();
     }

@@ -10,13 +10,14 @@ import matthew.shannon.jamfam.BuildConfig;
 
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants=BuildConfig.class, sdk=21)
+@Config(constants=BuildConfig.class, sdk=23)
 public class HomeViewTest {
     private HomeView home;
 
     @Before
     public void setUp() {
         home = Robolectric.setupActivity(HomeView.class);
+        home.presenter = () -> {};
     }
 
     @Test

@@ -1,10 +1,10 @@
 package matthew.shannon.jamfam.feature.home.track;
 
+import matthew.shannon.jamfam.app.Utils;
 import matthew.shannon.jamfam.base.BasePresenter;
 import matthew.shannon.jamfam.model.Track;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
-import matthew.shannon.jamfam.util.RxUtils;
 
 public class TrackPresenter extends BasePresenter implements TrackContract.Presenter {
     private final CacheService cache;
@@ -20,7 +20,7 @@ public class TrackPresenter extends BasePresenter implements TrackContract.Prese
     @Override
     public void checkForSecondRun() {
         add(cache.getHomeSecondRun()
-                .compose(RxUtils.applySchedulers())
+                .compose(Utils.applySchedulers())
                 .subscribe(
                         flag -> {
                             if (!flag) cache.setSecondRun();
@@ -34,7 +34,7 @@ public class TrackPresenter extends BasePresenter implements TrackContract.Prese
     @Override
     public void postTrack(Track track) {
 //        add(network.postTrack(App.token, App.userID, track)
-//                .compose(RxUtils.applySchedulers())
+//                .compose(Utils.applySchedulers())
 //                .subscribe(
 //                        tracks -> view.showToast("Track Posted Successfully"),
 //                        error -> view.showToast("Error Posting Track " + error.getMessage())

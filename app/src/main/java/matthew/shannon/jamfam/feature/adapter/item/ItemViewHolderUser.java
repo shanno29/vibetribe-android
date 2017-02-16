@@ -2,7 +2,6 @@ package matthew.shannon.jamfam.feature.adapter.item;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.PopupMenu;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -24,7 +23,6 @@ public class ItemViewHolderUser extends ItemViewHolder {
     public void bind(Object value, FlowService flow) {
         UserCardLayoutBinding binding = DataBindingUtil.bind(itemView);
         User user = ((User) value);
-        Log.d("VIBETRIBE", "bind: " + user.getAvatar());
         binding.setUser(user);
 
         binding.root.setOnClickListener(view -> flow.goToUser(user));

@@ -11,10 +11,12 @@ import javax.inject.Inject;
 
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.app.App;
+import matthew.shannon.jamfam.service.flow.FlowService;
 
 public class SplashView extends AwesomeSplash implements SplashContract.View {
 
     @Inject SplashContract.Presenter presenter;
+    @Inject FlowService flow;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -55,5 +57,25 @@ public class SplashView extends AwesomeSplash implements SplashContract.View {
         presenter.unsubscribe();
     }
 
+    @Override
+    public void goToLogin() {
+        flow.goToLoginActivity();
+    }
+
+    @Override
+    public void goToAccess(){
+        flow.goToAccessActivity();
+    }
+
+    @Override
+    public void checkServiceStatus() {
+        if (!flow.serviceStatus()) goToAccess();
+        else goToLogin();
+    }
+
+    @Override
+    public void goToWelcomeActivity() {
+        flow.goToWelcomeActivity();
+    }
 }
 

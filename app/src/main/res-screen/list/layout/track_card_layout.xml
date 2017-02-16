@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/tools">
 
     <data>
-        <variable name="track" type="matthew.shannon.jamfam.model.data.Track"/>
+        <variable name="track" type="matthew.shannon.jamfam.model.Track"/>
     </data>
 
 <android.support.v7.widget.CardView

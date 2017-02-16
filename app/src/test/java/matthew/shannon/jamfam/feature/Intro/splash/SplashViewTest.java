@@ -9,7 +9,7 @@ import org.robolectric.annotation.Config;
 import matthew.shannon.jamfam.BuildConfig;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants=BuildConfig.class, sdk=21)
+@Config(constants=BuildConfig.class, sdk=23)
 public class SplashViewTest {
 
     private SplashView splashView;
@@ -22,6 +22,18 @@ public class SplashViewTest {
     @Test
     public void splashViewTest() {
         splashView.animationsFinished();
+
+        splashView.goToLogin();
+        splashView.onBackPressed();
+
+        splashView.goToAccess();
+        splashView.onBackPressed();
+
+        splashView.goToWelcomeActivity();
+        splashView.onBackPressed();
+
+        splashView.checkServiceStatus();
+
         splashView.onDestroy();
     }
 

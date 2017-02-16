@@ -5,14 +5,12 @@ import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
 
 public class HomePresenter extends BasePresenter implements HomeContract.Presenter {
-    private final HomeView view;
+    private final HomeContract.View view;
     private final CacheService cache;
-    private final FlowService flow;
 
-    public HomePresenter(HomeView view, CacheService cache, FlowService flow) {
+    public HomePresenter(HomeContract.View view, CacheService cache) {
         this.view = view;
         this.cache = cache;
-        this.flow = flow;
     }
 
 }

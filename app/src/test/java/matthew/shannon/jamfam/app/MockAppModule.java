@@ -2,6 +2,9 @@ package matthew.shannon.jamfam.app;
 
 import android.app.ActivityManager;
 import android.app.Application;
+import android.content.Context;
+import android.media.AudioManager;
+
 import com.f2prateek.rx.preferences.RxSharedPreferences;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationSettingsRequest;
@@ -31,6 +34,13 @@ public class MockAppModule {
     @Singleton
     Application application() {
         return app;
+    }
+
+    @Provides
+    @Singleton
+    AudioManager provideAudioManager(Application app) {
+       AudioManager manager = Mockito.mock(AudioManager.class);
+        return manager;
     }
 
     @Provides

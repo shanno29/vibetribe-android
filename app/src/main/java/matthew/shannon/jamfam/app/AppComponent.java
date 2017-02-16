@@ -19,6 +19,9 @@ import matthew.shannon.jamfam.feature.logout.LogoutComponent;
 import matthew.shannon.jamfam.feature.logout.LogoutModule;
 import matthew.shannon.jamfam.feature.message.MessageComponent;
 import matthew.shannon.jamfam.feature.message.MessageModule;
+import matthew.shannon.jamfam.feature.test.TestFragmentActivity;
+import matthew.shannon.jamfam.feature.test.TestFragmentActivityComponent;
+import matthew.shannon.jamfam.feature.test.TestFragmentActivityModule;
 import matthew.shannon.jamfam.service.meta.MetaComponent;
 import matthew.shannon.jamfam.service.meta.MetaModule;
 import matthew.shannon.jamfam.feature.profile.ProfileComponent;
@@ -76,6 +79,9 @@ public interface AppComponent {
     SplashComponent plus(SplashModule module);
 
     WelcomeComponent plus(WelcomeModule module);
+
+    TestFragmentActivityComponent plus(TestFragmentActivityModule module);
+
 
     // Fragment
     MapComponent plus(MapModule module);

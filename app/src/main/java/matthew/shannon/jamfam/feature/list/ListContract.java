@@ -6,19 +6,18 @@ import matthew.shannon.jamfam.base.BaseView;
 import matthew.shannon.jamfam.model.Track;
 
 public interface ListContract {
-    public interface View extends BaseView {
-        void onQuery(String query);
+    interface View extends BaseView {
 
-        void onSuccess(List<?> items);
+        void onQuery(List<?> items, String string);
 
         void onContent(List<?> items);
 
-        void onEmpty();
-
         void onRefresh();
+
+        void toggleSpinner(boolean flag);
     }
 
-    public interface Presenter {
+    interface Presenter {
         void unsubscribe();
 
         void loadSettings(String Id);
@@ -47,7 +46,7 @@ public interface ListContract {
 
         List<?> localQuery(List<?> items, String query);
 
-        abstract void goToUser(String id);
+        void goToUser(String id);
     }
 
 }

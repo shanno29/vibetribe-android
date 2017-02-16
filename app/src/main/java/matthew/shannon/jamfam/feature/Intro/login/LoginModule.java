@@ -1,15 +1,12 @@
 package matthew.shannon.jamfam.feature.Intro.login;
 
-
 import android.app.ProgressDialog;
-
 import com.romainpiel.shimmer.Shimmer;
-
 import dagger.Module;
 import dagger.Provides;
 import matthew.shannon.jamfam.model.User;
 import matthew.shannon.jamfam.service.cache.CacheService;
-import matthew.shannon.jamfam.service.flow.FlowService;
+import matthew.shannon.jamfam.service.network.NetworkService;
 
 @Module
 public class LoginModule {
@@ -28,9 +25,8 @@ public class LoginModule {
 
     @Provides
     @LoginScope
-    LoginContract.Presenter presenter(LoginContract.View view, CacheService cache, FlowService flow) {
-        return new LoginPresenter(view, cache, flow);
-
+    LoginContract.Presenter presenter(LoginContract.View view, CacheService cache, NetworkService network) {
+        return new LoginPresenter(view, cache, network);
     }
 
     @Provides

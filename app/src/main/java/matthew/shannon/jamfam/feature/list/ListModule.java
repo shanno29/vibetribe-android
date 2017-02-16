@@ -1,10 +1,13 @@
 package matthew.shannon.jamfam.feature.list;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+
+import com.github.florent37.materialviewpager.header.MaterialViewPagerHeaderDecorator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +41,20 @@ public class ListModule {
     LayoutInflater layoutInflater() {
         return fragment.getLayoutInflater(new Bundle());
     }
+
+
+    @Provides
+    @ListScope
+    ProgressDialog dialog() {
+        return new ProgressDialog(fragment.getContext());
+    }
+
+    @Provides
+    @ListScope
+    MaterialViewPagerHeaderDecorator decorator(){
+        return new MaterialViewPagerHeaderDecorator();
+    }
+
 
     @Provides
     @ListScope

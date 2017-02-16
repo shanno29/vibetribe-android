@@ -97,7 +97,7 @@
         <activity android:name="com.yalantis.ucrop.UCropActivity" />
 
         <activity
-            android:name=".base.TestFragmentActivity"
+            android:name=".util.TestFragmentActivity"
             android:exported="false" />
 
          <service

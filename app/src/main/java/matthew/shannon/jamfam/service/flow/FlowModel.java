@@ -39,7 +39,7 @@ public class FlowModel implements FlowService {
     }
 
     @Override
-    public boolean checkServiceStatus() {
+    public boolean serviceStatus() {
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
             if (MetaView.class.getName().equals(service.service.getClassName())) {
                 return true;
@@ -47,6 +47,13 @@ public class FlowModel implements FlowService {
         }
         return false;
     }
+
+    @Override
+    public void startService(){
+        Intent intent = new Intent(application, MetaView.class);
+        application.startService(intent);
+    }
+
 
     @Override
     public void goToSplashActivity() {

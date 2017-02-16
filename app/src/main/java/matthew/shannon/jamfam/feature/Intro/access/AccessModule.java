@@ -29,7 +29,7 @@ public class AccessModule {
 
     @Provides
     @AccessScope
-    AccessContract.Presenter accessPresenter(AccessContract.View view, FlowService flow, RxActivityResult.Builder<AccessView> settings) {
-        return new AccessPresenter(view, flow, settings);
+    AccessContract.Presenter accessPresenter(AccessContract.View view) {
+        return new AccessPresenter(view);
     }
 }

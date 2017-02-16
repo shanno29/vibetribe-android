@@ -2,6 +2,8 @@ package matthew.shannon.jamfam.app;
 
 import android.app.ActivityManager;
 import android.app.Application;
+import android.content.Context;
+import android.media.AudioManager;
 
 import com.f2prateek.rx.preferences.RxSharedPreferences;
 import com.google.android.gms.location.LocationRequest;
@@ -18,7 +20,7 @@ import matthew.shannon.jamfam.service.cache.CacheModel;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowModel;
 import matthew.shannon.jamfam.service.flow.FlowService;
-import matthew.shannon.jamfam.service.location.LocationManager;
+import matthew.shannon.jamfam.service.location.LocationModel;
 import matthew.shannon.jamfam.service.location.LocationService;
 import matthew.shannon.jamfam.service.network.NetworkModel;
 import matthew.shannon.jamfam.service.network.NetworkService;
@@ -42,7 +44,13 @@ public class AppModule {
 
     @Provides
     @Singleton
-    FlowService flowService(ActivityManager manager, Bus bus) {
+    AudioManager provideAudioManager(Application app) {
+        return (AudioManager) app.getSystemService(Context.AUDIO_SERVICE);
+    }
+
+    @Provides
+    @Singleton
+    FlowService flowService(Application app, ActivityManager manager, Bus bus) {
         return new FlowModel(app, manager, bus);
     }
 
@@ -63,7 +71,7 @@ public class AppModule {
     @Provides
     @Singleton
     LocationService locationService(ReactiveLocationProvider locationProvider, LocationSettingsRequest settingsRequest, LocationRequest locationRequest) {
-        return new LocationManager(locationProvider, settingsRequest, locationRequest);
+        return new LocationModel(locationProvider, settingsRequest, locationRequest);
 
     }
 

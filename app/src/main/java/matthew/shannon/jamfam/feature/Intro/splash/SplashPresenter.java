@@ -1,35 +1,31 @@
 package matthew.shannon.jamfam.feature.Intro.splash;
 
+import matthew.shannon.jamfam.app.Utils;
 import matthew.shannon.jamfam.base.BasePresenter;
 import matthew.shannon.jamfam.service.cache.CacheService;
-import matthew.shannon.jamfam.service.flow.FlowService;
-import matthew.shannon.jamfam.util.RxUtils;
 
 public class SplashPresenter extends BasePresenter implements SplashContract.Presenter {
-    public FlowService flow;
-    private CacheService cache;
+    private final CacheService cache;
+    private final SplashContract.View view;
 
-    public SplashPresenter(CacheService cache, FlowService flow) {
+    public SplashPresenter(SplashContract.View view, CacheService cache) {
         this.cache = cache;
-        this.flow = flow;
+        this.view = view;
     }
 
     @Override
     public void getIntroSecondRun() {
         add(cache.getSkipIntro()
-            .compose(RxUtils.applySchedulers())
+            .compose(Utils.applySchedulers())
             .subscribe(
                 flag -> {
-                    if (flag) {
-                        if (!flow.checkServiceStatus()) flow.goToAccessActivity();
-                        else flow.goToLoginActivity();
-                    } else {
+                    if (flag) view.checkServiceStatus();
+                    else {
                         cache.setSkipIntro(true);
-                        flow.goToWelcomeActivity();
+                        view.goToWelcomeActivity();
                     }
                 }
             ));
     }
-
 
 }

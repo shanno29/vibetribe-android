@@ -6,11 +6,13 @@ import android.widget.Toast;
 import com.hwangjr.rxbus.Bus;
 import javax.inject.Inject;
 
+import matthew.shannon.jamfam.service.flow.FlowService;
+
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
     protected abstract void setupActivityComponent();
-    @Inject
-    public Bus bus;
+    @Inject public Bus bus;
+    @Inject public FlowService flow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

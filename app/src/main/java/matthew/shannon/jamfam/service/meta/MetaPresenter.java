@@ -1,13 +1,13 @@
 package matthew.shannon.jamfam.service.meta;
 
 import matthew.shannon.jamfam.app.App;
+import matthew.shannon.jamfam.app.Utils;
 import matthew.shannon.jamfam.base.BasePresenter;
 import matthew.shannon.jamfam.model.Track;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
 import matthew.shannon.jamfam.service.location.LocationService;
 import matthew.shannon.jamfam.service.network.NetworkService;
-import matthew.shannon.jamfam.util.RxUtils;
 
 public class MetaPresenter extends BasePresenter implements MetaContract.Presenter {
     private final LocationService location;
@@ -29,7 +29,7 @@ public class MetaPresenter extends BasePresenter implements MetaContract.Present
     @Override
     public void getLastLocation() {
         add(location.getLastLocation()
-                .compose(RxUtils.applySchedulers())
+                .compose(Utils.applySchedulers())
                 .subscribe(
                         location -> {
                             track.setLatitude(location.getLatitude());
@@ -44,7 +44,7 @@ public class MetaPresenter extends BasePresenter implements MetaContract.Present
     @Override
     public void getLocationUpdate() {
         add(location.getUpdatedLocation()
-                .compose(RxUtils.applySchedulers())
+                .compose(Utils.applySchedulers())
                 .subscribe(
                         location -> {
                             track.setLatitude(location.getLatitude());
@@ -59,7 +59,7 @@ public class MetaPresenter extends BasePresenter implements MetaContract.Present
     @Override
     public void lookUpTrack() {
         add(network.searchOnline(App.token, track.getTitle(), track.getArtist(), "1")
-                .compose(RxUtils.applySchedulers())
+                .compose(Utils.applySchedulers())
                 .subscribe(
                         tracks -> {
                             track = tracks.get(0);

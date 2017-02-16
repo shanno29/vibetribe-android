@@ -4,20 +4,18 @@ import android.app.ProgressDialog;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
-
+import android.text.TextWatcher;
 import javax.inject.Inject;
-
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.app.App;
+import matthew.shannon.jamfam.app.Utils;
 import matthew.shannon.jamfam.databinding.SignupViewBinding;
 import matthew.shannon.jamfam.base.BaseActivity;
-import matthew.shannon.jamfam.util.SimpleTextWatcher;
-import matthew.shannon.jamfam.util.StringUtils;
 
 public class SignupView extends BaseActivity implements SignupContract.View {
 
     @Inject ProgressDialog dialog;
-    @Inject SignupContract.Presenter presenter;
+    @Inject public SignupContract.Presenter presenter;
     private SignupViewBinding binding;
 
     @Override
@@ -35,25 +33,25 @@ public class SignupView extends BaseActivity implements SignupContract.View {
     @Override
     public void onResume() {
         super.onResume();
-        binding.buttonLeft.setOnClickListener(view -> presenter.goToAccess());
-        binding.buttonRight.setOnClickListener(view -> {
+        binding.buttonLeft.setOnClickListener(v -> goToAccess());
+        binding.buttonRight.setOnClickListener(v -> {
             int errors = 0;
-            errors += !StringUtils.empty(binding.etEmailLayout, "Email Is Blank") ? 1 : 0;
-            errors += !StringUtils.empty(binding.etUsernameLayout, "Username Is Blank") ? 1 : 0;
-            errors += !StringUtils.empty(binding.etFullNameLayout, "Full Name Is Blank") ? 1 : 0;
-            errors += !StringUtils.empty(binding.etCityLayout, "City Is Blank") ? 1 : 0;
-            errors += !StringUtils.empty(binding.etStateLayout, "State Is Blank") ? 1 : 0;
-            errors += !StringUtils.empty(binding.etAgeLayout, "Age Is Blank") ? 1 : 0;
-            errors += !StringUtils.empty(binding.etGenderLayout, "Gender Is Blank") ? 1 : 0;
-            errors += !StringUtils.empty(binding.etPassOneLayout, "Password Is Blank") ? 1 : 0;
-            errors += !StringUtils.empty(binding.etPassTwoLayout, "Password Is Blank") ? 1 : 0;
-            errors += !StringUtils.email(binding.etEmailLayout, "Email Is Invalid") ? 1 : 0;
-            errors += !StringUtils.passwords(binding.etPassOneLayout, binding.etPassTwoLayout, "Passwords Do Not Match") ? 1 : 0;
+            errors += !Utils.empty(binding.etEmailLayout, "Email Is Blank") ? 1 : 0;
+            errors += !Utils.empty(binding.etUsernameLayout, "Username Is Blank") ? 1 : 0;
+            errors += !Utils.empty(binding.etFullNameLayout, "Full Name Is Blank") ? 1 : 0;
+            errors += !Utils.empty(binding.etCityLayout, "City Is Blank") ? 1 : 0;
+            errors += !Utils.empty(binding.etStateLayout, "State Is Blank") ? 1 : 0;
+            errors += !Utils.empty(binding.etAgeLayout, "Age Is Blank") ? 1 : 0;
+            errors += !Utils.empty(binding.etGenderLayout, "Gender Is Blank") ? 1 : 0;
+            errors += !Utils.empty(binding.etPassOneLayout, "Password Is Blank") ? 1 : 0;
+            errors += !Utils.empty(binding.etPassTwoLayout, "Password Is Blank") ? 1 : 0;
+            errors += !Utils.email(binding.etEmailLayout, "Email Is Invalid") ? 1 : 0;
+            errors += !Utils.passwords(binding.etPassOneLayout, binding.etPassTwoLayout, "Passwords Do Not Match") ? 1 : 0;
 
             if (errors == 0) presenter.signup(binding.getUser());
         });
 
-        SimpleTextWatcher signupWatcher = new SimpleTextWatcher() {
+        TextWatcher signupWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
             }
@@ -65,23 +63,23 @@ public class SignupView extends BaseActivity implements SignupContract.View {
             @Override
             public void afterTextChanged(Editable e) {
                 if (e == binding.etEmailLayout.getEditText().getText())
-                    StringUtils.empty(binding.etEmailLayout, "Email Is Blank");
+                    Utils.empty(binding.etEmailLayout, "Email Is Blank");
                 if (e == binding.etUsernameLayout.getEditText().getText())
-                    StringUtils.empty(binding.etUsernameLayout, "Username Is Blank");
+                    Utils.empty(binding.etUsernameLayout, "Username Is Blank");
                 if (e == binding.etFullNameLayout.getEditText().getText())
-                    StringUtils.empty(binding.etFullNameLayout, "Full Name Is Blank");
+                    Utils.empty(binding.etFullNameLayout, "Full Name Is Blank");
                 if (e == binding.etCityLayout.getEditText().getText())
-                    StringUtils.empty(binding.etCityLayout, "City Is Blank");
+                    Utils.empty(binding.etCityLayout, "City Is Blank");
                 if (e == binding.etStateLayout.getEditText().getText())
-                    StringUtils.empty(binding.etStateLayout, "State Is Blank");
+                    Utils.empty(binding.etStateLayout, "State Is Blank");
                 if (e == binding.etAgeLayout.getEditText().getText())
-                    StringUtils.empty(binding.etAgeLayout, "Age Is Blank");
+                    Utils.empty(binding.etAgeLayout, "Age Is Blank");
                 if (e == binding.etGenderLayout.getEditText().getText())
-                    StringUtils.empty(binding.etGenderLayout, "Gender Is Blank");
+                    Utils.empty(binding.etGenderLayout, "Gender Is Blank");
                 if (e == binding.etPassOneLayout.getEditText().getText())
-                    StringUtils.empty(binding.etPassOneLayout, "Password Is Blank");
+                    Utils.empty(binding.etPassOneLayout, "Password Is Blank");
                 if (e == binding.etPassTwoLayout.getEditText().getText())
-                    StringUtils.empty(binding.etPassTwoLayout, "Password Is Blank");
+                    Utils.empty(binding.etPassTwoLayout, "Password Is Blank");
 
 
             }
@@ -107,14 +105,15 @@ public class SignupView extends BaseActivity implements SignupContract.View {
     }
 
     @Override
+    public void goToAccess() {
+        flow.goToAccessActivity();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         binding.unbind();
         presenter.unsubscribe();
     }
 
-    @Override
-    public void showToast(String text) {
-
-    }
 }

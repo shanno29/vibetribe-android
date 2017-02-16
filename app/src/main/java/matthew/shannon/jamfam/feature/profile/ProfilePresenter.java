@@ -7,12 +7,13 @@ import android.util.Log;
 import com.fuck_boilerplate.rx_paparazzo.entities.Response;
 import java.io.File;
 import javax.inject.Named;
+
+import matthew.shannon.jamfam.app.Utils;
 import matthew.shannon.jamfam.base.BasePresenter;
 import matthew.shannon.jamfam.model.Track;
 import matthew.shannon.jamfam.model.User;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
-import matthew.shannon.jamfam.util.RxUtils;
 import rx.Observable;
 
 public class ProfilePresenter extends BasePresenter implements ProfileContract.Presenter {
@@ -37,7 +38,7 @@ public class ProfilePresenter extends BasePresenter implements ProfileContract.P
     @Override
     public void loadUser(String ID) {
 //        add(network.getUser(App.token, ID)
-//                .compose(RxUtils.applySchedulers())
+//                .compose(Utils.applySchedulers())
 //                .subscribe(
 //                        res -> {
 //                            user = res.get(0);
@@ -58,7 +59,7 @@ public class ProfilePresenter extends BasePresenter implements ProfileContract.P
     @Override
     public void checkForSecondRun() {
         add(cache.getSkipIntro()
-                .compose(RxUtils.applySchedulers())
+                .compose(Utils.applySchedulers())
                 .subscribe(
                         flag -> {
                             if (!flag) {
@@ -77,7 +78,7 @@ public class ProfilePresenter extends BasePresenter implements ProfileContract.P
     @Override
     public void loadUpdateUser() {
 //        add(network.putUser(App.token, user.get_id(), user)
-//                .compose(RxUtils.applySchedulers())
+//                .compose(Utils.applySchedulers())
 //                .subscribe(
 //                        res -> {
 //                            user = res;
@@ -94,11 +95,11 @@ public class ProfilePresenter extends BasePresenter implements ProfileContract.P
     @Override
     public void selectProfilePicture() {
         add(picture
-                .compose(RxUtils.applySchedulers())
+                .compose(Utils.applySchedulers())
                 .subscribe(
                         res -> {
                             if (res.resultCode() == Activity.RESULT_OK) {
-                                RxUtils
+                                Utils
                                         .uriToBitmap(resolver, Uri.fromFile(new File(res.data())))
                                         .doOnNext(bitmap -> loadUpdateUser())
                                         .doOnError(throwable -> view.showToast("Error Getting Image"))
@@ -113,11 +114,11 @@ public class ProfilePresenter extends BasePresenter implements ProfileContract.P
     @Override
     public void selectBannerPicture() {
         add(banner
-                .compose(RxUtils.applySchedulers())
+                .compose(Utils.applySchedulers())
                 .subscribe(
                         res -> {
                             if (res.resultCode() == Activity.RESULT_OK) {
-                                RxUtils
+                                Utils
                                         .uriToBitmap(resolver, Uri.fromFile(new File(res.data())))
                                         .doOnNext(bitmap -> loadUpdateUser())
                                         .doOnError(throwable -> view.showToast("Error Getting Image"))

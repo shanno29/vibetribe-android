@@ -2,9 +2,9 @@ package matthew.shannon.jamfam.feature.Intro.welcome;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import javax.inject.Inject;
-
 import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.WelcomeViewBinding;
@@ -12,7 +12,7 @@ import matthew.shannon.jamfam.base.BaseActivity;
 
 public class WelcomeView extends BaseActivity implements WelcomeContract.View {
 
-    @Inject WelcomeContract.Presenter presenter;
+    @Inject GoogleApiAvailability api;
     private WelcomeViewBinding binding;
 
     @Override
@@ -23,22 +23,33 @@ public class WelcomeView extends BaseActivity implements WelcomeContract.View {
 
     @Override
     protected void setupActivityComponent() {
-        ((App) getApplicationContext()).getAppComponent().plus(new WelcomeModule(this)).inject(this);
-
+        ((App)getApplicationContext()).getAppComponent().plus(new WelcomeModule(this)).inject(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.checkGoogleApi();
-        binding.buttonRight.setOnClickListener(view -> presenter.gotoSignup());
+        checkGoogleAPI();
+        binding.buttonRight.setOnClickListener(view -> gotoSignup());
+    }
+
+    @Override
+    public void checkGoogleAPI() {
+        int code = api.isGooglePlayServicesAvailable(this);
+        if (code != ConnectionResult.SUCCESS && api.isUserResolvableError(code)) {
+            api.getErrorDialog(this, code, 900);
+        }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        presenter.unsubscribe();
         binding.unbind();
+    }
+
+    @Override
+    public void gotoSignup() {
+        flow.goToSignupActivity();
     }
 
 }

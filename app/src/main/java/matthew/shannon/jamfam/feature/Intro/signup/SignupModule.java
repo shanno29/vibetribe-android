@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import dagger.Module;
 import dagger.Provides;
 import matthew.shannon.jamfam.service.flow.FlowService;
+import matthew.shannon.jamfam.service.network.NetworkService;
 
 @Module
 public class SignupModule {
@@ -23,8 +24,8 @@ public class SignupModule {
 
     @Provides
     @SignupScope
-    SignupContract.Presenter signupPresenter(SignupContract.View view, FlowService flow) {
-        return new SignupPresenter(view, flow);
+    SignupContract.Presenter signupPresenter(SignupContract.View view, NetworkService network) {
+        return new SignupPresenter(view, network);
 
     }
 

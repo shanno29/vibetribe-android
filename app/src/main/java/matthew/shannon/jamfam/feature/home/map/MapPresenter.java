@@ -12,7 +12,7 @@ public class MapPresenter extends BasePresenter implements MapContract.Presenter
     @Override
     public void getUserTracks() {
 //        add(network.getUserTracks(App.token, App.userID)
-//                .compose(RxUtils.applySchedulers())
+//                .compose(Utils.applySchedulers())
 //                .subscribe(
 //                        view::addMarkers,
 //                        error -> view.showToast("Error Getting Tracks " + error.getMessage())

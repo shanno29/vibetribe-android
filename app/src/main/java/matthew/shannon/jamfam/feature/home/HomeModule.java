@@ -4,7 +4,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-
 import co.mobiwise.materialintro.shape.Focus;
 import co.mobiwise.materialintro.shape.FocusGravity;
 import co.mobiwise.materialintro.view.MaterialIntroView;
@@ -14,7 +13,6 @@ import matthew.shannon.jamfam.R;
 import matthew.shannon.jamfam.feature.home.map.MapView;
 import matthew.shannon.jamfam.feature.home.track.TrackView;
 import matthew.shannon.jamfam.service.cache.CacheService;
-import matthew.shannon.jamfam.service.flow.FlowService;
 
 @Module
 public class HomeModule {
@@ -33,8 +31,8 @@ public class HomeModule {
 
     @Provides
     @HomeScope
-    HomeContract.Presenter homePresenter(CacheService cache, FlowService flow) {
-        return new HomePresenter(activity, cache, flow);
+    HomeContract.Presenter homePresenter(HomeContract.View view, CacheService cache) {
+        return new HomePresenter(view, cache);
 
     }
 
@@ -42,15 +40,15 @@ public class HomeModule {
     @HomeScope
     MaterialIntroView.Builder provideHomeTrackIntroView(AppCompatActivity appCompatActivity) {
         return new MaterialIntroView.Builder(appCompatActivity)
-                .setInfoText("Click Here To Start Some Music!")
-                .setFocusGravity(FocusGravity.CENTER)
-                .setFocusType(Focus.MINIMUM)
-                .enableFadeAnimation(true)
-                .enableDotAnimation(true)
-                .setUsageId("intro_card")
-                .setDelayMillis(500)
-                .performClick(true)
-                .enableIcon(false);
+            .setInfoText("Click Here To Start Some Music!")
+            .setFocusGravity(FocusGravity.CENTER)
+            .setFocusType(Focus.MINIMUM)
+            .enableFadeAnimation(true)
+            .enableDotAnimation(true)
+            .setUsageId("intro_card")
+            .setDelayMillis(500)
+            .performClick(true)
+            .enableIcon(false);
     }
 
     @Provides

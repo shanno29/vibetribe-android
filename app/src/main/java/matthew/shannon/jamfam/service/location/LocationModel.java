@@ -19,12 +19,12 @@ import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 import rx.Observable;
 import rx_activity_result.RxActivityResult;
 
-public class LocationManager implements LocationService {
+public class LocationModel implements LocationService {
     private final ReactiveLocationProvider locationProvider;
     private final LocationSettingsRequest settingsRequest;
     private final LocationRequest locationRequest;
 
-    public LocationManager(ReactiveLocationProvider locationProvider, LocationSettingsRequest settingsRequest, LocationRequest locationRequest) {
+    public LocationModel(ReactiveLocationProvider locationProvider, LocationSettingsRequest settingsRequest, LocationRequest locationRequest) {
         this.locationProvider = locationProvider;
         this.settingsRequest = settingsRequest;
         this.locationRequest = locationRequest;

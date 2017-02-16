@@ -1,16 +1,24 @@
-package matthew.shannon.jamfam.util;
+package matthew.shannon.jamfam.app;
 
-
+import android.content.ContentResolver;
 import android.databinding.BindingAdapter;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
-public class StringUtils {
+public class Utils {
 
     public static boolean email(TextInputLayout inputLayout, String value) {
         String x = inputLayout.getEditText().getText().toString().trim();
@@ -65,5 +73,28 @@ public class StringUtils {
     public static void setImageUrl(ImageView imageView, String url) {
         Glide.with(imageView.getContext()).load(url).into(imageView);
     }
+
+    @SuppressWarnings("unchecked")
+    public static <T> Observable.Transformer<T, T> applySchedulers() {
+        return observable -> observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public static Observable<Bitmap> uriToBitmap(final ContentResolver resolver, final Uri uri) {
+        return Observable
+                .create((Observable.OnSubscribe<Bitmap>) subscriber -> {
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(resolver, uri);
+                        subscriber.onNext(bitmap);
+                        subscriber.onCompleted();
+                    } catch (IOException e) {
+                        Log.e("VIBETRIBE", "Error converting uri", e);
+                        subscriber.onError(e);
+                    }
+                })
+                .compose(applySchedulers());
+
+    }
+
 
 }

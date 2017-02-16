@@ -14,7 +14,7 @@ import static junit.framework.Assert.assertTrue;
 import static org.robolectric.Shadows.shadowOf;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants=BuildConfig.class, sdk=21)
+@Config(constants=BuildConfig.class, sdk=23)
 public class WelcomeViewTest {
 
     private WelcomeView welcomeView;
@@ -29,11 +29,8 @@ public class WelcomeViewTest {
         welcomeView.findViewById(R.id.button_right).performClick();
         Intent expectedIntent = new Intent(welcomeView, SignupView.class);
         assertTrue(shadowOf(welcomeView).getNextStartedActivity().filterEquals(expectedIntent));
-
         welcomeView.onBackPressed();
         welcomeView.onDestroy();
     }
-
-
 
 }

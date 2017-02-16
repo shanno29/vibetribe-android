@@ -13,7 +13,7 @@ import matthew.shannon.jamfam.BuildConfig;
 import matthew.shannon.jamfam.R;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants=BuildConfig.class, sdk=21)
+@Config(constants=BuildConfig.class, sdk=23)
 public class SearchViewTest {
 
     private SearchView searchView;

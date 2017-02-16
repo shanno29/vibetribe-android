@@ -58,7 +58,7 @@ public class MetaPresenter extends BasePresenter implements MetaContract.Present
 
     @Override
     public void lookUpTrack() {
-        add(network.searchOnline(App.token, track.getTitle(), track.getArtist(), "1")
+        add(network.searchOnline(App.token, track.getTitle() + ""  +track.getArtist(), "1")
                 .compose(Utils.applySchedulers())
                 .subscribe(
                         tracks -> {

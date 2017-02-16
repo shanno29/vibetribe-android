@@ -19,7 +19,7 @@ public class SplashPresenter extends BasePresenter implements SplashContract.Pre
             .compose(Utils.applySchedulers())
             .subscribe(
                 flag -> {
-                    if (flag) view.checkServiceStatus();
+                    if (flag) view.goToLogin();
                     else {
                         cache.setSkipIntro(true);
                         view.goToWelcomeActivity();

@@ -29,20 +29,20 @@ public class SplashView extends AwesomeSplash implements SplashContract.View {
 
         //Customize Circular Reveal
         configSplash.setBackgroundColor(R.color.purple);
-        configSplash.setAnimCircularRevealDuration(1000);
+        configSplash.setAnimCircularRevealDuration(800);
         configSplash.setRevealFlagX(Flags.WITH_LOGO);
         configSplash.setRevealFlagY(Flags.WITH_LOGO);
 
         //Customize Logo
         configSplash.setLogoSplash(R.drawable.vibe_tribe);
-        configSplash.setAnimLogoSplashDuration(1000);
+        configSplash.setAnimLogoSplashDuration(800);
         configSplash.setAnimLogoSplashTechnique(Techniques.FadeInUp);
 
         //Customize Title
         configSplash.setTitleSplash("VibeTribe");
         configSplash.setTitleTextColor(R.color.white);
         configSplash.setTitleTextSize(30f);
-        configSplash.setAnimTitleDuration(1000);
+        configSplash.setAnimTitleDuration(800);
         configSplash.setAnimTitleTechnique(Techniques.FadeInUp);
     }
 
@@ -65,12 +65,6 @@ public class SplashView extends AwesomeSplash implements SplashContract.View {
     @Override
     public void goToAccess(){
         flow.goToAccessActivity();
-    }
-
-    @Override
-    public void checkServiceStatus() {
-        if (!flow.serviceStatus()) goToAccess();
-        else goToLogin();
     }
 
     @Override

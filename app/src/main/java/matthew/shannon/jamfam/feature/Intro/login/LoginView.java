@@ -77,7 +77,8 @@ public class LoginView extends BaseActivity implements LoginContract.View {
     @Override
     public void updateUI(User user, boolean checked) {
         binding.cbLogin.setChecked(checked);
-        binding.setUser(user);
+        this.user = user;
+        binding.setUser(this.user);
         binding.executePendingBindings();
     }
 

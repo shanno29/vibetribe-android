@@ -80,7 +80,7 @@ public final class NetworkModule {
         retrofit.addConverterFactory(gson);
         retrofit.client(client);
         //retrofit.baseUrl("http://192.168.137.1:3000/v1/api/");
-        retrofit.baseUrl("http://wiscosoft.co/v1/api/");
+        retrofit.baseUrl("http://wiscosoft.co/api/");
         return retrofit.build();
     }
 

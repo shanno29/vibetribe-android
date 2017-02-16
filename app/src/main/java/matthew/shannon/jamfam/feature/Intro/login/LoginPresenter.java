@@ -1,5 +1,7 @@
 package matthew.shannon.jamfam.feature.Intro.login;
 
+import android.util.Log;
+
 import matthew.shannon.jamfam.BuildConfig;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.app.Utils;
@@ -27,30 +29,26 @@ public class LoginPresenter extends BasePresenter implements LoginContract.Prese
         user.setVersion(BuildConfig.VERSION_NAME);
         view.toggleSpinner(true);
         add(network.loginUser(user)
-                .compose(Utils.applySchedulers())
-                .subscribe(
-                        res -> {
-                            view.toggleSpinner(false);
-                            App.userID = res.get_id();
-                            App.token = "JWT " + res.getToken();
-                            res.setPassword(user.getPassword());
-                            cache.setOwner(user);
-                            view.goToHomeActivity();
-                        },
-                        error -> {
-                            view.toggleSpinner(false);
-                            if (error instanceof HttpException) {
-                                switch (((HttpException) error).code()) {
-                                    case 404:
-                                        view.goToStore();
-                                        break;
-                                    case 204:
-                                        view.showToast(error.getMessage());
-                                        break;
-                                }
-                            } else view.showToast("Incorrect Email or Password");
-                        }
-                )
+            .compose(Utils.applySchedulers())
+            .subscribe(
+                res -> {
+                    view.toggleSpinner(false);
+                    App.userID = res.get_id();
+                    App.token = "JWT " + res.getToken();
+                    res.setPassword(user.getPassword());
+                    cache.setOwner(user);
+                    view.goToHomeActivity();
+                },
+                error -> {
+                    view.toggleSpinner(false);
+                    if (error instanceof HttpException) {
+                        int code = ((HttpException) error).code();
+                        Log.d("LOGIN", error.toString());
+                        if (code == 404) view.goToStore();
+                        else view.showToast("Incorrect Login Info");
+                    }
+                }
+            )
         );
     }
 

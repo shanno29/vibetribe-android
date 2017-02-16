@@ -1,6 +1,8 @@
 package matthew.shannon.jamfam.feature.Intro.login;
 
 import android.support.design.widget.TextInputLayout;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,7 +46,7 @@ public class LoginViewTest {
     }
 
     @Test
-    public void shouldStartNextActivityWhenButtonIsClicked() {
+    public void loginViewTests() {
         loginView.toggleSpinner(true);
         loginView.toggleSpinner(false);
         loginView.showToast("Hello World");
@@ -71,11 +73,12 @@ public class LoginViewTest {
         loginView.goToStore();
         loginView.onBackPressed();
 
-        loginView.updateUI(new User(), true);
-
-        loginView.onDestroy();
+        //loginView.updateUI(new User(), true);
     }
 
-
+    @After
+    public void tearDown() {
+        loginView.onDestroy();
+    }
 
 }

@@ -42,7 +42,7 @@ public interface ListContract {
 
         void loadAddFriend(String userId, String userTwoId);
 
-        void loadDelFriend(String userId, String userTwoId);
+        void loadDelFriend(String friendId);
 
         List<?> localQuery(List<?> items, String query);
 

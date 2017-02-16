@@ -13,7 +13,7 @@ import matthew.shannon.jamfam.databinding.ActivitySettingsBinding;
 import matthew.shannon.jamfam.base.BaseToolbarActivity;
 
 public class SettingsView extends BaseToolbarActivity implements SettingsContract.View {
-    @Inject SettingsContract.Presenter presenter;
+    @Inject public SettingsContract.Presenter presenter;
     @Inject FragmentAdapter adapter;
     @Inject Animation animation;
     private ActivitySettingsBinding binding;
@@ -23,6 +23,7 @@ public class SettingsView extends BaseToolbarActivity implements SettingsContrac
         super.onCreate(bundle);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_settings);
         setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         binding.viewpager.setAdapter(adapter);
         binding.viewpager.startAnimation(animation);
     }

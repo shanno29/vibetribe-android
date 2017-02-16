@@ -25,6 +25,7 @@ import matthew.shannon.jamfam.feature.adapter.item.ItemViewHolderTrackFactory;
 import matthew.shannon.jamfam.feature.adapter.item.ItemViewHolderUserFactory;
 import matthew.shannon.jamfam.service.cache.CacheService;
 import matthew.shannon.jamfam.service.flow.FlowService;
+import matthew.shannon.jamfam.service.network.NetworkService;
 
 @Module
 public class ListModule {
@@ -82,8 +83,8 @@ public class ListModule {
 
     @Provides
     @ListScope
-    ListContract.Presenter listPresenter(CacheService cache, FlowService flow, ListContract.View view) {
-        return new ListPresenter(cache, flow, view);
+    ListContract.Presenter listPresenter(NetworkService network, CacheService cache, FlowService flow, ListContract.View view) {
+        return new ListPresenter(network, cache, flow, view);
     }
 
     @Provides

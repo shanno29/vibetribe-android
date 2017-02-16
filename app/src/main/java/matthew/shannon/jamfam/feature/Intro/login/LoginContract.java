@@ -6,6 +6,8 @@ import matthew.shannon.jamfam.model.User;
 public interface LoginContract {
 
     interface View extends BaseView {
+        //void updateUI(User user, boolean checked);
+
         void updateUI(User user, boolean checked);
 
         void toggleSpinner(boolean flag);

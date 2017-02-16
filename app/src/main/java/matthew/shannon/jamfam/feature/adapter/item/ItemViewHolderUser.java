@@ -30,17 +30,9 @@ public class ItemViewHolderUser extends ItemViewHolder {
             PopupMenu popupMenu = new PopupMenu(view.getContext(), view);
             popupMenu.inflate(R.menu.non_friend_meu);
             popupMenu.setOnMenuItemClickListener(item -> {
-                switch (item.getItemId()) {
-                    case R.id.add_friend:
-                        flow.addFriend(user);
-                        break;
-                    case R.id.del_friend:
-                        flow.delFriend(user);
-                        break;
-                    case R.id.go_to_user:
-                        flow.goToUser(user);
-                        break;
-                }
+                if (item.getItemId() == R.id.add_friend) flow.addFriend(user);
+                if (item.getItemId() == R.id.del_friend) flow.delFriend(user);
+                if (item.getItemId() == R.id.go_to_user) flow.goToUser(user);
                 return true;
             });
             popupMenu.show();

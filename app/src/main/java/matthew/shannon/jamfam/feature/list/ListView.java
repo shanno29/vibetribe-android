@@ -25,7 +25,7 @@ import matthew.shannon.jamfam.model.User;
 public class ListView extends BaseFragment implements ListContract.View {
     @Inject MaterialViewPagerHeaderDecorator decorator;
     @Inject DividerItemDecoration dividerItem;
-    @Inject ListContract.Presenter presenter;
+    @Inject public ListContract.Presenter presenter;
     @Inject LinearLayoutManager manager;
     @Inject ProgressDialog dialog;
     @Inject ItemAdapter adapter;
@@ -70,6 +70,7 @@ public class ListView extends BaseFragment implements ListContract.View {
     public void onViewCreated(android.view.View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
         view.setOnCreateContextMenuListener(this);
+        onRefresh();
     }
 
 
@@ -90,7 +91,7 @@ public class ListView extends BaseFragment implements ListContract.View {
             User user = ((User) event.getObject());
             if(event.getType() == Action.GO_TO_USER) presenter.goToUser(user.get_id());
             if(event.getType() == Action.ADD_FRIEND) presenter.loadAddFriend(ID, user.get_id());
-            if(event.getType() == Action.DEL_FRIEND) presenter.loadDelFriend(ID, user.get_id());
+            if(event.getType() == Action.DEL_FRIEND) presenter.loadDelFriend("");
         }
         if (event.getType() == Action.REFRESH && TYPE != FragType.SEARCH_TRACKS) onRefresh();
     }
@@ -132,6 +133,12 @@ public class ListView extends BaseFragment implements ListContract.View {
         else dialog.dismiss();
     }
 
+
+    @Override
+    public void showToast(String text) {
+        super.showToast(text);
+        toggleSpinner(false);
+    }
 
     @Override
     public void onDestroy() {

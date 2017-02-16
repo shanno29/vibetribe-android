@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 
 import dagger.Module;
 import dagger.Provides;
+import matthew.shannon.jamfam.model.User;
 import matthew.shannon.jamfam.service.flow.FlowService;
 import matthew.shannon.jamfam.service.network.NetworkService;
 
@@ -14,6 +15,12 @@ public class SignupModule {
 
     public SignupModule(SignupView activity) {
         this.activity = activity;
+    }
+
+    @Provides
+    @SignupScope
+    User user(){
+        return new User();
     }
 
     @Provides
@@ -32,7 +39,10 @@ public class SignupModule {
     @Provides
     @SignupScope
     ProgressDialog dialog() {
-        return new ProgressDialog(activity);
+        ProgressDialog dialog = new ProgressDialog(activity);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage("Signing Up...");
+        return dialog;
     }
 
 }

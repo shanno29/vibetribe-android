@@ -6,6 +6,7 @@ import android.view.View;
 import matthew.shannon.jamfam.service.flow.FlowService;
 
 public abstract class ItemViewHolder extends RecyclerView.ViewHolder {
+    public abstract void bind(Object item, FlowService flow);
     public View itemView;
 
     ItemViewHolder(View itemView) {
@@ -14,5 +15,4 @@ public abstract class ItemViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public abstract void bind(Object item, FlowService flow);
 }

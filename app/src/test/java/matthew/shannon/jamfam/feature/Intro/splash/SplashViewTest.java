@@ -1,5 +1,6 @@
 package matthew.shannon.jamfam.feature.Intro.splash;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,9 +32,10 @@ public class SplashViewTest {
 
         splashView.goToWelcomeActivity();
         splashView.onBackPressed();
+    }
 
-        splashView.checkServiceStatus();
-
+    @After
+    public void tearDown() {
         splashView.onDestroy();
     }
 

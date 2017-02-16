@@ -1,5 +1,6 @@
 package matthew.shannon.jamfam.feature.about;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,11 +47,12 @@ public class AboutViewTest {
 
         aboutView.onOptionsItemSelected(new RoboMenuItem(R.id.about));
         aboutView.onBackPressed();
-
-        aboutView.onDestroy();
-
     }
 
+    @After
+    public void tearDown() {
+        aboutView.onDestroy();
+    }
 
 
 }

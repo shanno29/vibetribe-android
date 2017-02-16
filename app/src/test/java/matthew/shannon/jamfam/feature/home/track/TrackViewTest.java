@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,4 +55,10 @@ public class TrackViewTest {
 
 
     }
+
+    @After
+    public void tearDown() {
+        activity.onDestroy();
+    }
+
 }

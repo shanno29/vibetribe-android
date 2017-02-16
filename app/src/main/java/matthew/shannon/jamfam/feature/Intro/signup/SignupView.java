@@ -11,9 +11,11 @@ import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.app.Utils;
 import matthew.shannon.jamfam.databinding.SignupViewBinding;
 import matthew.shannon.jamfam.base.BaseActivity;
+import matthew.shannon.jamfam.model.User;
 
 public class SignupView extends BaseActivity implements SignupContract.View {
 
+    @Inject User user;
     @Inject ProgressDialog dialog;
     @Inject public SignupContract.Presenter presenter;
     private SignupViewBinding binding;
@@ -22,6 +24,7 @@ public class SignupView extends BaseActivity implements SignupContract.View {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         binding = DataBindingUtil.setContentView(this, R.layout.signup_view);
+        binding.setUser(user);
     }
 
     @Override

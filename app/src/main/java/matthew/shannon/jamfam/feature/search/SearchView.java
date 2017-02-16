@@ -16,6 +16,8 @@ import matthew.shannon.jamfam.feature.adapter.fragment.FragmentAdapter;
 import matthew.shannon.jamfam.app.App;
 import matthew.shannon.jamfam.databinding.ActivitySearchBinding;
 import matthew.shannon.jamfam.base.BaseToolbarActivity;
+import matthew.shannon.jamfam.model.Action;
+import matthew.shannon.jamfam.model.Event;
 
 public class SearchView extends BaseToolbarActivity implements SearchContract.View {
     @Inject SearchContract.Presenter presenter;
@@ -67,13 +69,13 @@ public class SearchView extends BaseToolbarActivity implements SearchContract.Vi
             @Override
             public boolean onQueryTextSubmit(String query) {
                 binding.search.hideKeyboard(binding.getRoot());
-                //bus.post(new Event(Action.QUERY_CHANGED, query));
+                bus.post(new Event(Action.QUERY_CHANGED, query));
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String query) {
-                //bus.post(new Event(Action.QUERY_CHANGED, query));
+                bus.post(new Event(Action.QUERY_CHANGED, query));
                 return true;
             }
         });

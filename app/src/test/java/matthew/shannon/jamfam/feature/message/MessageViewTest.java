@@ -1,5 +1,6 @@
 package matthew.shannon.jamfam.feature.message;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,10 +22,14 @@ public class MessageViewTest {
     }
 
     @Test
-    public void shouldStartNextActivityWhenButtonIsClicked() {
-        messageView.onDestroy();
+    public void messageTests() {
+        messageView.showToast("Test");
     }
 
+    @After
+    public void tearDown() {
+        messageView.onDestroy();
 
+    }
 
 }

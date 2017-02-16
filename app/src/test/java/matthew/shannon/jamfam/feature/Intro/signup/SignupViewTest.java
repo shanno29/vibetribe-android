@@ -2,6 +2,8 @@ package matthew.shannon.jamfam.feature.Intro.signup;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,7 +41,7 @@ public class SignupViewTest {
     }
 
     @Test
-    public void shouldStartNextActivityWhenButtonIsClicked() {
+    public void signupViewTests() {
         signupView.toggleSpinner(true);
         signupView.toggleSpinner(false);
         signupView.showToast("Hello World");
@@ -88,9 +90,11 @@ public class SignupViewTest {
         assertTrue(shadowOf(signupView).getNextStartedActivity().filterEquals(expectedIntent));
 
         signupView.onBackPressed();
-        signupView.onDestroy();
     }
 
-
+    @After
+    public void tearDown() {
+        signupView.onDestroy();
+    }
 
 }

@@ -1,5 +1,6 @@
 package matthew.shannon.jamfam.base;
 
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -20,8 +21,8 @@ public abstract class BaseToolbarActivity extends BaseActivity {
         if(item.getItemId() == R.id.about) flowService.goToAboutActivity();
         if(item.getItemId() == R.id.contact) flowService.goToEmailApp();
         if(item.getItemId() == R.id.logout) flowService.goToLogoutActivity();
-        if(item.getItemId() == R.id.home) onBackPressed();
-        return true;
+        if(item.getItemId() == R.id.home) NavUtils.navigateUpFromSameTask(this);
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

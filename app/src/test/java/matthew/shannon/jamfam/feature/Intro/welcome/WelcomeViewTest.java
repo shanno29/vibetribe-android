@@ -1,6 +1,8 @@
 package matthew.shannon.jamfam.feature.Intro.welcome;
 
 import android.content.Intent;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,11 +27,15 @@ public class WelcomeViewTest {
     }
 
     @Test
-    public void shouldStartNextActivityWhenButtonIsClicked() {
+    public void welcomeViewTests() {
         welcomeView.findViewById(R.id.button_right).performClick();
         Intent expectedIntent = new Intent(welcomeView, SignupView.class);
         assertTrue(shadowOf(welcomeView).getNextStartedActivity().filterEquals(expectedIntent));
         welcomeView.onBackPressed();
+    }
+
+    @After
+    public void tearDown() {
         welcomeView.onDestroy();
     }
 

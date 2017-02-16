@@ -1,5 +1,6 @@
 package matthew.shannon.jamfam.feature.logout;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,13 +33,15 @@ public class LogoutViewTest {
     }
 
     @Test
-    public void shouldStartNextActivityWhenButtonIsClicked() {
+    public void logoutViewTests() {
         logoutView.showToast("test");
         logoutView.animationsFinished();
         logoutView.exitApp();
-        logoutView.onDestroy();
     }
 
-
+    @After
+    public void tearDown() {
+        logoutView.onDestroy();
+    }
 
 }

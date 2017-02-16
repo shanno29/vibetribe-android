@@ -8,8 +8,6 @@ public interface SplashContract {
 
         void goToAccess();
 
-        void checkServiceStatus();
-
         void goToWelcomeActivity();
     }
 

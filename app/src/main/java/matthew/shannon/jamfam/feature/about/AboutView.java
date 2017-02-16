@@ -22,6 +22,8 @@ public class AboutView extends BaseToolbarActivity {
         super.onCreate(bundle);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_about);
         setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         binding.viewpager.setAdapter(adapter);
         binding.viewpager.startAnimation(animation);
         binding.viewpager.setOffscreenPageLimit(adapter.getCount());

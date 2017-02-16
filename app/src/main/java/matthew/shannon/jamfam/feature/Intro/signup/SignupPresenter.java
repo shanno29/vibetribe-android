@@ -1,5 +1,7 @@
 package matthew.shannon.jamfam.feature.Intro.signup;
 
+import android.util.Log;
+
 import matthew.shannon.jamfam.app.Utils;
 import matthew.shannon.jamfam.base.BasePresenter;
 import matthew.shannon.jamfam.model.User;
@@ -26,6 +28,7 @@ public class SignupPresenter extends BasePresenter implements SignupContract.Pre
                     view.goToAccess();
                 },
                 error -> {
+                    Log.d("SIGNUP", error.toString());
                     view.toggleSpinner(false);
                     view.showToast("The email address is already in use by another account");
                 }

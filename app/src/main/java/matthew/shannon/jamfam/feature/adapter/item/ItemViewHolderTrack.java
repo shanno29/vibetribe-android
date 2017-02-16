@@ -34,17 +34,9 @@ public class ItemViewHolderTrack extends ItemViewHolder {
             PopupMenu popup = new PopupMenu(view.getContext(), view);
             popup.inflate(track.getOwner() == null ? R.menu.track_search_menu : R.menu.owner_track_menu);
             popup.setOnMenuItemClickListener(item -> {
-                switch (item.getItemId()) {
-                    case R.id.add_track:
-                        flow.goToTrack(track);
-                        break;
-                    case R.id.del_track:
-                        flow.delTrack(track);
-                        break;
-                    case R.id.go_to_user:
-                        flow.goToUser(track.getOwner());
-                        break;
-                }
+                if (item.getItemId() == R.id.go_to_user) flow.goToUser(track.getOwner());
+                if (item.getItemId() == R.id.add_track) flow.goToTrack(track);
+                if (item.getItemId() == R.id.del_track) flow.delTrack(track);
                 return true;
             });
             popup.show();

@@ -1,5 +1,6 @@
 package matthew.shannon.jamfam.feature.home;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,20 +13,23 @@ import matthew.shannon.jamfam.BuildConfig;
 @RunWith(RobolectricTestRunner.class)
 @Config(constants=BuildConfig.class, sdk=23)
 public class HomeViewTest {
-    private HomeView home;
+    private HomeView homeView;
 
     @Before
     public void setUp() {
-        home = Robolectric.setupActivity(HomeView.class);
-        home.presenter = () -> {};
+        homeView = Robolectric.setupActivity(HomeView.class);
+        homeView.presenter = () -> {};
     }
 
     @Test
-    public void shouldStartNextActivityWhenButtonIsClicked() {
-        home.showToast("Hello World");
-        home.onDestroy();
+    public void homeViewTests() {
+        homeView.showToast("Hello World");
     }
 
+    @After
+    public void tearDown() {
+        homeView.onDestroy();
+    }
 
 
 }

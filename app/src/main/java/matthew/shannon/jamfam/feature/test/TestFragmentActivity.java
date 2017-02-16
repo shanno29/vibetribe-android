@@ -29,4 +29,8 @@ public class TestFragmentActivity extends BaseActivity {
         setContentView(R.layout.activity_fortests);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

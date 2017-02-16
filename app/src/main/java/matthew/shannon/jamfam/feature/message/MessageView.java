@@ -23,6 +23,7 @@ public class MessageView extends BaseToolbarActivity implements MessageContract.
         super.onCreate(bundle);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_message);
         setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         binding.viewpager.setAdapter(adapter);
         binding.viewpager.startAnimation(animation);
     }

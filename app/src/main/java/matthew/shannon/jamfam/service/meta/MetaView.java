@@ -1,5 +1,6 @@
 package matthew.shannon.jamfam.service.meta;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaMetadataRetriever;
 import android.media.RemoteController;
@@ -18,16 +19,13 @@ public class MetaView extends BaseService implements MetaService {
     @Inject RemoteController remote;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        super.onStartCommand(intent, flags, startId);
+        ((App)getApplicationContext()).getAppComponent().plus(new MetaModule(this)).inject(this);
         audioManager.registerRemoteController(remote);
         presenter.getLastLocation();
         presenter.getLocationUpdate();
-    }
-
-    @Override
-    protected void setupServiceComponent() {
-        ((App)getApplicationContext()).getAppComponent().plus(new MetaModule(this)).inject(this);
+        return START_STICKY;
     }
 
     @Override

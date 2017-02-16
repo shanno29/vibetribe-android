@@ -46,7 +46,10 @@ public class LoginModule {
     @Provides
     @LoginScope
     ProgressDialog dialog() {
-        return new ProgressDialog(activity);
+        ProgressDialog dialog = new ProgressDialog(activity);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage("Logging In...");
+        return dialog;
     }
 
 }
